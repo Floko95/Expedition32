@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Behavior;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Transform> enemySlots;
     [SerializeField] private List<Transform> alliesSlots;
 
+    [SerializeField] private BehaviorGraphAgent behaviorGraphAgent;
+    
     public UnityAction onBattleInitialized;
     public UnityAction onBattleStart;
     public UnityAction<bool> onBattleEnd;
@@ -15,20 +18,19 @@ public class BattleManager : MonoBehaviour
     public UnityAction<Unit> onTurnStart;
     public UnityAction onTurnPlay;
     public UnityAction onTurnEnd;
-
-    public Unit CurrentTurnUnit => TurnQueue.CurrentTurn;
-    public TurnQueue TurnQueue;
+    
+    public TurnQueue TurnQueue { get; set; }
     
     public Battle Battle { get; set; }
     public BattleData BattleData { get; set; }
     public bool isBattleInititated { get; set; }
     
     private TeamManager _teamManager;
-    private BattleStateMachine _battleStateMachine;
     
     private async void Awake() {
         await Toolbox.WaitUntilReadyAsync();
         Toolbox.Set(this);
+        behaviorGraphAgent.End();
     }
 
     private async void Start() {
@@ -68,7 +70,8 @@ public class BattleManager : MonoBehaviour
         };
         
         TurnQueue = new TurnQueue(Battle.Units);
-        _battleStateMachine = new BattleStateMachine(this);
+        
+        behaviorGraphAgent.Restart();
         
         onBattleInitialized?.Invoke();
         isBattleInititated = true;
@@ -77,15 +80,6 @@ public class BattleManager : MonoBehaviour
     public virtual void StartBattle() {
         Debug.Log("StartBattle");
         onBattleStart?.Invoke();
-    }
-
-    public virtual void NextTurn() {
-        
-        var next = TurnQueue.Next();
-        Debug.Log($"{next.unitData.name} 's Turn!");
-
-        StartCoroutine(next.ExecuteTurn());
-        onTurnStart?.Invoke(next);
     }
     
     public virtual void EndTurn() {
