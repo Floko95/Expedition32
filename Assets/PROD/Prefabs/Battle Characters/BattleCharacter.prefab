@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 5097819289411043096}
   - component: {fileID: 1311836021454525050}
   - component: {fileID: 1723844382926556275}
+  - component: {fileID: 1481712605938590863}
   m_Layer: 6
   m_Name: BattleCharacter
   m_TagString: Player
@@ -260,6 +261,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!320 &1481712605938590863
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295239653202536930}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &4079971102535386655
 GameObject:
   m_ObjectHideFlags: 0

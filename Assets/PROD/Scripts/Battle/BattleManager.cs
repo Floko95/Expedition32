@@ -16,6 +16,7 @@ public class BattleManager : MonoBehaviour
     public UnityAction onTurnPlay;
     public UnityAction onTurnEnd;
 
+    public Unit CurrentTurnUnit => TurnQueue.CurrentTurn;
     public TurnQueue TurnQueue;
     
     public Battle Battle { get; set; }
@@ -35,8 +36,6 @@ public class BattleManager : MonoBehaviour
         _teamManager = Toolbox.Get<TeamManager>();
         
         Initialize(BattleData ?? defaultData);
-        
-        _battleStateMachine = new BattleStateMachine();
     }
     
     public virtual void Initialize(BattleData battleData) {
@@ -69,6 +68,7 @@ public class BattleManager : MonoBehaviour
         };
         
         TurnQueue = new TurnQueue(Battle.Units);
+        _battleStateMachine = new BattleStateMachine(this);
         
         onBattleInitialized?.Invoke();
         isBattleInititated = true;

@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 
 public class Unit : MonoBehaviour, ITargetable {
 
-    [SerializeField] private Canvas WorldUI;
-    
+    [SerializeField] public Canvas WorldUI;
+    [SerializeField] public PlayableDirector playableDirector;
+        
     public HealthSystem HealthSystem { get; private set; }
 
     public int Energy { get; private set; }
