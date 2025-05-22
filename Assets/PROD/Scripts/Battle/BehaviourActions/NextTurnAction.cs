@@ -25,7 +25,7 @@ public partial class NextTurnAction : Action
             
             BattleState.Value = Unit.Value is AllyUnit ? global::BattleState.PlayerTurn : global::BattleState.EnemyTurn;
             
-            BattleLogDebug.Log($"{Unit.Value} 's Turn! ");
+            BattleLogDebugUI.Log($"{Unit.Value.unitData.unitName} 's Turn! ");
         }
         
         return Status.Running;

@@ -32,7 +32,7 @@ public partial class AbilityAction : Action
         director.Play();
         director.stopped += OnCutscenePlayed;
         
-        BattleLogDebug.Log($"{Unit.Value.unitData.unitName} uses {Ability.Value.title} on {Target?.Value?.unitData.name} !");
+        BattleLogDebugUI.Log($"{Unit.Value.unitData.unitName} uses {Ability.Value.title} on {Target?.Value?.unitData.name} !");
         
         return Status.Running;
     }
@@ -51,7 +51,7 @@ public partial class AbilityAction : Action
     }
 
     public void BindTimelineTracks(PlayableDirector director, TimelineAsset timelineAsset) {
-        var animator = Unit.Value.gameObject.GetComponent<Animator>();
+        var animator = Unit.Value.gameObject.GetComponentInChildren<Animator>();
         foreach (var track in timelineAsset.GetOutputTracks()) {
             if (track is AnimationTrack) {
                 director.SetGenericBinding(track, animator);
