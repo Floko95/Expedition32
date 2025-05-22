@@ -11,6 +11,7 @@ public partial class ChooseAbilityAction : Action
     [SerializeReference] public BlackboardVariable<Unit> Unit;
     [SerializeReference] public BlackboardVariable<AbilityData> Ability;
     [SerializeReference] public BlackboardVariable<AbilityTargetMode> TargetMode;
+    
     // pick abilities in sequence by default
     private int _abilityIndex;
     
