@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BitDuc.EnhancedTimeline.Timeline;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -9,7 +10,7 @@ public class Unit : MonoBehaviour, ITargetable {
     public static int MAP_AP = 9;
         
     [SerializeField] public Canvas WorldUI;
-    [SerializeField] public PlayableDirector playableDirector;
+    [SerializeField] public EnhancedTimelinePlayer playableDirector;
         
     public HealthSystem HealthSystem { get; private set; }
 

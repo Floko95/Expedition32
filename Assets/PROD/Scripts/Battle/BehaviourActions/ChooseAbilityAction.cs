@@ -18,7 +18,7 @@ public partial class ChooseAbilityAction : Action
     protected override Status OnStart()
     {
         if(Unit.Value.unitData.abilities.Count == 0) return Status.Failure;
-
+        
         Ability.Value = Unit.Value.unitData.abilities[_abilityIndex % Unit.Value.unitData.abilities.Count];
         TargetMode.Value = Ability.Value.targetMode;
         

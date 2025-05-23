@@ -1,4 +1,5 @@
 using Eflatun.SceneReference;
+using MoreMountains.Tools;
 using UnityEngine;
 
 public class WorldManager : MonoBehaviour
@@ -19,11 +20,27 @@ public class WorldManager : MonoBehaviour
 
     public void StartBattle(Enemy enemy) {
         var data = enemy.battleData;
-
-        _sceneTransitionManager.LoadScene(battleSceneAsset,
-            () => {
-                /*var battleManager = Toolbox.Get<BattleManager>();
-                battleManager.BattleData = data;*/
-            });
+        
+        if (data.battleSoundTtrack) {
+            
+            MMSoundManagerSoundPlayEvent.Trigger(
+                data.battleSoundTtrack,
+                MMSoundManager.MMSoundManagerTracks.Music,
+                Vector3.zero,
+                loop: true,
+                volume: 0.5f,
+                pitch: 1f,
+                panStereo: 0f,
+                spatialBlend: 0f,
+                bypassEffects: false,
+                priority: 128,
+                fade: true,
+                persistent: true,
+                soloSingleTrack: true,
+                fadeDuration: 0.5f
+            );
+        }
+        _sceneTransitionManager.LoadScene(battleSceneAsset, async () => {
+        });
     }
 }

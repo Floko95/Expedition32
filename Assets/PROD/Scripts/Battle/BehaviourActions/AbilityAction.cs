@@ -1,20 +1,24 @@
 using System;
+using BitDuc.EnhancedTimeline.Timeline;
+using R3;
 using Unity.Behavior;
+using Unity.Cinemachine;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
-using UnityEngine.Playables;
-using UnityEngine.Timeline;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "Ability", story: "[Unit] uses [ability] on a single [Target]", category: "Action", id: "285316aaf1c489624db0457ded13ddb2")]
 public partial class AbilityAction : Action
 {
+    private static string ABILITY_CAM_NAME = "AbilityVCam";
+    
     [SerializeReference] public BlackboardVariable<Unit> Unit;
     [SerializeReference] public BlackboardVariable<AbilityData> Ability;
     [SerializeReference] public BlackboardVariable<Unit> Target;
     
     private bool _hasCinematicEnded;
+    private CinemachineVirtualCameraBase _vCam;
     
     //Run to target, then play cinematic. For now we only play cinematic
     
@@ -25,37 +29,42 @@ public partial class AbilityAction : Action
             Debug.Log("No Ability selected");
         
         _hasCinematicEnded = false;
-        
-        var director = Unit.Value.playableDirector;
-        director.playableAsset = Ability.Value.timeline;
-        BindTimelineTracks(director, Ability.Value.timeline);
-        director.Play();
-        director.stopped += OnCutscenePlayed;
-        
         BattleLogDebugUI.Log($"{Unit.Value.unitData.unitName} uses {Ability.Value.title} on {Target?.Value?.unitData.name} !");
+        
+        
+        
+        var player = Unit.Value.playableDirector;
+        
+        //Manual Bindings HERE , move elsewhere next
+        ManageBindings(player);
+            
+        
+        player.Play(Ability.Value.timeline).Subscribe(
+            onNext: _ => OnTimelineUpdate(),
+            onCompleted: _ => _hasCinematicEnded = true
+        );
         
         return Status.Running;
     }
 
-    private void OnCutscenePlayed(PlayableDirector obj) {
-        _hasCinematicEnded = true;
-        Debug.Log("Cinematic Ended");
+    private void ManageBindings(EnhancedTimelinePlayer playableDirector) {
+        //playableDirector.bindings.Add(Camera.main.gameObject);
+        
+        _vCam = Unit.Value.transform.Find(ABILITY_CAM_NAME)?.GetComponent<CinemachineVirtualCameraBase>();
+        if (_vCam != null) {
+            _vCam.Priority = 100;
+        }
     }
+    
+    private void OnTimelineUpdate() { }
 
     protected override Status OnUpdate() {
         return _hasCinematicEnded ? Status.Success : Status.Running;
     }
 
     protected override void OnEnd() {
-        Unit.Value.playableDirector.stopped -= OnCutscenePlayed;
-    }
-
-    public void BindTimelineTracks(PlayableDirector director, TimelineAsset timelineAsset) {
-        var animator = Unit.Value.gameObject.GetComponentInChildren<Animator>();
-        foreach (var track in timelineAsset.GetOutputTracks()) {
-            if (track is AnimationTrack) {
-                director.SetGenericBinding(track, animator);
-            }
+        if (_vCam != null) {
+            _vCam.Priority = 0;
         }
     }
 }

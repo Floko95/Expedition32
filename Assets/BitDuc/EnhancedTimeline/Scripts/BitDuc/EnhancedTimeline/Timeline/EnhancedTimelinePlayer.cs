@@ -164,6 +164,8 @@ namespace BitDuc.EnhancedTimeline.Timeline
         {
             foreach (var output in timeline.outputs)
             {
+                if(output.outputTargetType == null) continue;
+                
                 var binding =
                     output.outputTargetType == typeof(GameObject) ? FindGameObjectBinding(output) :
                     output.outputTargetType == typeof(TimelineBus) ? bus :
