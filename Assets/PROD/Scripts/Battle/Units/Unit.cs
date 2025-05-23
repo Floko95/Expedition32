@@ -6,6 +6,8 @@ using UnityEngine.Playables;
 
 public class Unit : MonoBehaviour, ITargetable {
 
+    public static int MAP_AP = 9;
+        
     [SerializeField] public Canvas WorldUI;
     [SerializeField] public PlayableDirector playableDirector;
         
@@ -16,12 +18,14 @@ public class Unit : MonoBehaviour, ITargetable {
 
     public int Shield { get; private set; }
     public int Speed { get; private set; }
-
+    
+    public int Initiative { get; set; }
+    
     public bool IsAlive => HealthSystem.IsAlive;
     public bool isEnemy => unitData && unitData.isEnemy;
     
     public UnitData unitData;
-
+    
     public List<AbilityData> Abilities { get; private set; } = new List<AbilityData>();
 
     protected virtual void Awake() {
@@ -35,14 +39,14 @@ public class Unit : MonoBehaviour, ITargetable {
 
     public virtual void Init(UnitData unitData) {
         HealthSystem = new HealthSystem(unitData.maxHealth);
-        Energy = 0;
+        
         Speed = unitData.speed;
-        MaxEnergy = unitData.energy;
+        Initiative = unitData.speed;
+        
+        Energy = unitData.energy;
+        MaxEnergy = MAP_AP;
+        
         Abilities = unitData.abilities;
-    }
-
-    public virtual IEnumerator ExecuteTurn() {
-        yield return null;
     }
 
     public void OnTargeted() {

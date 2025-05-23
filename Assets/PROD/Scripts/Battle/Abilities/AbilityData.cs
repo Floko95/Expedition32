@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 
 [CreateAssetMenu(fileName = "ability", menuName = "Ex32/AbilityData", order = 1)]
@@ -12,8 +13,9 @@ public class AbilityData : ScriptableObject
     [Title("Trigger")]
     [SerializeField] public AbilityTrigger trigger;             //WHEN does the ability trigger?
     
+    [FormerlySerializedAs("target")]
     [Title("Target")]
-    [SerializeField] public AbilityTarget target;               //WHO is targeted?
+    [SerializeField] public AbilityTargetMode targetMode;               //WHO is targeted?
     
     [Header("Effect")]
     [SerializeField] public EffectData[] effects;              //WHAT this does?
@@ -25,13 +27,11 @@ public class AbilityData : ScriptableObject
     
 }
 
-
 public enum AbilityTrigger
 {
     None = 0,
 
     Ongoing = 2,  //Always active (does not work with all effects)
-    
     OnPlay = 10,  //When played
 
     StartOfTurn = 20,       //Every turn
@@ -42,16 +42,4 @@ public enum AbilityTrigger
 
     BattleStart = 50,
     BattleEnd = 52,
-}
-
-public enum AbilityTarget
-{
-    None = 0,
-    
-    CharacterSelf = 4,
-    Ally = 6,
-    AllAllies = 7,
-
-    SelectTarget = 30,
-    AllEnemies = 31,
 }

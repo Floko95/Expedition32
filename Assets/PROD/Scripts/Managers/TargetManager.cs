@@ -8,8 +8,8 @@ public class TargetManager : MonoBehaviour {
     
     [SerializeField] private PlayerInput playerInput;
     
-    public AbilityTarget TargetMode {
-        get => _targetMode;
+    public AbilityTargetMode TargetModeMode {
+        get => _targetModeMode;
         set => SetTargetMode(value);
     }
     
@@ -19,7 +19,7 @@ public class TargetManager : MonoBehaviour {
     private List<ITargetable> _allies;
     private List<ITargetable> _enemies;
     
-    private AbilityTarget _targetMode = AbilityTarget.SelectTarget;
+    private AbilityTargetMode _targetModeMode = AbilityTargetMode.SelectTarget;
     private int currentTargetIndex = 0;
     private List<ITargetable> currentlyTargeted = new();
     
@@ -48,25 +48,25 @@ public class TargetManager : MonoBehaviour {
         HandleCycleInput();
     }
 
-    private void SetTargetMode(AbilityTarget mode) {
+    private void SetTargetMode(AbilityTargetMode mode) {
         ClearAllTargets();
-        _targetMode = mode;
+        _targetModeMode = mode;
         
         UpdateTargets();
     }
 
     private void UpdateTargets() {
-        switch (_targetMode) {
-            case AbilityTarget.AllEnemies:
+        switch (_targetModeMode) {
+            case AbilityTargetMode.AllEnemies:
                 foreach (var enemy in _enemies) AddTarget(enemy);
                 break;
-            case AbilityTarget.AllAllies:
+            case AbilityTargetMode.AllAllies:
                 foreach (var ally in _allies) AddTarget(ally);
                 break;
-            case AbilityTarget.SelectTarget:
+            case AbilityTargetMode.SelectTarget:
                 CycleTargets(_enemies);
                 break;
-            case AbilityTarget.Ally:
+            case AbilityTargetMode.Ally:
                 CycleTargets(_allies);
                 break;
         }
@@ -95,9 +95,9 @@ public class TargetManager : MonoBehaviour {
     }
 
     public void HandleCycleInput() {
-        if (_targetMode == AbilityTarget.SelectTarget)
+        if (_targetModeMode == AbilityTargetMode.SelectTarget)
             CycleTargets(_enemies);
-        else if (_targetMode == AbilityTarget.Ally)
+        else if (_targetModeMode == AbilityTargetMode.Ally)
             CycleTargets(_allies);
     }
 }
