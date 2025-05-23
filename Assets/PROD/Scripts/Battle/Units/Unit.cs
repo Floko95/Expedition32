@@ -6,6 +6,8 @@ using UnityEngine.Playables;
 
 public class Unit : MonoBehaviour, ITargetable {
 
+    public static int MAP_AP = 9;
+        
     [SerializeField] public Canvas WorldUI;
     [SerializeField] public PlayableDirector playableDirector;
         
@@ -37,10 +39,13 @@ public class Unit : MonoBehaviour, ITargetable {
 
     public virtual void Init(UnitData unitData) {
         HealthSystem = new HealthSystem(unitData.maxHealth);
-        Energy = 0;
+        
         Speed = unitData.speed;
         Initiative = unitData.speed;
-        MaxEnergy = unitData.energy;
+        
+        Energy = unitData.energy;
+        MaxEnergy = MAP_AP;
+        
         Abilities = unitData.abilities;
     }
 

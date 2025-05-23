@@ -16,7 +16,7 @@ public class HealthBarUI : MonoBehaviour {
 
     public HealthSystem HealthSystem {
         get => _healthSystem;
-        set => SetHealthSystem(value);
+        private set => SetHealthSystem(value);
     }
 
     private HealthSystem _healthSystem;
