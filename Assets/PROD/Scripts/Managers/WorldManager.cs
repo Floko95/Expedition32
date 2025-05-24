@@ -40,7 +40,7 @@ public class WorldManager : MonoBehaviour
                 fadeDuration: 0.5f
             );
         }
-        _sceneTransitionManager.LoadScene(battleSceneAsset, async () => {
+        _sceneTransitionManager.LoadScene(battleSceneAsset, () => {
         });
     }
 }

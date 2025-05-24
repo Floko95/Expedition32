@@ -2133,7 +2133,7 @@ GameObject:
   - component: {fileID: 1276712054}
   - component: {fileID: 1276712055}
   m_Layer: 0
-  m_Name: State-Driven Camera
+  m_Name: PlayerTurnVCAm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2147,14 +2147,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276712053}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1623668917}
   - {fileID: 1667631834}
-  m_Father: {fileID: 1322528237}
+  m_Father: {fileID: 2145695553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1276712055
 MonoBehaviour:
@@ -2170,7 +2170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority:
     Enabled: 1
-    m_Value: 10
+    m_Value: 9
   OutputChannel: 1
   StandbyUpdate: 2
   m_StreamingVersion: 0
@@ -2491,38 +2491,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1889755140}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1322528236
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1322528237}
-  m_Layer: 0
-  m_Name: ALLYTURN
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1322528237
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322528236}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1276712054}
-  m_Father: {fileID: 2145695553}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1475206244
 GameObject:
@@ -3522,8 +3490,8 @@ MonoBehaviour:
   m_Graph: {fileID: -6985456958638385354, guid: 69aa400236764a948a6b1e605ffbbaf6, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 7658842238911774818
-  - rid: 7658842238911775299
-  - rid: 7658842309886739172
+  - rid: 7658842315597546347
+  - rid: 7658842315597546348
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -3537,15 +3505,7 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 1819049438}
-    - rid: 7658842238911775299
-      type: {class: 'BlackboardVariable`1[[BattleManager, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1232339917604355572
-          m_Value1: 12131215860014772376
-        Name: Battle Manager
-        m_Value: {fileID: 1819049440}
-    - rid: 7658842309886739172
+    - rid: 7658842315597546347
       type: {class: 'BlackboardVariable`1[[Unity.Cinemachine.CinemachineVirtualCameraBase, Unity.Cinemachine]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3553,6 +3513,14 @@ MonoBehaviour:
           m_Value1: 17449029962521395573
         Name: PlayerTurnVCam
         m_Value: {fileID: 1276712055}
+    - rid: 7658842315597546348
+      type: {class: 'BlackboardVariable`1[[BattleManager, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1989503299793823446
+          m_Value1: 15519234854981071680
+        Name: BattleManager
+        m_Value: {fileID: 1819049440}
 --- !u!1 &1823688464
 GameObject:
   m_ObjectHideFlags: 0
@@ -4404,7 +4372,7 @@ Transform:
   - {fileID: 1823688467}
   - {fileID: 2051556981}
   - {fileID: 1889755140}
-  - {fileID: 1322528237}
+  - {fileID: 1276712054}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1933585352530891735
