@@ -1,4 +1,6 @@
 using DG.Tweening;
+using MoreMountains.Feedbacks;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +15,13 @@ public class HealthBarUI : MonoBehaviour {
     [SerializeField] private Slider delayedDamageSlider;
     [SerializeField] private float delay;
     [SerializeField] private float delayLerpTime;
-
+    [SerializeField] private bool hideOnDeath;
+    
+    [Title("Feedbacks")] 
+    [SerializeField] private MMF_Player onDamagedFeed;
+    [SerializeField] private MMF_Player onKilledFeed;
+    
+    
     public HealthSystem HealthSystem {
         get => _healthSystem;
         private set => SetHealthSystem(value);
@@ -23,7 +31,7 @@ public class HealthBarUI : MonoBehaviour {
     
     private void Start() {
         if (hideOnStart) {
-            Hide();
+            OnDeath();
         }
     }
 
@@ -37,7 +45,7 @@ public class HealthBarUI : MonoBehaviour {
             _healthSystem.OnHealthChanged -= UpdateHealthText;
             _healthSystem.OnHealthMaxChanged -= UpdateHealthText;
             _healthSystem.OnDamaged -= OnDamaged;
-            _healthSystem.OnDead -= Hide;
+            _healthSystem.OnDead -= OnDeath;
         }
 
         _healthSystem = healthSystem;
@@ -46,7 +54,7 @@ public class HealthBarUI : MonoBehaviour {
         _healthSystem.OnHealthChanged += UpdateHealthText;
         _healthSystem.OnHealthMaxChanged += UpdateHealthText;
         _healthSystem.OnDamaged += OnDamaged;
-        _healthSystem.OnDead += Hide;
+        _healthSystem.OnDead += OnDeath;
 
         UpdateHealthBar();
         UpdateHealthText();
@@ -65,10 +73,15 @@ public class HealthBarUI : MonoBehaviour {
     private void OnDamaged() {
         if (delayedDamageSlider)
             delayedDamageSlider.DOValue(_healthSystem.GetHealthNormalized(), delayLerpTime).SetDelay(delay);
+        if(onDamagedFeed)
+            onDamagedFeed.PlayFeedbacks();
     }
 
-    private void Hide() {
-        gameObject.SetActive(false);
+    private void OnDeath() {
+        if(hideOnDeath)
+            gameObject.SetActive(false);
+        if(onKilledFeed)
+            onKilledFeed.PlayFeedbacks();
     }
 }
 

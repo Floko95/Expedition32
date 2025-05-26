@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using BitDuc.Demo;
 using BitDuc.EnhancedTimeline.Timeline;
+using R3;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -18,6 +20,10 @@ public class Unit : MonoBehaviour, ITargetable {
     public int MaxEnergy { get; private set; }
 
     public int Shield { get; private set; }
+    
+    public float ATK { get; private set; }
+    public float DEF { get; private set; }
+    public float CRIT { get; private set; }
     public int Speed { get; private set; }
     
     public int Initiative { get; set; }
@@ -36,10 +42,15 @@ public class Unit : MonoBehaviour, ITargetable {
         if (unitData != null) {
             Init(unitData);
         }
+        
     }
 
     public virtual void Init(UnitData unitData) {
         HealthSystem = new HealthSystem(unitData.maxHealth);
+        
+        ATK = unitData.ATK;
+        DEF = unitData.DEF;
+        CRIT = unitData.CRIT;
         
         Speed = unitData.speed;
         Initiative = unitData.speed;

@@ -1,4 +1,5 @@
 using System;
+using BitDuc.Demo;
 using BitDuc.EnhancedTimeline.Timeline;
 using R3;
 using Unity.Behavior;
@@ -19,6 +20,7 @@ public partial class AbilityAction : Action
     
     private bool _hasCinematicEnded;
     private CinemachineVirtualCameraBase _vCam;
+    private IDisposable _comboListener;
     
     //Run to target, then play cinematic. For now we only play cinematic
     
@@ -29,35 +31,50 @@ public partial class AbilityAction : Action
             Debug.Log("No Ability selected");
         
         _hasCinematicEnded = false;
-        BattleLogDebugUI.Log($"{Unit.Value.unitData.unitName} uses {Ability.Value.title} on {Target?.Value?.unitData.name} !");
-        
-        
+        BattleLogDebugUI.Log(Ability.Value.desc);
         
         var player = Unit.Value.playableDirector;
-        
-        //Manual Bindings HERE , move elsewhere next
-        ManageBindings(player);
+        ManageBindings(player); //Manual Bindings HERE , move elsewhere next
             
+        _comboListener = player.Listen<ComboWindow>()
+            .Subscribe(HandleComboWindow)
+            .AddTo(Target.Value.gameObject);
         
         player.Play(Ability.Value.timeline).Subscribe(
             onNext: _ => OnTimelineUpdate(),
-            onCompleted: _ => _hasCinematicEnded = true
+            onCompleted: _ => OnTimelineComplete()
         );
         
         return Status.Running;
     }
 
+    
     private void ManageBindings(EnhancedTimelinePlayer playableDirector) {
-        //playableDirector.bindings.Add(Camera.main.gameObject);
-        
         _vCam = Unit.Value.transform.Find(ABILITY_CAM_NAME)?.GetComponent<CinemachineVirtualCameraBase>();
+        
         if (_vCam != null) {
             _vCam.Priority = 100;
         }
     }
-    
-    private void OnTimelineUpdate() { }
 
+    private void OnTimelineUpdate() {
+        
+    }
+
+    private void OnTimelineComplete() {
+        _hasCinematicEnded = true;
+        _comboListener.Dispose();
+    }
+    
+    private void HandleComboWindow(ComboWindow window) {
+        if(Target.Value == null) return;
+        if(Ability.Value == null) return;
+        
+        
+        //TODO ADD PARRY CHECK, APPLY EFFECTS OF ABILITY INSTEAD
+        BattleLogic.Attack(Unit.Value, Target.Value);
+    }
+    
     protected override Status OnUpdate() {
         return _hasCinematicEnded ? Status.Success : Status.Running;
     }

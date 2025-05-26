@@ -18,13 +18,10 @@ public class AbilityData : ScriptableObject
     [SerializeField] public AbilityTargetMode targetMode;               //WHO is targeted?
     
     [Header("Effect")]
-    [SerializeField] public EffectData[] effects;              //WHAT this does?
-    [SerializeField] public StatusData[] status;               //Status added by this ability
-    [SerializeField] public int value;
+    [SerializeField] public AbilityEffect[] effects;              //WHAT this does?
     
     [Header("Visuals")]
     [SerializeField] public TimelineAsset timeline;
-    
 }
 
 public enum AbilityTrigger

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AllyUnit : Unit {
@@ -12,4 +13,5 @@ public class AllyUnit : Unit {
         uiPrompt.enabled = false;
         uiAbilities.enabled = false;
     }
+    
 }
