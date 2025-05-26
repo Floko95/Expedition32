@@ -41,6 +41,8 @@ public partial class MainMenuSequence : Composite
     }
 
     protected override void OnEnd() {
+        if(_allyUnit == null) return;
+        
         _allyUnit.WorldUI.enabled = false;
         _allyUnit.uiPrompt.enabled = false;
     }

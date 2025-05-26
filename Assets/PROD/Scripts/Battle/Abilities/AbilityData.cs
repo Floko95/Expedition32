@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -18,10 +19,17 @@ public class AbilityData : ScriptableObject
     [SerializeField] public AbilityTargetMode targetMode;               //WHO is targeted?
     
     [Header("Effect")]
-    [SerializeField] public AbilityEffect[] effects;              //WHAT this does?
+    [SerializeReference] public List<AbilityEffect> effects;              //WHAT this does?
     
     [Header("Visuals")]
     [SerializeField] public TimelineAsset timeline;
+
+
+    public void ApplyEffects(Unit caster, Unit target) {
+        foreach (var effect in effects) {
+            effect.Apply(caster, target);
+        }
+    }
 }
 
 public enum AbilityTrigger

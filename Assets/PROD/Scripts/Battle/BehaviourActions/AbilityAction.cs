@@ -70,9 +70,8 @@ public partial class AbilityAction : Action
         if(Target.Value == null) return;
         if(Ability.Value == null) return;
         
-        
         //TODO ADD PARRY CHECK, APPLY EFFECTS OF ABILITY INSTEAD
-        BattleLogic.Attack(Unit.Value, Target.Value);
+        Ability.Value.ApplyEffects(Unit.Value, Target.Value);
     }
     
     protected override Status OnUpdate() {

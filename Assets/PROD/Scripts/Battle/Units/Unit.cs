@@ -1,15 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
-using BitDuc.Demo;
 using BitDuc.EnhancedTimeline.Timeline;
-using R3;
 using UnityEngine;
-using UnityEngine.Playables;
-
 
 public class Unit : MonoBehaviour, ITargetable {
 
-    public static int MAP_AP = 9;
+    public static int MAX_AP = 9;
         
     [SerializeField] public Canvas WorldUI;
     [SerializeField] public EnhancedTimelinePlayer playableDirector;
@@ -24,7 +19,7 @@ public class Unit : MonoBehaviour, ITargetable {
     public float ATK { get; private set; }
     public float DEF { get; private set; }
     public float CRIT { get; private set; }
-    public int Speed { get; private set; }
+    public int SPD { get; private set; }
     
     public int Initiative { get; set; }
     
@@ -52,11 +47,11 @@ public class Unit : MonoBehaviour, ITargetable {
         DEF = unitData.DEF;
         CRIT = unitData.CRIT;
         
-        Speed = unitData.speed;
+        SPD = unitData.speed;
         Initiative = unitData.speed;
         
         Energy = unitData.energy;
-        MaxEnergy = MAP_AP;
+        MaxEnergy = MAX_AP;
         
         Abilities = unitData.abilities;
     }

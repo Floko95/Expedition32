@@ -16,5 +16,13 @@ MonoBehaviour:
   desc: Golem performs a heavy combo.
   trigger: 10
   targetMode: 30
-  effects: []
+  effects:
+  - rid: 7658842353303028374
   timeline: {fileID: 11400000, guid: 62ea6815a96325140a8bcbc8a4545f80, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 7658842353303028374
+      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
+      data:
+        attackRatio: 1

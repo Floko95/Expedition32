@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class AllyUnit : Unit {
@@ -13,5 +12,23 @@ public class AllyUnit : Unit {
         uiPrompt.enabled = false;
         uiAbilities.enabled = false;
     }
+
+    private void Start() {
+        HealthSystem.OnDamaged += OnDamaged;
+        HealthSystem.OnDead += OnDeath;
+    }
+
+    private void OnDestroy() {
+        HealthSystem.OnDamaged -= OnDamaged;
+        HealthSystem.OnDead -= OnDeath;
+    }
+
+    private void OnDamaged() {
+        animator.SetTrigger("Damaged");
+    }
     
+    private void OnDeath() {
+        animator.SetBool("IsDead", true);
+        
+    }
 }
