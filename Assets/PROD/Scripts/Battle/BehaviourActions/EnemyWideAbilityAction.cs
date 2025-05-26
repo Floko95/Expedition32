@@ -9,28 +9,25 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "Ability", story: "[Unit] uses [ability] on a single [Target]", category: "Action", id: "285316aaf1c489624db0457ded13ddb2")]
-public partial class AbilityAction : Action
+[NodeDescription(name: "EnemyWideAbilityAction", story: "[Unit] attacks the expedition with [Ability]", category: "Action", id: "63aade254f79a7d8ba433e7c642a90c2")]
+public partial class EnemyWideAbilityAction : Action
 {
-    public static string ABILITY_CAM_NAME = "AbilityVCam";
-    
     [SerializeReference] public BlackboardVariable<Unit> Unit;
     [SerializeReference] public BlackboardVariable<AbilityData> Ability;
-    [SerializeReference] public BlackboardVariable<Unit> Target;
+    [SerializeReference] public BlackboardVariable<BattleManager> BattleManager;
+    
     
     private bool _hasCinematicEnded;
     private CinemachineVirtualCameraBase _vCam;
     private IDisposable _comboListener;
     
-    //Run to target, then play cinematic. For now we only play cinematic
-    
-    protected override Status OnStart() {
+    protected override Status OnStart()
+    {
         if(Unit.Value == null)
-            Debug.Log("No Unit selected");
+            Debug.LogError("No Unit selected");
         if(Ability.Value == null)
-            Debug.Log("No Ability selected");
+            Debug.LogError("No Ability selected");
         
-        _hasCinematicEnded = false;
         BattleLogDebugUI.Log(Ability.Value.desc);
         
         var player = Unit.Value.playableDirector;
@@ -38,25 +35,27 @@ public partial class AbilityAction : Action
             
         _comboListener = player.Listen<ComboWindow>()
             .Subscribe(HandleComboWindow)
-            .AddTo(Target.Value.gameObject);
+            .AddTo(Unit.Value.gameObject);
         
         player.Play(Ability.Value.timeline).Subscribe(
             onNext: _ => OnTimelineUpdate(),
             onCompleted: _ => OnTimelineComplete()
         );
+
         
         return Status.Running;
     }
 
-    
-    private void ManageBindings(EnhancedTimelinePlayer playableDirector) {
-        _vCam = Unit.Value.transform.Find(ABILITY_CAM_NAME)?.GetComponent<CinemachineVirtualCameraBase>();
+    private void HandleComboWindow(ComboWindow window) {
+        if(Ability.Value == null) return;
         
-        if (_vCam != null) {
-            _vCam.Priority = 100;
+        foreach (var unit in BattleManager.Value.Battle.Allies) {
+            //TODO ADD PARRY CHECK, APPLY EFFECTS OF ABILITY INSTEAD
+            Ability.Value.ApplyEffects(Unit.Value, unit);
         }
     }
 
+    
     private void OnTimelineUpdate() {
         
     }
@@ -66,22 +65,21 @@ public partial class AbilityAction : Action
         _comboListener.Dispose();
     }
     
-    private void HandleComboWindow(ComboWindow window) {
-        if(Target.Value == null) return;
-        if(Ability.Value == null) return;
+    private void ManageBindings(EnhancedTimelinePlayer playableDirector) {
+        _vCam = Unit.Value.transform.Find(AbilityAction.ABILITY_CAM_NAME)?.GetComponent<CinemachineVirtualCameraBase>();
         
-        //TODO ADD PARRY CHECK, APPLY EFFECTS OF ABILITY INSTEAD
-        Ability.Value.ApplyEffects(Unit.Value, Target.Value);
+        if (_vCam != null) {
+            _vCam.Priority = 100;
+        }
     }
     
     protected override Status OnUpdate() {
         return _hasCinematicEnded ? Status.Success : Status.Running;
     }
 
-    protected override void OnEnd() {
-        if (_vCam != null) {
-            _vCam.Priority = 0;
-        }
+    protected override void OnEnd()
+    {
+        
     }
 }
 

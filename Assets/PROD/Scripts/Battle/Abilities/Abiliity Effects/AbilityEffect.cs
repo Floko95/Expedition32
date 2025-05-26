@@ -9,7 +9,7 @@ public abstract class AbilityEffect {
 [Serializable]
 class DamageEffect : AbilityEffect {
     
-    [SerializeField] private int attackRatio;
+    [SerializeField] private float attackRatio;
     
     public override void Apply(Unit caster, Unit target) {
         BattleLogic.Attack(caster, target, attackRatio);

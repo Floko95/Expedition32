@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using BitDuc.EnhancedTimeline.Timeline;
+using OSLib.StatSystem;
 using UnityEngine;
 
-public class Unit : MonoBehaviour, ITargetable {
+public class Unit : MonoBehaviour, ITargetable, IHaveStats {
 
     public static int MAX_AP = 9;
         
@@ -11,15 +12,17 @@ public class Unit : MonoBehaviour, ITargetable {
         
     public HealthSystem HealthSystem { get; private set; }
 
+    public StatSystem GetStatSystem() => _statSystem;
+    
     public int Energy { get; private set; }
     public int MaxEnergy { get; private set; }
 
     public int Shield { get; private set; }
-    
-    public float ATK { get; private set; }
-    public float DEF { get; private set; }
-    public float CRIT { get; private set; }
-    public int SPD { get; private set; }
+
+    public float ATK => _statSystem.stats[StatType.ATK].Value;
+    public float DEF => _statSystem.stats[StatType.DEF].Value;
+    public float CRIT => _statSystem.stats[StatType.CRIT].Value;
+    public float SPD => _statSystem.stats[StatType.SPD].Value;
     
     public int Initiative { get; set; }
     
@@ -29,7 +32,8 @@ public class Unit : MonoBehaviour, ITargetable {
     public UnitData unitData;
     
     public List<AbilityData> Abilities { get; private set; } = new List<AbilityData>();
-
+    private StatSystem _statSystem;
+    
     protected virtual void Awake() {
         if(WorldUI)
             WorldUI.enabled = false;
@@ -37,18 +41,13 @@ public class Unit : MonoBehaviour, ITargetable {
         if (unitData != null) {
             Init(unitData);
         }
-        
     }
 
     public virtual void Init(UnitData unitData) {
-        HealthSystem = new HealthSystem(unitData.maxHealth);
+        _statSystem = new StatSystem(unitData.stats);
+        HealthSystem = new HealthSystem(_statSystem.stats[StatType.Health].Value);
         
-        ATK = unitData.ATK;
-        DEF = unitData.DEF;
-        CRIT = unitData.CRIT;
-        
-        SPD = unitData.speed;
-        Initiative = unitData.speed;
+        Initiative = Mathf.RoundToInt(SPD);
         
         Energy = unitData.energy;
         MaxEnergy = MAX_AP;

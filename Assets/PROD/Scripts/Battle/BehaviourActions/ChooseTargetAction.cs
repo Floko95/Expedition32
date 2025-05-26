@@ -14,12 +14,9 @@ public partial class ChooseTargetAction : Action
     [SerializeReference] public BlackboardVariable<Unit> Target;
 
     //Enemy choose its next target
-    protected override Status OnStart()
-    {
-        
-        Target.Value = BattleManager.Value.Battle.Allies
-            .Where(a => a.IsAlive)
-            .ToList() [Random.Range(0, BattleManager.Value.Battle.Allies.Count)];
+    protected override Status OnStart() {
+        var aliveAllies =  BattleManager.Value.Battle.Allies.Where(a => a.IsAlive).ToList();
+        Target.Value = aliveAllies[Random.Range(0, aliveAllies.Count)];
         
         return Status.Running;
     }

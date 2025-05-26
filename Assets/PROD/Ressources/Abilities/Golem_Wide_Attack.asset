@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033d5d07a5b8e2540b638c1b2aa8120a, type: 3}
+  m_Name: Golem_Wide_Attack
+  m_EditorClassIdentifier: 
+  title: Golem Heavy Combo
+  desc: Golem attacks the expedition 32.
+  trigger: 10
+  targetMode: 31
+  effects:
+  - rid: 7658842353303028374
+  timeline: {fileID: 11400000, guid: 6147748ea21211e46bf5442f78fa99f3, type: 2}
+  references:
+    version: 2
+    RefIds:
+    - rid: 7658842353303028374
+      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
+      data:
+        attackRatio: 1.2

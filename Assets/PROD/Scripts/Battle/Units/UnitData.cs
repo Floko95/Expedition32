@@ -1,9 +1,10 @@
 using System.Collections.Generic;
+using OSLib.StatSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UnitData", menuName = "Ex32/UnitData")]
-public class UnitData : ScriptableObject
+public class UnitData : SerializedScriptableObject
 {
     [SerializeField] public string unitName;
     [SerializeField] public Sprite portrait;
@@ -11,14 +12,9 @@ public class UnitData : ScriptableObject
     [SerializeField] public bool isEnemy;
 
     [Title("Stats")]
+    [SerializeField] public Dictionary<StatType, float> stats;
     
-    [SerializeField] public int maxHealth;
     [SerializeField] public int energy;
-    [SerializeField] public int ATK;
-    [SerializeField] public int DEF;
-    [SerializeField] public int CRIT;
-    
-    [SerializeField] public int speed;
 
-    [SerializeField] public List<AbilityData> abilities;
+    [Space(50), SerializeField] public List<AbilityData> abilities;
 }
