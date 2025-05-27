@@ -1,5 +1,6 @@
 using DG.Tweening;
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -66,8 +67,8 @@ public class HealthBarUI : MonoBehaviour {
     }
 
     private void UpdateHealthText() {
-        if (tmpHealth) tmpHealth.text = _healthSystem.GetHealth().ToString();
-        if (tmpMaxHealth) tmpMaxHealth.text = _healthSystem.GetHealthMax().ToString();
+        if (tmpHealth) tmpHealth.text = _healthSystem.GetHealth().RoundDown(0).ToString();
+        if (tmpMaxHealth) tmpMaxHealth.text = _healthSystem.GetHealthMax().RoundDown(0).ToString();
     }
 
     private void OnDamaged() {

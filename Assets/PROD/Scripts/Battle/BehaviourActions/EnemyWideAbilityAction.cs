@@ -77,9 +77,10 @@ public partial class EnemyWideAbilityAction : Action
         return _hasCinematicEnded ? Status.Success : Status.Running;
     }
 
-    protected override void OnEnd()
-    {
-        
+    protected override void OnEnd() {
+        if (_vCam != null) {
+            _vCam.Priority = 0;
+        }
     }
 }
 

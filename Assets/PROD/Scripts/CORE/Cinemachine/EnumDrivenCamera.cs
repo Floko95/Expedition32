@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
+using Unity.Behavior;
 using Unity.Cinemachine;
 using UnityEngine;
 
+[BlackboardEnum]
 public enum CameraState {
     Idle,
     AbilitySelection,
