@@ -7,7 +7,7 @@ public class AllyUnit : Unit {
     [SerializeField] public Canvas uiAbilities;
     [SerializeField] public Canvas uiItems;
     
-    [SerializeField] public Animator animator;
+    
     
     protected override void Awake() {
         base.Awake();
