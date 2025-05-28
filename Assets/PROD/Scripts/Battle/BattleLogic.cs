@@ -3,9 +3,18 @@ using UnityEngine;
 public static class BattleLogic {
     
     public const float CRIT_DMG_MULTIPLIER = 1.5f;
+
+    public static float HealPercent(Unit caster, Unit receiver, float maxHealthRatio) {
+        if (!caster.IsAlive || !receiver.IsAlive) return 0f;
+
+        var amount = receiver.HealthSystem.GetHealthMax() * maxHealthRatio;
+        
+        receiver.HealthSystem.Heal(amount);
+        return amount;
+    }
     
-    public static float Attack(Unit attacker, Unit defender, float attackRatio) { //TODO add ratio
-        if (defender.IsAlive == false) return 0;
+    public static float Attack(Unit attacker, Unit defender, float attackRatio) {
+        if (!attacker.IsAlive || !defender.IsAlive) return 0;
         
         bool isCrit = Random.Range(0, 100) <= attacker.CRIT;
         

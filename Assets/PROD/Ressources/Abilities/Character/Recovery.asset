@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 033d5d07a5b8e2540b638c1b2aa8120a, type: 3}
+  m_Name: Recovery
+  m_EditorClassIdentifier: 
+  title: Quick Strike
+  desc: Heals 50% of youre Health.
+  icon: {fileID: 0}
+  targetMode: 4
+  costAP: 4
+  effects:
+  - rid: 7658842404068524153
+  timeline: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 7658842404068524153
+      type: {class: HealEffect, ns: , asm: Assembly-CSharp}
+      data:
+        maxHealthHealRatio: 0.5
