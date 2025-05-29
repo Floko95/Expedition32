@@ -41,6 +41,7 @@ public class TargetManager : MonoBehaviour {
         
         _targetClockWiseInputaction.performed += OnTargetClockWiseInput;
         _targetCounterClockWiseInputaction.performed += OnTargetCounterClockWiseInput;
+        
     }
 
     private void OnDestroy() {
@@ -52,6 +53,8 @@ public class TargetManager : MonoBehaviour {
     private void OnBattleInitialized() {
         _enemies = _battleManager.Battle.Enemies.OfType<ITargetable>().ToList();
         _allies = _battleManager.Battle.Allies.OfType<ITargetable>().ToList();
+        
+        SetTargetMode(AbilityTargetMode.SelectTarget);
     }
 
     private void OnTargetCounterClockWiseInput(InputAction.CallbackContext ctx) {

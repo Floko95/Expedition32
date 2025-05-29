@@ -109,6 +109,7 @@ RectTransform:
   - {fileID: 7001425068894712629}
   - {fileID: 2520169113353277709}
   - {fileID: 9102003463718379442}
+  - {fileID: 5897996384520232046}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -267,6 +268,117 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &6031730614482934382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5897996384520232046}
+  - component: {fileID: 183298582869640898}
+  - component: {fileID: 1847505093420263918}
+  - component: {fileID: 6193160553464888287}
+  m_Layer: 7
+  m_Name: InputIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5897996384520232046
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031730614482934382}
+  m_LocalRotation: {x: -0.08682413, y: 0.08682413, z: -0.0075961305, w: 0.99240386}
+  m_LocalPosition: {x: 0, y: 0, z: 4.3}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666666}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6232827555732638529}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -5, y: 0.5}
+  m_SizeDelta: {x: 15, y: 15}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &183298582869640898
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031730614482934382}
+  m_CullTransparentMesh: 1
+--- !u!114 &1847505093420263918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031730614482934382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: af247f9a44845ae4da6bb3c5db9f229b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6193160553464888287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6031730614482934382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1501e3d77649f4da445a7c5402cff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spritePromptDatas:
+  - actionReference: {fileID: -7816296864769915911, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    bindingSearchStrategy: 0
+    compositeType: 1
+    bindingType: 0
+    deviceType: 0
+    bindingIndexKeyboard: 1
+    bindingIndexGamepad: 0
+    keyboardControlSchemeIndex: 0
+    gamepadControlSchemeIndex: 0
+    bindingIDInAvailableList: 0
+    advancedMode: 0
+    compositeTypeKeyboardAdvanced: 0
+    compositeTypeGamepadAdvanced: 1
+    bindingTypeKeyboardAdvanced: 0
+    bindingTypeGamepadAdvanced: 0
+    keyboardControlSchemeIndexAdvanced: 0
+    gamepadControlSchemeIndexAdvanced: 0
+    bindingIDInAvailableListKeyboardAdvanced: 0
+    bindingIDInAvailableListGamepadAdvanced: 0
+    optionalKeyboardIconSet: {fileID: 0}
+    optionalGamepadIconSet: {fileID: 0}
+    image: {fileID: 1847505093420263918}
 --- !u!1 &6177644041413487771
 GameObject:
   m_ObjectHideFlags: 0
