@@ -1,30 +1,21 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using Unity.Behavior;
 using Unity.Cinemachine;
 using UnityEngine;
-
-[BlackboardEnum]
-public enum CameraState {
-    Idle,
-    AbilitySelection,
-    TargetSelection,
-    ItemSelection,
-}
 
 public class EnumDrivenCamera : CinemachineCameraManagerBase
 {
     [System.Serializable]
     public struct Instruction {
-        public CameraState state;
+        public TurnStateEnum state;
         public CinemachineVirtualCameraBase virtualCamera;
     }
     
     [SerializeField] public Instruction[] Instructions;
 
-    [SerializeField, PropertySpace(10, 10)] public CameraState CurrentState;
+    [SerializeField, PropertySpace(10, 10)] public TurnStateEnum CurrentState;
     
-    private Dictionary<CameraState, CinemachineVirtualCameraBase> _cameraDict;
+    private Dictionary<TurnStateEnum, CinemachineVirtualCameraBase> _cameraDict;
     
     protected override CinemachineVirtualCameraBase ChooseCurrentCamera(Vector3 worldUp, float deltaTime) {
         
@@ -35,7 +26,7 @@ public class EnumDrivenCamera : CinemachineCameraManagerBase
     }
 
     internal void ValidateInstructions() {
-        _cameraDict = new Dictionary<CameraState, CinemachineVirtualCameraBase>();
+        _cameraDict = new Dictionary<TurnStateEnum, CinemachineVirtualCameraBase>();
         
         foreach (var instruction in Instructions) {
             if (instruction.virtualCamera != null)

@@ -1,40 +1,52 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class TargetManager : MonoBehaviour {
     
     [SerializeField] private PlayerInput playerInput;
     
-    public AbilityTargetMode TargetModeMode {
+    public AbilityTargetMode TargetMode {
         get => _targetModeMode;
         set => SetTargetMode(value);
     }
     
+    public Action<ITargetable> onTargetChanged;
+    public List<ITargetable> CurrentlyTargeted { get; private set; } = new();
+    
     private BattleManager _battleManager;
-    private InputAction _targetInputaction;
+    private InputAction _targetClockWiseInputaction;
+    private InputAction _targetCounterClockWiseInputaction;
     
     private List<ITargetable> _allies;
     private List<ITargetable> _enemies;
     
     private AbilityTargetMode _targetModeMode = AbilityTargetMode.SelectTarget;
     private int currentTargetIndex = 0;
-    private List<ITargetable> currentlyTargeted = new();
-    
+
+    private async void Awake() {
+        await Toolbox.WaitUntilReadyAsync();
+        Toolbox.Set(this);
+    }
+
     private async void Start() {
         await Toolbox.WaitUntilReadyAsync();
         _battleManager = Toolbox.Get<BattleManager>();
         _battleManager.onBattleInitialized += OnBattleInitialized;
 
-        _targetInputaction = playerInput.actions.FindAction("TargetClockwise");
-        _targetInputaction.performed += OnTargetInput;
+        _targetClockWiseInputaction = playerInput.actions.FindAction("TargetClockwise");
+        _targetCounterClockWiseInputaction = playerInput.actions.FindAction("TargetCounterClockwise");
+        
+        _targetClockWiseInputaction.performed += OnTargetClockWiseInput;
+        _targetCounterClockWiseInputaction.performed += OnTargetCounterClockWiseInput;
     }
 
     private void OnDestroy() {
         _battleManager.onBattleInitialized -= OnBattleInitialized;
-        _targetInputaction.performed -= OnTargetInput;
+        _targetClockWiseInputaction.performed -= OnTargetClockWiseInput;
+        _targetCounterClockWiseInputaction.performed -= OnTargetCounterClockWiseInput;
     }
 
     private void OnBattleInitialized() {
@@ -42,10 +54,17 @@ public class TargetManager : MonoBehaviour {
         _allies = _battleManager.Battle.Allies.OfType<ITargetable>().ToList();
     }
 
-    private void OnTargetInput(InputAction.CallbackContext ctx) {
+    private void OnTargetCounterClockWiseInput(InputAction.CallbackContext ctx) {
         if (!ctx.performed) return;
 
-        HandleCycleInput();
+        HandleCycleInput(false);
+    }
+    
+
+    private void OnTargetClockWiseInput(InputAction.CallbackContext ctx) {
+        if (!ctx.performed) return;
+
+        HandleCycleInput(true);
     }
 
     private void SetTargetMode(AbilityTargetMode mode) {
@@ -64,10 +83,10 @@ public class TargetManager : MonoBehaviour {
                 foreach (var ally in _allies) AddTarget(ally);
                 break;
             case AbilityTargetMode.SelectTarget:
-                CycleTargets(_enemies);
+                CycleTargets(_enemies, true);
                 break;
             case AbilityTargetMode.Ally:
-                CycleTargets(_allies);
+                CycleTargets(_allies, true);
                 break;
         }
     }
@@ -76,28 +95,29 @@ public class TargetManager : MonoBehaviour {
         if (target == null) return;
 
         target.OnTargeted();
-        currentlyTargeted.Add(target);
+        CurrentlyTargeted.Add(target);
     }
     
     private void ClearAllTargets() {
-        foreach (var t in currentlyTargeted)
+        foreach (var t in CurrentlyTargeted)
             t.OnUntargeted();
-        currentlyTargeted.Clear();
+        CurrentlyTargeted.Clear();
     }
     
-    private void CycleTargets(List<ITargetable> list) {
+    private void CycleTargets(List<ITargetable> list, bool clockwise) {
         if (list.Count == 0) return;
-
         ClearAllTargets();
         
-        currentTargetIndex = (currentTargetIndex + 1) % list.Count;
+        currentTargetIndex = clockwise ? currentTargetIndex + 1 : currentTargetIndex - 1;
+        currentTargetIndex %= list.Count;
         AddTarget(list[currentTargetIndex]);
+        onTargetChanged?.Invoke(list[currentTargetIndex]);
     }
 
-    public void HandleCycleInput() {
+    public void HandleCycleInput(bool clockwise) {
         if (_targetModeMode == AbilityTargetMode.SelectTarget)
-            CycleTargets(_enemies);
+            CycleTargets(_enemies, clockwise);
         else if (_targetModeMode == AbilityTargetMode.Ally)
-            CycleTargets(_allies);
+            CycleTargets(_allies, clockwise);
     }
 }

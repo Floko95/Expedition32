@@ -17,4 +17,5 @@ public class UnitData : SerializedScriptableObject
     [SerializeField] public int energy;
 
     [Space(50), SerializeField] public List<AbilityData> abilities;
+    [SerializeField] public AbilityData attackAbility;
 }
