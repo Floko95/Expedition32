@@ -15,6 +15,7 @@ public class TargetManager : MonoBehaviour {
     
     public Action<ITargetable> onTargetChanged;
     public List<ITargetable> CurrentlyTargeted { get; private set; } = new();
+    public int TargetCount => CurrentlyTargeted.Count;
     
     private BattleManager _battleManager;
     private InputAction _targetClockWiseInputaction;
@@ -111,9 +112,14 @@ public class TargetManager : MonoBehaviour {
         if (list.Count == 0) return;
         ClearAllTargets();
         
-        currentTargetIndex = clockwise ? currentTargetIndex + 1 : currentTargetIndex - 1;
-        currentTargetIndex %= list.Count;
+        if (clockwise) {
+            currentTargetIndex = (currentTargetIndex + 1) % list.Count;
+        } else {
+            currentTargetIndex = (currentTargetIndex - 1 + list.Count) % list.Count;
+        }
+        
         AddTarget(list[currentTargetIndex]);
+        
         onTargetChanged?.Invoke(list[currentTargetIndex]);
     }
 

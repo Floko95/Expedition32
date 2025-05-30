@@ -15,7 +15,7 @@ public partial class EnemyWideAbilityAction : Action
     [SerializeReference] public BlackboardVariable<Unit> Unit;
     [SerializeReference] public BlackboardVariable<AbilityData> Ability;
     [SerializeReference] public BlackboardVariable<BattleManager> BattleManager;
-    
+    [SerializeField] public bool Log = true;
     
     private bool _hasCinematicEnded;
     private CinemachineVirtualCameraBase _vCam;
@@ -27,8 +27,10 @@ public partial class EnemyWideAbilityAction : Action
             Debug.LogError("No Unit selected");
         if(Ability.Value == null)
             Debug.LogError("No Ability selected");
-        
-        BattleLogDebugUI.Log(Ability.Value.desc);
+
+        if (Log) {
+            BattleLogDebugUI.Log(Ability.Value.desc);
+        }
         
         var player = Unit.Value.playableDirector;
         ManageBindings(player); //Manual Bindings HERE , move elsewhere next
@@ -50,7 +52,6 @@ public partial class EnemyWideAbilityAction : Action
         if(Ability.Value == null) return;
         
         foreach (var unit in BattleManager.Value.Battle.Allies) {
-            //TODO ADD PARRY CHECK, APPLY EFFECTS OF ABILITY INSTEAD
             Ability.Value.ApplyEffects(Unit.Value, unit);
         }
     }

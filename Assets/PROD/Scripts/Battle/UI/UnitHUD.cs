@@ -9,14 +9,25 @@ public class UnitHUD : MonoBehaviour, IInitializable<Unit>
     
     
     bool IInitializable<Unit>.Initialized { get; set; }
-    
+
+    private void Awake() {
+        Init(GetComponentInParent<Unit>());
+    }
+
     public void Init(Unit unit) {
-        healthBarUI.SetHealthSystem(unit.HealthSystem);
-        APSlider.minValue = 0;
-        APSlider.maxValue = unit.MaxEnergy;
-        APSlider.value = unit.Energy;
+        if(unit == null) return;
         
-        iPortrait.sprite = unit.unitData.portrait;
+        healthBarUI.SetHealthSystem(unit.HealthSystem);
+
+        
+        if (APSlider) {
+            APSlider.minValue = 0;
+            APSlider.maxValue = unit.MaxEnergy;
+            APSlider.value = unit.Energy;
+        }
+        
+        if(iPortrait)
+            iPortrait.sprite = unit.unitData.portrait;
     }
     
 }

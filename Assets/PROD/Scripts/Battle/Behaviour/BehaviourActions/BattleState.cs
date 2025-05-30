@@ -5,7 +5,7 @@ using Unity.Behavior;
 public enum BattleState
 {
     Init,
-	PlayerTurn,
+    PlayerTurn,
 	EnemyTurn,
 	End
 }

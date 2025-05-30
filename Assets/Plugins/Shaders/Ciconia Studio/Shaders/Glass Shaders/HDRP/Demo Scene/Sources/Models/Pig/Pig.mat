@@ -1,0 +1,216 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pig
+  m_Shader: {fileID: 4800000, guid: dc41fb03fcb723b44903f0a0317f767c, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
+  - _ENABLE_FOG_ON_TRANSPARENT
+  - _REFRACTION_SPHERE
+  - _SURFACE_TYPE_TRANSPARENT
+  - _USECUBEMAP_OFF
+  m_InvalidKeywords:
+  - _ADD_PRECOMPUTED_VELOCITY
+  - _BLENDMODE_ALPHA
+  - _CONSERVATIVE_DEPTH_OFFSET
+  - _DEPTHOFFSET_ON
+  - _FALLOFFOPACITY_ON
+  - _FRESNELONOFF_ON
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    MotionVector: User
+    RenderType: Transparent
+  disabledShaderPasses:
+  - TransparentBackface
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: aa7fff2d9a6b0f44da470ba9f8e04897, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CubeMap:
+        m_Texture: {fileID: 8900000, guid: 5bd3dde6ef6012d4fabbbeddb40d6a4b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortionVectorMap:
+        m_Texture: {fileID: 2800000, guid: aa7fff2d9a6b0f44da470ba9f8e04897, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _IridescentMaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AddPrecomputedVelocity: 1
+    - _AlphaCutoff: 0.5
+    - _AlphaCutoffEnable: 0
+    - _AlphaDstBlend: 10
+    - _AlphaSrcBlend: 1
+    - _AlphaToMask: 0
+    - _AlphaToMaskInspectorValue: 0
+    - _Ambientlight: 1
+    - _AoIntensity: 0
+    - _BlendMode: 0
+    - _BlurReflection: 0
+    - _Brightness: 1
+    - _BumpScale: 0.3
+    - _BumpScaleDecal: 0.1
+    - _BumpScaleDecal1: 0
+    - _ChromaticAberration: 0
+    - _ConservativeDepthOffsetEnable: 1
+    - _Cull: 2
+    - _CullMode: 2
+    - _CullModeForward: 2
+    - _DepthOffsetEnable: 1
+    - _DistortionBlurScale: 0
+    - _DistortionScale: 0
+    - _DoubleSidedEnable: 0
+    - _DoubleSidedGIMode: 0
+    - _DoubleSidedNormalMode: 2
+    - _DstBlend: 10
+    - _EmissionIntensity: 1
+    - _EmissiveIntensity: 1
+    - _EnableBlendModePreserveSpecularLighting: 1
+    - _EnableFogOnTransparent: 1
+    - _Fade: 0
+    - _FalloffFade: 0
+    - _FalloffFade1: 0
+    - _FalloffOpacity: 1
+    - _FalloffOpacityIntensity: 1
+    - _FresnelStrength: 0.5
+    - _GlassThickness: 1
+    - _Glossiness: 1
+    - _GlossinessDecal: 0.5
+    - _Gradient1: 0.724
+    - _GradientFade: 1
+    - _IndexofRefraction: 1.03
+    - _Intensity: 1
+    - _Invert: 0
+    - _InvertAlbedoA: 0
+    - _InvertAlbedoA1: 0
+    - _InvertFresnelFade: 0
+    - _IridescentThickness: 0.989
+    - _Metallic: 0.3
+    - _MetallicDecal: 0.2
+    - _OffsetX: 0
+    - _OffsetY: 0
+    - _Opacity: 0.94
+    - _OpaqueCullMode: 2
+    - _Power1: 2
+    - _PowerFalloffFade: 0.5
+    - _PowerFalloffOpacity: 1
+    - _PowerFresnel: 0.81
+    - _ReceivesSSR: 1
+    - _ReceivesSSRTransparent: 0
+    - _ReflectionDecal: 0
+    - _ReflectionIntensity: 10
+    - _Refraction: 1.2
+    - _RefractionModel: 2
+    - _RenderQueueType: 4
+    - _RequireSplitLighting: 0
+    - _Rotation: 0
+    - _Saturation: 0
+    - _SaturationDecal: 0
+    - _SrcBlend: 1
+    - _StencilRef: 0
+    - _StencilRefDepth: 0
+    - _StencilRefDistortionVec: 4
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
+    - _StencilWriteMask: 6
+    - _StencilWriteMaskDepth: 9
+    - _StencilWriteMaskDistortionVec: 4
+    - _StencilWriteMaskGBuffer: 15
+    - _StencilWriteMaskMV: 41
+    - _SupportDecals: 1
+    - _SurfaceType: 1
+    - _TessEdgeLength: 16
+    - _TessMax: 25
+    - _TessMaxDisp: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 16
+    - _TilingX: 0
+    - _TilingY: 0
+    - _TransparentBackfaceEnable: 0
+    - _TransparentCullMode: 2
+    - _TransparentSortPriority: 0
+    - _TransparentWritingMotionVec: 0
+    - _TransparentZWrite: 1
+    - _UseAlbedoA: 0
+    - _UseAlbedoA1: 0
+    - _UseCubemap: 0
+    - _UseShadowThreshold: 0
+    - _UseSmoothness: 0
+    - _Weight: 1
+    - _ZTestDepthEqualForOpaque: 4
+    - _ZTestGBuffer: 4
+    - _ZTestTransparent: 4
+    - _ZWrite: 1
+    - __dirty: 1
+    - _test: 0
+    m_Colors:
+    - _Color: {r: 0.8018868, g: 0, b: 0.4119499, a: 0}
+    - _ColorCubemap: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorDecal: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorFresnel: {r: 0, g: 0, b: 0, a: 0}
+    - _ColorFresnel1: {r: 0.8962264, g: 0, b: 0.7196971, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GlassColor: {r: 1, g: 0.4669811, b: 0.87250715, a: 1}
+    - _SecondaryColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BuildTextureStacks: []

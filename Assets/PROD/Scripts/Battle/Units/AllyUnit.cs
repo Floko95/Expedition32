@@ -6,7 +6,8 @@ public class AllyUnit : Unit {
     [SerializeField] public Canvas uiPrompt;
     [SerializeField] public Canvas uiAbilities;
     [SerializeField] public Canvas uiItems;
-    
+
+    [SerializeField] private ShaderBloodController shaderBloodController;
     
     
     protected override void Awake() {
@@ -27,6 +28,7 @@ public class AllyUnit : Unit {
     }
 
     private void OnDamaged() {
+        shaderBloodController.BloodAmountNormalized = 1 - HealthSystem.GetHealthNormalized();
         animator.SetTrigger("Damaged");
     }
     

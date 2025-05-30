@@ -7,7 +7,18 @@ public class ShaderBloodController : MonoBehaviour
     [SerializeField] private List<SkinnedMeshRenderer> renderers;
     [SerializeField, Range(0,10), OnValueChanged(nameof(UpdateShader))] private float bloodAmount;
     [SerializeField, Range(1,5), OnValueChanged(nameof(UpdateShader))] private float dirtAmount;
-    
+
+    public float BloodAmountNormalized {
+        get {
+            return bloodAmount;
+        }
+        set {
+            bloodAmount = value * 10f;
+            dirtAmount = value * 5f;
+            UpdateShader();
+        }
+    }
+
     private Character _character;
     
     private void Start() {

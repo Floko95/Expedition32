@@ -53,6 +53,8 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
         Energy = unitData.energy;
         MaxEnergy = MAX_AP;
         
+        name = unitData.unitName;
+        
         Abilities = unitData.abilities;
     }
 
