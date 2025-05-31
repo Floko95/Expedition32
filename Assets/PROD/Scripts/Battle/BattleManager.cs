@@ -12,12 +12,6 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private BehaviorGraphAgent behaviorGraphAgent;
     
     public UnityAction onBattleInitialized;
-    public UnityAction onBattleStart;
-    public UnityAction<bool> onBattleEnd;
-
-    public UnityAction<Unit> onTurnStart;
-    public UnityAction onTurnPlay;
-    public UnityAction onTurnEnd;
     
     public TurnQueue TurnQueue { get; set; }
     
@@ -75,18 +69,5 @@ public class BattleManager : MonoBehaviour
         
         onBattleInitialized?.Invoke();
         isBattleInititated = true;
-    }
-
-    public virtual void StartBattle() {
-        Debug.Log("StartBattle");
-        onBattleStart?.Invoke();
-    }
-    
-    public virtual void EndTurn() {
-        onTurnEnd?.Invoke();
-    }
-    
-    public virtual void EndBattle(bool hasWon) {
-        onBattleEnd?.Invoke(hasWon);
     }
 }

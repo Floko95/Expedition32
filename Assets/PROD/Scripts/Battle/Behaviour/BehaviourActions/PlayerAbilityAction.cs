@@ -29,6 +29,8 @@ public partial class PlayerAbilityAction : Action {
         if (AbilityData.Value == null)
             Debug.Log("No Ability selected");
 
+        if (Unit.Value.APSystem.CanSpendAP(AbilityData.Value.costAP) == false) return Status.Failure;
+        
         _hasCinematicEnded = false;
         BattleLogDebugUI.Log($"Character attacks {Targets.Value[0].name}");
         
