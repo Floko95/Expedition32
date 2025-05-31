@@ -12,12 +12,9 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     [SerializeField] public Animator animator;
     
     public HealthSystem HealthSystem { get; private set; }
-
+    public APSystem APSystem { get; private set; }
     public StatSystem GetStatSystem() => _statSystem;
     
-    public int Energy { get; private set; }
-    public int MaxEnergy { get; private set; }
-
     public int Shield { get; private set; }
 
     public float ATK => _statSystem.stats[StatType.ATK].Value;
@@ -47,11 +44,9 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     public virtual void Init(UnitData unitData) {
         _statSystem = new StatSystem(unitData.stats);
         HealthSystem = new HealthSystem(_statSystem.stats[StatType.Health].Value);
+        APSystem = new APSystem(MAX_AP, unitData.energy);
         
         Initiative = Mathf.RoundToInt(SPD);
-        
-        Energy = unitData.energy;
-        MaxEnergy = MAX_AP;
         
         name = unitData.unitName;
         

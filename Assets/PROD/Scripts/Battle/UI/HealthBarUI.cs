@@ -22,7 +22,6 @@ public class HealthBarUI : MonoBehaviour {
     [SerializeField] private MMF_Player onDamagedFeed;
     [SerializeField] private MMF_Player onKilledFeed;
     
-    
     public HealthSystem HealthSystem {
         get => _healthSystem;
         private set => SetHealthSystem(value);
