@@ -33,6 +33,6 @@ class ApplyStatusEffect : AbilityEffect {
     [SerializeField] private int stacksApplied;
     
     public override void Apply(Unit caster, Unit target) {
-        //
+        target.StatusSystem.ApplyStatus(appliedStatus, target, stacksApplied);
     }
 }

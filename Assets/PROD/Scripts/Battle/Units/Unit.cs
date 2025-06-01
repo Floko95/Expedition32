@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     public HealthSystem HealthSystem { get; private set; }
     public APSystem APSystem { get; private set; }
     public StatSystem GetStatSystem() => _statSystem;
+    public StatusSystem StatusSystem { get; private set; }
     
     public int Shield { get; private set; }
 
@@ -45,6 +46,7 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
         _statSystem = new StatSystem(unitData.stats);
         HealthSystem = new HealthSystem(_statSystem.stats[StatType.Health].Value);
         APSystem = new APSystem(MAX_AP, unitData.energy);
+        StatusSystem = new StatusSystem();
         
         Initiative = Mathf.RoundToInt(SPD);
         

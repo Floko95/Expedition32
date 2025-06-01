@@ -17,6 +17,7 @@ public class AbilityData : ScriptableObject
     [Title("Effect")]
     [SerializeField] public int costAP;
     [SerializeReference] public List<AbilityEffect> effects;              //WHAT this does?
+    [SerializeReference] public AbilityTrigger effectTriggerEvent = AbilityTrigger.OnPlay;              //WHEN?
     
     [Title("Visuals")]
     [SerializeField] public TimelineAsset timeline;
@@ -32,15 +33,14 @@ public class AbilityData : ScriptableObject
 public enum AbilityTrigger
 {
     None = 0,
-
-    Ongoing = 2,  //Always active (does not work with all effects)
+    
     OnPlay = 10,  //When played
 
     StartOfTurn = 20,       //Every turn
     EndOfTurn = 22,         //Every turn
-
-    OnDeath = 40,       //When character is dying
-    OnDamaged = 42,     //When character is damaged
+    
+    OnDeath = 40,       //When unit is dying
+    OnDamaged = 42,     //When unit is damaged
 
     BattleStart = 50,
     BattleEnd = 52,

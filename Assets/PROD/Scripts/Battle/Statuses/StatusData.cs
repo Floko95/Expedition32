@@ -8,13 +8,12 @@ public class StatusData : ScriptableObject {
     
     [Header("Values")]
     public bool isDebuff;
-    public float Value;
     public int Duration;
     public bool isStackable;
     
     [Header("Effects")]
     public List<AbilityEffect> effectsOnTrigger;
-    public AbilityTrigger triggerOnEvent;
+    public StatusTrigger triggerOnEvent;
     
     [Header("Display")]
     public string title;
@@ -29,4 +28,21 @@ public class StatusData : ScriptableObject {
             effect.Apply(caster, target);
         }
     }
+}
+
+public enum StatusTrigger
+{
+    None = 0,
+    
+    OnApplied = 10,
+    OnExpired = 11,
+    
+    StartOfOwnerTurn = 20,       //Every turn
+    EndOfOwnerTurn = 22,         //Every turn
+    
+    OnOwnerDeath = 40,       //When unit is dying
+    OnOwnerDamaged = 42,     //When unit is damaged
+
+    BattleStart = 50,
+    BattleEnd = 52,
 }

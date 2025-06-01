@@ -25,5 +25,4 @@ public class UnitHUD : MonoBehaviour, IInitializable<Unit>
         if(iPortrait)
             iPortrait.sprite = unit.unitData.portrait;
     }
-    
 }
