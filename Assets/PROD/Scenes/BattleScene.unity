@@ -2623,7 +2623,7 @@ MonoBehaviour:
         z: 0.74057555
       Rotation:
         value:
-          x: 0.12076561
+          x: 0.12076562
           y: 0.7664508
           z: -0.17867988
           w: 0.60501426
@@ -3839,11 +3839,20 @@ MonoBehaviour:
   - rid: 7658842238911774818
   - rid: 7658842387219481256
   - rid: 7658842315597546348
+  - rid: 2001685166942847420
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
+    - rid: 2001685166942847420
+      type: {class: 'BlackboardVariable`1[[TargetManager, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17811554104030180253
+          m_Value1: 15133593841824272048
+        Name: Target Manager
+        m_Value: {fileID: 744393252}
     - rid: 7658842238911774818
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:

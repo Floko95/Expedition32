@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Energy Tint
   m_EditorClassIdentifier: 
   name: Energy Tint
-  desc: Gives 2 AP to an ally.
-  onUseEffects: []
-  maxAmount: 2
+  desc: Gives 5 AP to an ally.
+  onUseEffects:
+  - rid: 2001685166942847446
+  maxAmount: 3
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2001685166942847446
+      type: {class: GainAPEffect, ns: , asm: Assembly-CSharp}
+      data:
+        apRegained: 5

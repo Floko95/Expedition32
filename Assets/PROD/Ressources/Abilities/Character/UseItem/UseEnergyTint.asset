@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc293fd9e2e9d74587ecb2d38e5c9ed, type: 3}
+  m_Name: UseEnergyTint
+  m_EditorClassIdentifier: 
+  _title: Energy Tint
+  _desc: Gives 2 AP to an ally.
+  icon: {fileID: 0}
+  targetMode: 6
+  costAP: 0
+  _effects: []
+  effectTriggerEvent: 10
+  timeline: {fileID: 0}
+  usedItem: {fileID: 11400000, guid: 610c5a80bba7cef4c9551253b21c7b7f, type: 2}
+  references:
+    version: 2
+    RefIds: []

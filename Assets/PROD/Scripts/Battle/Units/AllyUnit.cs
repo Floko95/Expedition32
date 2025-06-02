@@ -20,11 +20,15 @@ public class AllyUnit : Unit {
     private void Start() {
         HealthSystem.OnDamaged += OnDamaged;
         HealthSystem.OnDead += OnDeath;
+        HealthSystem.OnRevived += OnRevived;
     }
+
+    
 
     private void OnDestroy() {
         HealthSystem.OnDamaged -= OnDamaged;
         HealthSystem.OnDead -= OnDeath;
+        HealthSystem.OnRevived -= OnRevived;
     }
 
     private void OnDamaged() {
@@ -34,6 +38,10 @@ public class AllyUnit : Unit {
     
     private void OnDeath() {
         animator.SetBool("IsDead", true);
-        
+    }
+    
+    private void OnRevived() {
+        animator.SetTrigger("Revive");
+        animator.SetBool("IsDead", false);
     }
 }

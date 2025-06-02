@@ -21,6 +21,7 @@ public class HealthBarUI : MonoBehaviour {
     [Title("Feedbacks")] 
     [SerializeField] private MMF_Player onDamagedFeed;
     [SerializeField] private MMF_Player onKilledFeed;
+    [SerializeField] private MMF_Player onRevivedFeed;
     
     public HealthSystem HealthSystem {
         get => _healthSystem;
@@ -46,6 +47,7 @@ public class HealthBarUI : MonoBehaviour {
             _healthSystem.OnHealthMaxChanged -= UpdateHealthText;
             _healthSystem.OnDamaged -= OnDamaged;
             _healthSystem.OnDead -= OnDeath;
+            _healthSystem.OnRevived -= OnRevived;
         }
 
         _healthSystem = healthSystem;
@@ -55,10 +57,13 @@ public class HealthBarUI : MonoBehaviour {
         _healthSystem.OnHealthMaxChanged += UpdateHealthText;
         _healthSystem.OnDamaged += OnDamaged;
         _healthSystem.OnDead += OnDeath;
-
+        _healthSystem.OnRevived += OnRevived;
+        
         UpdateHealthBar();
         UpdateHealthText();
     }
+
+    
 
     private void UpdateHealthBar() {
         gameObject.SetActive(true);
@@ -82,6 +87,11 @@ public class HealthBarUI : MonoBehaviour {
             gameObject.SetActive(false);
         if(onKilledFeed)
             onKilledFeed.PlayFeedbacks();
+    }
+    
+    private void OnRevived() {
+        if(onRevivedFeed)
+            onRevivedFeed.PlayFeedbacks();
     }
 }
 

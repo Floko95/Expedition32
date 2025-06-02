@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Timeline;
 
 [CreateAssetMenu(fileName = "ability", menuName = "Ex32/AbilityData", order = 1)]
 public class AbilityData : ScriptableObject
 {
     [Title("Display")]
-    [SerializeField] public string title;
-    [TextArea(5, 7)] public string desc;
+    [FormerlySerializedAs("title")] [SerializeField] public string _title;
+    [FormerlySerializedAs("desc")] [TextArea(5, 7)] public string _desc;
     [SerializeField] public Sprite icon;
     
     [Title("Target")]
@@ -16,14 +17,17 @@ public class AbilityData : ScriptableObject
     
     [Title("Effect")]
     [SerializeField] public int costAP;
-    [SerializeReference] public List<AbilityEffect> effects;              //WHAT this does?
+    [FormerlySerializedAs("effects")] [SerializeReference] public List<AbilityEffect> _effects;              //WHAT this does?
     [SerializeReference] public AbilityTrigger effectTriggerEvent = AbilityTrigger.OnPlay;              //WHEN?
     
     [Title("Visuals")]
     [SerializeField] public TimelineAsset timeline;
 
-
-    public void ApplyEffects(Unit caster, Unit target) {
+    public virtual string title => _title;
+    public virtual string desc => _desc;
+    public virtual List<AbilityEffect> effects => _effects;
+    
+    public virtual void ApplyEffects(Unit caster, Unit target) {
         foreach (var effect in effects) {
             effect.Apply(caster, target);
         }

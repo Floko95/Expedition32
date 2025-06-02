@@ -32,11 +32,15 @@ public partial class PlayerAbilityAction : Action {
         if (Unit.Value.APSystem.CanSpendAP(AbilityData.Value.costAP) == false) return Status.Failure;
         
         _hasCinematicEnded = false;
-        BattleLogDebugUI.Log($"Character attacks {Targets.Value[0].name}");
+
+        if (AbilityData.Value.timeline == null) {
+            HandleComboWindow(null);
+            return Status.Success;
+        }
         
         var player = Unit.Value.playableDirector;
         ManageBindings(player); //Manual Bindings HERE , move elsewhere next
-
+        
         _comboListener = player.Listen<ComboWindow>()
             .Subscribe(HandleComboWindow)
             .AddTo(Unit.Value.gameObject);

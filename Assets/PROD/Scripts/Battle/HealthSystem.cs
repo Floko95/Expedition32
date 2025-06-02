@@ -7,6 +7,7 @@ public class HealthSystem
     public event Action OnHealthChanged;
     public event Action OnHealthMaxChanged;
     public event Action OnDamaged;
+    public event Action OnRevived;
     public event Action OnHealed;
     public event Action OnDead;
 
@@ -66,6 +67,13 @@ public class HealthSystem
         }
     }
 
+    public virtual void Revive(float health) {
+        if(IsAlive) return;
+        Heal(health);
+        
+        OnRevived?.Invoke();
+    }
+    
     /// <summary>
     /// Kill this HealthSystem
     /// </summary>

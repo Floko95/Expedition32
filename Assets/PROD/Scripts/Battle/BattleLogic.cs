@@ -13,6 +13,15 @@ public static class BattleLogic {
         return amount;
     }
     
+    public static float Revive(Unit caster, Unit receiver, float maxHealthRatio) {
+        if (!caster.IsAlive || receiver.IsAlive) return 0f;
+        
+        var amount = receiver.HealthSystem.GetHealthMax() * maxHealthRatio;
+        receiver.HealthSystem.Revive(amount);
+        
+        return amount;
+    }
+    
     public static float Attack(Unit attacker, Unit defender, float attackRatio) {
         if (!attacker.IsAlive || !defender.IsAlive) return 0;
         

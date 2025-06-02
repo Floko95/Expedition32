@@ -26,6 +26,17 @@ class HealEffect : AbilityEffect {
     }
 }
 
+
+[Serializable]
+class ReviveEffect : AbilityEffect {
+    
+    [SerializeField] private float maxHealthHealRatio = 0.3f;
+    
+    public override void Apply(Unit caster, Unit target) {
+        BattleLogic.Revive(caster, target, maxHealthHealRatio);
+    }
+}
+
 [Serializable]
 class GainAPEffect : AbilityEffect {
     

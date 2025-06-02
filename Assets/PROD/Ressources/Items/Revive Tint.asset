@@ -14,8 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Revive Tint
   desc: Revives one Dead ally with 30% HP.
-  onUseEffects: []
+  onUseEffects:
+  - rid: 2001685166942847466
   maxAmount: 1
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2001685166942847466
+      type: {class: ReviveEffect, ns: , asm: Assembly-CSharp}
+      data:
+        maxHealthHealRatio: 0.3
