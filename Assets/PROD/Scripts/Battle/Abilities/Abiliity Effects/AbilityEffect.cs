@@ -27,6 +27,16 @@ class HealEffect : AbilityEffect {
 }
 
 [Serializable]
+class GainAPEffect : AbilityEffect {
+    
+    [SerializeField] private int apRegained = 1;
+    
+    public override void Apply(Unit caster, Unit target) {
+        caster.APSystem.GiveAP(apRegained);
+    }
+}
+
+[Serializable]
 class ApplyStatusEffect : AbilityEffect {
     
     [SerializeField] private StatusData appliedStatus;
