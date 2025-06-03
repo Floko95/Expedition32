@@ -14,6 +14,7 @@ using Unity.Properties;
 [NodeDescription(name: "Ability", story: "[Unit] uses [ability] on [Targets]", category: "Action",
     id: "285316aaf1c489624db0457ded13ddb2")]
 public partial class AbilityAction : Action {
+    
     public static string ABILITY_CAM_NAME = "AbilityVCam";
 
     [SerializeReference] public BlackboardVariable<Unit> Unit;
@@ -21,10 +22,11 @@ public partial class AbilityAction : Action {
     [SerializeReference] public BlackboardVariable<List<GameObject>> Targets;
 
     private bool _hasCinematicEnded;
+    
     private CinemachineVirtualCameraBase _vCam;
     private IDisposable _comboListener;
     private List<Unit> _targets;
-
+    
     protected override Status OnStart() {
         if (Unit.Value == null)
             Debug.Log("No Unit selected");
