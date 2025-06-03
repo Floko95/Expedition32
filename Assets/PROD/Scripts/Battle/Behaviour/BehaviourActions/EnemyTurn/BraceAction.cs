@@ -12,12 +12,17 @@ public partial class BraceAction : Action
 {
     [SerializeReference] public BlackboardVariable<Unit> AttackingUnit;
     [SerializeReference] public BlackboardVariable<List<GameObject>> TargetedUnits;
-
-    private List<Unit> _targetedUnits = new List<Unit>();
+    [SerializeReference] public BlackboardVariable<bool> enable;
+    
+    private List<AllyUnit> _targetedUnits = new List<AllyUnit>();
     
     protected override Status OnStart()
     {
-        _targetedUnits = TargetedUnits.Value.Select(g => g.GetComponent<Unit>()).Where(u => u != null).ToList();
+        _targetedUnits = TargetedUnits.Value.Select(g => g.GetComponent<AllyUnit>()).Where(u => u != null).ToList();
+        
+        foreach (var target in _targetedUnits) {
+            target.DodgeSystem.enabled = enable.Value;
+        }
         
         return Status.Running;
     }

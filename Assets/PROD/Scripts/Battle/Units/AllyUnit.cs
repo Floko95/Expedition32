@@ -8,13 +8,17 @@ public class AllyUnit : Unit {
     [SerializeField] public Canvas uiItems;
 
     [SerializeField] private ShaderBloodController shaderBloodController;
+    [SerializeField] private DodgeSystem _dodgeSystem;
     
+    public DodgeSystem DodgeSystem => _dodgeSystem;
     
     protected override void Awake() {
         base.Awake();
         uiPrompt.enabled = false;
         uiAbilities.enabled = false;
         uiItems.enabled = false;
+        
+        _dodgeSystem.enabled = false;
     }
 
     private void Start() {

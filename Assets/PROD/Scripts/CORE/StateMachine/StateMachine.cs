@@ -43,7 +43,7 @@ public abstract class StateMachine<T> where T : IState<T> {
         yield return new WaitForSeconds(delay);
         SetState(newState);
     }
-    
+
     public virtual void AddTransition(T from, T to, Func<bool> condition) {
         if (_transitions.TryGetValue(from.GetType(), out var transitions) == false) {
             transitions = new List<Transition<T>>();
@@ -89,5 +89,5 @@ public class Transition<T> where T : IState<T> {
         this.condition = condition;
     }
 }
-   
+
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class BattleLogic {
@@ -22,8 +23,14 @@ public static class BattleLogic {
         return amount;
     }
 
-    public static void EnemyTriesToApplyEffects(Unit caster, AllyUnit receiver) {
+    public static bool TryApplyAbilityEffects(AbilityData abilityData, Unit caster, AllyUnit target) {
+        if (!caster.IsAlive || !target.IsAlive) return false;
+        var dodgeSystem = target.DodgeSystem;
+
+        if (dodgeSystem.Evaluate(abilityData.dodgeMode)) return false; //dodged
         
+        abilityData.ApplyEffects(caster, target);
+        return true;
     }
     
     public static float Attack(Unit attacker, Unit defender, float attackRatio) {

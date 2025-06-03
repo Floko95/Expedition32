@@ -70,7 +70,7 @@ public partial class AbilityAction : Action {
         
         foreach (var target in _targets) {
             if(target is AllyUnit allyUnit)
-                BattleLogic.EnemyTriesToApplyEffects(Unit.Value, allyUnit);
+                BattleLogic.TryApplyAbilityEffects(Ability.Value, Unit.Value, allyUnit);
             else
                 Ability.Value.ApplyEffects(Unit.Value, target);
         }

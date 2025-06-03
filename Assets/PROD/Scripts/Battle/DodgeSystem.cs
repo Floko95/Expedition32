@@ -1,6 +1,8 @@
 using System;
 using ImprovedTimers;
+using MoreMountains.Feedbacks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Timer = ImprovedTimers.Timer;
 
 public abstract class DodgeState : IState<DodgeState> {
@@ -74,8 +76,17 @@ public class DodgeStateMachine : StateMachine<DodgeState> { }
 
 public class DodgeSystem : MonoBehaviour
 {
-    [SerializeField] private float _type;
+    [SerializeField] private float parryWindowDuration;
+    [SerializeField] private float dodgeWindowDuration;
+    [SerializeField] private float jumpWindowDuration;
+    
+    [SerializeField] private InputActionReference parryInput;
+    [SerializeField] private InputActionReference dodgeInput;
+    [SerializeField] private InputActionReference jumpInput;
+    
     [SerializeField] private Animator animator;
+    [SerializeField] private MMF_Player onParryFeel;
+    [SerializeField] private MMF_Player ondodgedFeel;
     
     public bool IsDodging => _stateMachine is {currentState: Dodge};
     public bool IsParrying => _stateMachine is {currentState: ParryState};
@@ -86,25 +97,56 @@ public class DodgeSystem : MonoBehaviour
     private int _jumpHash;
     
     private DodgeStateMachine _stateMachine;
-
+    private IdleDodgeState _idleDodgeState;
+    
     private void Awake() {
         _parryHash = Animator.StringToHash("Parry");
         _dodgeHash = Animator.StringToHash("Dodge");
         _jumpHash = Animator.StringToHash("Jump");
-        
+
+        _idleDodgeState = new IdleDodgeState(_stateMachine);
+        var parryState = new ParryState(_stateMachine, animator, _parryHash, parryWindowDuration);
+        var dodge = new Dodge(_stateMachine, animator, _dodgeHash, dodgeWindowDuration);
+        var jumpDodgeState = new JumpDodgeState(_stateMachine, animator, _jumpHash, jumpWindowDuration);
         _stateMachine = new DodgeStateMachine();
-        _stateMachine.AddState(new IdleDodgeState(_stateMachine));
-        _stateMachine.AddState(new ParryState(_stateMachine, animator, _parryHash, _type));
-        _stateMachine.AddState(new Dodge(_stateMachine, animator, _dodgeHash, _type));
-        _stateMachine.AddState(new JumpDodgeState(_stateMachine, animator, _jumpHash, _type));
+        
+        _stateMachine.AddState(_idleDodgeState);
+        _stateMachine.AddState(parryState);
+        _stateMachine.AddState(dodge);
+        _stateMachine.AddState(jumpDodgeState);
+        
+        _stateMachine.AddTransition(_idleDodgeState, parryState, parryInput.action.WasPerformedThisFrame);
+        _stateMachine.AddTransition(_idleDodgeState, dodge, dodgeInput.action.WasPerformedThisFrame);
+        _stateMachine.AddTransition(_idleDodgeState, jumpDodgeState, jumpInput.action.WasPerformedThisFrame);
     }
 
+    private void OnEnable() {
+        _stateMachine.SetState(_idleDodgeState);
+    }
+
+    private void Update() {
+        _stateMachine.Update(Time.deltaTime);
+    }
+    
     public bool Evaluate(DodgeTypeEnum dodgeType) {
-        return dodgeType switch {
+        if(enabled == false) return false;
+        
+        var doesNullifyDamage = dodgeType switch {
             DodgeTypeEnum.Undodgeable => false,
             DodgeTypeEnum.DodgeOrParry => IsDodging || IsParrying,
             DodgeTypeEnum.Jump => IsJumping,
             _ => throw new ArgumentOutOfRangeException(nameof(dodgeType), dodgeType, null)
         };
+        
+        //feedbacks
+        if (doesNullifyDamage) {
+            if (IsParrying) {
+                onParryFeel?.PlayFeedbacks();
+            } else if (IsDodging) {
+                ondodgedFeel?.PlayFeedbacks();
+            }
+        }
+        
+        return doesNullifyDamage;
     }
 }
