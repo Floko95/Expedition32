@@ -14,6 +14,7 @@ public class AbilityData : ScriptableObject
     
     [Title("Target")]
     [SerializeField] public AbilityTargetMode targetMode;               //WHO is targeted?
+    [SerializeField] public DodgeTypeEnum dodgeMode = DodgeTypeEnum.Undodgeable;               //How to dodge?
     
     [Title("Effect")]
     [SerializeField] public int costAP;

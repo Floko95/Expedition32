@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -2623,7 +2623,7 @@ MonoBehaviour:
         z: 0.74057555
       Rotation:
         value:
-          x: 0.12076561
+          x: 0.120765634
           y: 0.7664508
           z: -0.17867988
           w: 0.60501426
@@ -3837,15 +3837,31 @@ MonoBehaviour:
   m_Graph: {fileID: -6985456958638385354, guid: 69aa400236764a948a6b1e605ffbbaf6, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 7658842238911774818
-  - rid: 7658842387219481256
-  - rid: 7658842315597546348
-  - rid: 2001685166942847420
+  - rid: 2001685188858086010
+  - rid: 2001685188858086011
+  - rid: 2001685188858086012
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
-    - rid: 2001685166942847420
+    - rid: 2001685188858086010
+      type: {class: 'BlackboardVariable`1[[BattleManager, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1989503299793823446
+          m_Value1: 15519234854981071680
+        Name: BattleManager
+        m_Value: {fileID: 1819049440}
+    - rid: 2001685188858086011
+      type: {class: 'BlackboardVariable`1[[EnumDrivenCamera, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1058863245877659048
+          m_Value1: 16723980439804505451
+        Name: PlayerTurnVCam
+        m_Value: {fileID: 1276712055}
+    - rid: 2001685188858086012
       type: {class: 'BlackboardVariable`1[[TargetManager, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3861,22 +3877,6 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 1819049438}
-    - rid: 7658842315597546348
-      type: {class: 'BlackboardVariable`1[[BattleManager, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1989503299793823446
-          m_Value1: 15519234854981071680
-        Name: BattleManager
-        m_Value: {fileID: 1819049440}
-    - rid: 7658842387219481256
-      type: {class: 'BlackboardVariable`1[[EnumDrivenCamera, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1058863245877659048
-          m_Value1: 16723980439804505451
-        Name: PlayerTurnVCam
-        m_Value: {fileID: 1276712055}
 --- !u!1 &1823688464
 GameObject:
   m_ObjectHideFlags: 0

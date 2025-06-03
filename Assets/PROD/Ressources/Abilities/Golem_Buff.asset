@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033d5d07a5b8e2540b638c1b2aa8120a, type: 3}
   m_Name: Golem_Buff
   m_EditorClassIdentifier: 
-  title: Golem Buff
-  desc: Golem buffes its allies
-  trigger: 10
+  _title: Golem Buff
+  _desc: Golem buffes its allies
+  icon: {fileID: 0}
   targetMode: 7
-  status:
-  - {fileID: 11400000, guid: d09f99b447142f4419d999bfcfbd0a1f, type: 2}
-  value: 1
-  timeline: {fileID: 11400000, guid: 62ea6815a96325140a8bcbc8a4545f80, type: 2}
+  costAP: 0
+  _effects: []
+  effectTriggerEvent: 10
+  timeline: {fileID: 11400000, guid: 35de2271f1efcda4eb4d013b221c3c33, type: 2}
+  references:
+    version: 2
+    RefIds: []

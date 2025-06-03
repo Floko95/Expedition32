@@ -21,6 +21,10 @@ public static class BattleLogic {
         
         return amount;
     }
+
+    public static void EnemyTriesToApplyEffects(Unit caster, AllyUnit receiver) {
+        
+    }
     
     public static float Attack(Unit attacker, Unit defender, float attackRatio) {
         if (!attacker.IsAlive || !defender.IsAlive) return 0;

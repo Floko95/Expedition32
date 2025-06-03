@@ -24,7 +24,6 @@ public class StatusSystemUI : MonoBehaviour, IInitializable<Unit>
         _statusSystem.OnStatusChange += OnStatusChange;
         _statusSystem.OnStatusAdded += OnStatusAdded;
         _statusSystem.OnStatusRemoved += OnStatusRemoved;
-        
     }
 
     private void OnStatusAdded(StatusInstance status) {
