@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033d5d07a5b8e2540b638c1b2aa8120a, type: 3}
   m_Name: Burning Spin
   m_EditorClassIdentifier: 
-  title: Burning Spin
-  desc: Deals a medium amount of damage. Applies 3 Burns.
+  _title: Burning Spin
+  _desc: Deals a medium amount of damage. Applies 3 Burns.
   icon: {fileID: 0}
   targetMode: 30
   costAP: 5
-  effects:
+  _effects:
   - rid: 7658842404068524131
   - rid: 7658842404068524150
+  effectTriggerEvent: 10
   timeline: {fileID: 0}
   references:
     version: 2
@@ -32,4 +33,4 @@ MonoBehaviour:
       type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
       data:
         appliedStatus: {fileID: 11400000, guid: d09f99b447142f4419d999bfcfbd0a1f, type: 2}
-        stacksAplied: 3
+        stacksApplied: 3

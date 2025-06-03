@@ -12,25 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033d5d07a5b8e2540b638c1b2aa8120a, type: 3}
   m_Name: Attack
   m_EditorClassIdentifier: 
-  title: Attack
-  desc: Character Attacks.
+  _title: Attack
+  _desc: Character Attacks.
   icon: {fileID: 0}
   targetMode: 30
   costAP: 0
-  effects:
+  _effects:
   - rid: 7658842404068524131
-  - rid: 2001685163186585600
   - rid: 2001685163186585889
   effectTriggerEvent: 10
   timeline: {fileID: 11400000, guid: 60319fd2bf5ff924d9c9602639020152, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 2001685163186585600
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        appliedStatus: {fileID: 11400000, guid: d09f99b447142f4419d999bfcfbd0a1f, type: 2}
-        stacksApplied: 4
     - rid: 2001685163186585889
       type: {class: GainAPEffect, ns: , asm: Assembly-CSharp}
       data:

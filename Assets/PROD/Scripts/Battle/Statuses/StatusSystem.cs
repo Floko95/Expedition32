@@ -15,6 +15,7 @@ public class StatusSystem : IInitializable<Unit> {
 
     public void Init(Unit unit) {
         _unit = unit;
+        _activeStatuses = new Dictionary<StatusData, StatusInstance>();
     }
 
     public bool HasStatus(StatusData status) => _activeStatuses.ContainsKey(status);
