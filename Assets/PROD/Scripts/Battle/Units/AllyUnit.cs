@@ -27,8 +27,6 @@ public class AllyUnit : Unit {
         HealthSystem.OnRevived += OnRevived;
     }
 
-    
-
     private void OnDestroy() {
         HealthSystem.OnDamaged -= OnDamaged;
         HealthSystem.OnDead -= OnDeath;
@@ -37,11 +35,10 @@ public class AllyUnit : Unit {
 
     private void OnDamaged() {
         shaderBloodController.BloodAmountNormalized = 1 - HealthSystem.GetHealthNormalized();
-        animator.SetTrigger("Damaged");
     }
     
     private void OnDeath() {
-        animator.SetBool("IsDead", true);
+        DodgeSystem.enabled = false;
     }
     
     private void OnRevived() {

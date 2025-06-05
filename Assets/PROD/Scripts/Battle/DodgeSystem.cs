@@ -1,6 +1,7 @@
 using System;
 using ImprovedTimers;
 using MoreMountains.Feedbacks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Timer = ImprovedTimers.Timer;
@@ -88,9 +89,12 @@ public class DodgeSystem : MonoBehaviour
     [SerializeField] private MMF_Player onParryFeel;
     [SerializeField] private MMF_Player ondodgedFeel;
     
-    public bool IsDodging => _stateMachine is {currentState: Dodge};
-    public bool IsParrying => _stateMachine is {currentState: ParryState};
-    public bool IsJumping => _stateMachine is {currentState: JumpDodgeState};
+    [SerializeField] private StateMachineDebugUI stateMachineDebugUI;
+    
+    [ShowInInspector] public bool IsDodging => _stateMachine is {currentState: Dodge};
+    [ShowInInspector] public bool IsParrying => _stateMachine is {currentState: ParryState};
+    [ShowInInspector] public bool IsJumping => _stateMachine is {currentState: JumpDodgeState};
+    public DodgeStateMachine StateMachine => _stateMachine;
     
     private int _parryHash;
     private int _dodgeHash;
@@ -104,11 +108,11 @@ public class DodgeSystem : MonoBehaviour
         _dodgeHash = Animator.StringToHash("Dodge");
         _jumpHash = Animator.StringToHash("Jump");
 
+        _stateMachine = new DodgeStateMachine();
         _idleDodgeState = new IdleDodgeState(_stateMachine);
         var parryState = new ParryState(_stateMachine, animator, _parryHash, parryWindowDuration);
         var dodge = new Dodge(_stateMachine, animator, _dodgeHash, dodgeWindowDuration);
         var jumpDodgeState = new JumpDodgeState(_stateMachine, animator, _jumpHash, jumpWindowDuration);
-        _stateMachine = new DodgeStateMachine();
         
         _stateMachine.AddState(_idleDodgeState);
         _stateMachine.AddState(parryState);
@@ -122,6 +126,12 @@ public class DodgeSystem : MonoBehaviour
 
     private void OnEnable() {
         _stateMachine.SetState(_idleDodgeState);
+        stateMachineDebugUI.gameObject.SetActive(true);
+    }
+
+    private void OnDisable() {
+        _stateMachine.SetState(_idleDodgeState);
+        stateMachineDebugUI.gameObject.SetActive(false);
     }
 
     private void Update() {

@@ -10,6 +10,7 @@ public static class BattleLogic {
 
         var amount = receiver.HealthSystem.GetHealthMax() * maxHealthRatio;
         
+        
         receiver.HealthSystem.Heal(amount);
         return amount;
     }
@@ -42,6 +43,7 @@ public static class BattleLogic {
         if(isCrit)
             dmgAmount *= CRIT_DMG_MULTIPLIER;
         
+        dmgAmount = Mathf.Max(1, dmgAmount);
         defender.HealthSystem.Damage(dmgAmount);
         
         return dmgAmount;

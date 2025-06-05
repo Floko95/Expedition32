@@ -4,27 +4,27 @@ using UnityEngine;
 public class StateMachineDebugUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI tmpDebug;
-
-    private StateMachine<ACharacterState> _stateMachine;
-
+    [SerializeField] private DodgeSystem dodgeSystem;
+    
+    private DodgeStateMachine _dodgeStateMachine;
+    
     private void Start() {
-        var character = FindAnyObjectByType(typeof(CharacterStateController)) as CharacterStateController;
-        _stateMachine = character?.StateMachine;
+        _dodgeStateMachine = dodgeSystem?.StateMachine;
         
-        if (_stateMachine != null) {
-            _stateMachine.onStateChanged += UpdateUI;
+        if (_dodgeStateMachine != null) {
+            _dodgeStateMachine.onStateChanged += UpdateUI;
         }
         else {
             Debug.LogError("StateMachineDebugUI: No state machine");
         }
     }
 
-    private void OnDisable() {
-        if(_stateMachine != null)
-            _stateMachine.onStateChanged -= UpdateUI;
+    private void UpdateUI(DodgeState newState) {
+        tmpDebug.text = newState.GetType().ToString();
     }
 
-    private void UpdateUI(ACharacterState newState) {
-        tmpDebug.text = newState.GetType().ToString();
+    private void OnDisable() {
+        if(_dodgeStateMachine != null)
+            _dodgeStateMachine.onStateChanged -= UpdateUI;
     }
 }

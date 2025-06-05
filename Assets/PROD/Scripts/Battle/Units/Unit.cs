@@ -42,6 +42,16 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
         }
     }
 
+    private void Start() {
+        HealthSystem.OnDamaged += OnDamaged;
+        HealthSystem.OnDead += OnDeath;
+    }
+
+    private void OnDestroy() {
+        HealthSystem.OnDamaged -= OnDamaged;
+        HealthSystem.OnDead -= OnDeath;
+    }
+    
     public virtual void Init(UnitData unitData) {
         _statSystem = new StatSystem(unitData.stats);
         HealthSystem = new HealthSystem(_statSystem.stats[StatType.Health].Value);
@@ -55,6 +65,14 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
         Abilities = unitData.abilities;
     }
 
+    private void OnDamaged() {
+        animator.Play("Hit");
+    }
+    
+    private void OnDeath() {
+        animator.SetBool("IsDead", true);
+    }
+    
     public void OnTargeted() {
         if(WorldUI)
             WorldUI.enabled = true;

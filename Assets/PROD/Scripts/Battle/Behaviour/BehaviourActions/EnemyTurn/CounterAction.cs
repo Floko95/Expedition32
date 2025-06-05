@@ -57,7 +57,7 @@ public partial class CounterAction : Action
     }
 
     protected override void OnEnd() {
-        _comboListener.Dispose();
+        
     }
 }
 

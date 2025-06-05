@@ -21,9 +21,6 @@ public class TargetManager : MonoBehaviour {
     private InputAction _targetClockWiseInputaction;
     private InputAction _targetCounterClockWiseInputaction;
     
-    private List<ITargetable> _allies;
-    private List<ITargetable> _enemies;
-    
     private AbilityTargetMode _targetModeMode = AbilityTargetMode.SelectTarget;
     private int currentTargetIndex = 0;
 
@@ -52,9 +49,6 @@ public class TargetManager : MonoBehaviour {
     }
 
     private void OnBattleInitialized() {
-        _enemies = _battleManager.Battle.Enemies.OfType<ITargetable>().ToList();
-        _allies = _battleManager.Battle.Allies.OfType<ITargetable>().ToList();
-        
         SetTargetMode(AbilityTargetMode.SelectTarget);
     }
 
@@ -81,16 +75,16 @@ public class TargetManager : MonoBehaviour {
     private void UpdateTargets() {
         switch (_targetModeMode) {
             case AbilityTargetMode.AllEnemies:
-                foreach (var enemy in _enemies) AddTarget(enemy);
+                foreach (var enemy in _battleManager.Battle.AliveEnemies) AddTarget(enemy);
                 break;
             case AbilityTargetMode.AllAllies:
-                foreach (var ally in _allies) AddTarget(ally);
+                foreach (var ally in _battleManager.Battle.AliveAllies) AddTarget(ally);
                 break;
             case AbilityTargetMode.SelectTarget:
-                CycleTargets(_enemies, true);
+                CycleTargets(_battleManager.Battle.AliveEnemies, true);
                 break;
             case AbilityTargetMode.Ally:
-                CycleTargets(_allies, true);
+                CycleTargets(_battleManager.Battle.AliveAllies, true);
                 break;
         }
     }
@@ -108,7 +102,7 @@ public class TargetManager : MonoBehaviour {
         CurrentlyTargeted.Clear();
     }
     
-    private void CycleTargets(List<ITargetable> list, bool clockwise) {
+    private void CycleTargets(List<Unit> list, bool clockwise) {
         if (list.Count == 0) return;
         ClearAllTargets();
         
@@ -123,10 +117,11 @@ public class TargetManager : MonoBehaviour {
         onTargetChanged?.Invoke(list[currentTargetIndex]);
     }
 
+    //TODO horrible code
     public void HandleCycleInput(bool clockwise) {
         if (_targetModeMode == AbilityTargetMode.SelectTarget)
-            CycleTargets(_enemies, clockwise);
+            CycleTargets(_battleManager.Battle.AliveEnemies, clockwise);
         else if (_targetModeMode == AbilityTargetMode.Ally)
-            CycleTargets(_allies, clockwise);
+            CycleTargets(_battleManager.Battle.AliveAllies, clockwise);
     }
 }

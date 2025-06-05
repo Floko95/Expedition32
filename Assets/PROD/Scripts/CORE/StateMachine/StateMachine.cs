@@ -28,7 +28,7 @@ public abstract class StateMachine<T> where T : IState<T> {
             return;
 
         currentState?.Exit(newState);
-        Debug.Log($"Exiting {currentState}, entering {newState}");
+        //Debug.Log($"Exiting {currentState}, entering {newState}");
         currentState = newState;
 
         _transitions.TryGetValue(currentState.GetType(), out _currentTransitions);
