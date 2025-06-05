@@ -26,10 +26,12 @@ public static class BattleLogic {
 
     public static bool TryApplyAbilityEffects(AbilityData abilityData, Unit caster, AllyUnit target) {
         if (!caster.IsAlive || !target.IsAlive) return false;
-        var dodgeSystem = target.DodgeSystem;
-
-        if (dodgeSystem.Evaluate(abilityData.dodgeMode)) return false; //dodged
         
+        
+        var dodgeSystem = target.DodgeSystem;
+        Debug.Log("Oppsie daisy!");
+        if (dodgeSystem.Evaluate(abilityData.dodgeMode)) return false; //dodged
+        Debug.Log("NOT DENIED");
         abilityData.ApplyEffects(caster, target);
         return true;
     }
