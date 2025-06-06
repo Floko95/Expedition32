@@ -21,13 +21,15 @@ public class AllyUnit : Unit {
         _dodgeSystem.enabled = false;
     }
 
-    private void Start() {
+    protected override void Start() {
+        base.Start();
         HealthSystem.OnDamaged += OnDamaged;
         HealthSystem.OnDead += OnDeath;
         HealthSystem.OnRevived += OnRevived;
     }
 
-    private void OnDestroy() {
+    protected override void OnDestroy() {
+        base.OnDestroy();
         HealthSystem.OnDamaged -= OnDamaged;
         HealthSystem.OnDead -= OnDeath;
         HealthSystem.OnRevived -= OnRevived;

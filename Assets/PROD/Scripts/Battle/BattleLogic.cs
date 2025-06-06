@@ -1,10 +1,14 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public static class BattleLogic {
     
     public const float CRIT_DMG_MULTIPLIER = 1.5f;
 
+    public static event Action<Unit, Unit, float, bool> DamagingEvent; //source, target, amount, IsCrit
+    public static event Action<Unit, Unit, float> HealingEvent; //source, target, amount
+    
     public static float HealPercent(Unit caster, Unit receiver, float maxHealthRatio) {
         if (!caster.IsAlive || !receiver.IsAlive) return 0f;
 
@@ -12,6 +16,8 @@ public static class BattleLogic {
         
         
         receiver.HealthSystem.Heal(amount);
+        HealingEvent.Invoke(caster, receiver, amount);
+        
         return amount;
     }
     
@@ -27,11 +33,9 @@ public static class BattleLogic {
     public static bool TryApplyAbilityEffects(AbilityData abilityData, Unit caster, AllyUnit target) {
         if (!caster.IsAlive || !target.IsAlive) return false;
         
-        
         var dodgeSystem = target.DodgeSystem;
-        Debug.Log("Oppsie daisy!");
         if (dodgeSystem.Evaluate(abilityData.dodgeMode)) return false; //dodged
-        Debug.Log("NOT DENIED");
+        
         abilityData.ApplyEffects(caster, target);
         return true;
     }
@@ -48,6 +52,7 @@ public static class BattleLogic {
         dmgAmount = Mathf.Max(1, dmgAmount);
         defender.HealthSystem.Damage(dmgAmount);
         
+        DamagingEvent.Invoke(attacker, defender, dmgAmount, isCrit);
         return dmgAmount;
     }
 }

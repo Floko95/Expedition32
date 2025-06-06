@@ -42,12 +42,12 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
         }
     }
 
-    private void Start() {
+    protected virtual void Start() {
         HealthSystem.OnDamaged += OnDamaged;
         HealthSystem.OnDead += OnDeath;
     }
 
-    private void OnDestroy() {
+    protected virtual void OnDestroy() {
         HealthSystem.OnDamaged -= OnDamaged;
         HealthSystem.OnDead -= OnDeath;
     }
