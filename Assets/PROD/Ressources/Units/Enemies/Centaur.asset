@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36bd2a25b8a1be0428b925894c675a42, type: 3}
-  m_Name: FireFolem
+  m_Name: Centaur
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -107,12 +107,11 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  unitName: Fire Golem
-  portrait: {fileID: 21300000, guid: d736de900472ece49a68f74bb94321e8, type: 3}
-  prefab: {fileID: 5906600774934265498, guid: 5ef12f83284cea345adbc79d97251801, type: 3}
-  isEnemy: 1
+  unitName: Centaur
+  portrait: {fileID: 21300000, guid: 8bec485231fd8a0459ca3db57bdf5087, type: 3}
+  prefab: {fileID: 2954637491326855845, guid: ee7973941c42193459f1d0b8e79d1d07, type: 3}
+  isEnemy: 0
   energy: 0
   abilities:
-  - {fileID: 11400000, guid: 4b1213d67fbc24d4a87d70b84919a14f, type: 2}
-  - {fileID: 11400000, guid: acf049792c04a9e4d89f96f8892e7cc3, type: 2}
+  - {fileID: 11400000, guid: 8a8afa07251c2304d8c8f78cfc1321dc, type: 2}
   attackAbility: {fileID: 0}
