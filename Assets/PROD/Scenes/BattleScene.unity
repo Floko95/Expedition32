@@ -1803,7 +1803,6 @@ GameObject:
   - component: {fileID: 894570660}
   - component: {fileID: 894570662}
   - component: {fileID: 894570661}
-  - component: {fileID: 894570663}
   m_Layer: 0
   m_Name: TargetSelectionVCam
   m_TagString: Untagged
@@ -1819,13 +1818,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894570659}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0016320546, y: 0.99779093, z: -0.060765307, w: 0.026798997}
+  m_LocalRotation: {x: 0.06033412, y: -0.12164391, z: 0.007408094, w: 0.9907107}
   m_LocalPosition: {x: -1.5, y: 2, z: 4.0000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1276712054}
-  m_LocalEulerAnglesHint: {x: 6.97, y: 176.923, z: 0}
+  m_LocalEulerAnglesHint: {x: 6.97, y: -14, z: 0}
 --- !u!114 &894570661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1838,7 +1837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraDistance: 15
+  CameraDistance: 7.5
   DeadZoneDepth: 0
   Composition:
     ScreenPosition: {x: 0, y: 0}
@@ -1850,7 +1849,7 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 2, z: 0}
+  TargetOffset: {x: 0, y: 2.25, z: 0}
   Damping: {x: 0.25, y: 0.25, z: 0.25}
   Lookahead:
     Enabled: 0
@@ -1881,7 +1880,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 40
+    FieldOfView: 35
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -1899,36 +1898,7 @@ MonoBehaviour:
       Curvature: {x: 2, y: 11}
       BarrelClipping: 0.25
       Anamorphism: 0
-  BlendHint: 55
---- !u!114 &894570663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 894570659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Composition:
-    ScreenPosition: {x: 0, y: 0}
-    DeadZone:
-      Enabled: 0
-      Size: {x: 0.2, y: 0.2}
-    HardLimits:
-      Enabled: 0
-      Size: {x: 0.8, y: 0.8}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: -10}
-  Damping: {x: 0.25, y: 0.25}
-  Lookahead:
-    Enabled: 0
-    Time: 0
-    Smoothing: 0
-    IgnoreY: 0
+  BlendHint: 0
 --- !u!1 &909271985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,7 +2593,7 @@ MonoBehaviour:
         z: 0.74057555
       Rotation:
         value:
-          x: 0.12076561
+          x: 0.120765634
           y: 0.7664508
           z: -0.17867988
           w: 0.60501426

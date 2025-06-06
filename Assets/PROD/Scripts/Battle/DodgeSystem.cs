@@ -89,8 +89,6 @@ public class DodgeSystem : MonoBehaviour
     [SerializeField] private MMF_Player onParryFeel;
     [SerializeField] private MMF_Player ondodgedFeel;
     
-    [SerializeField] private StateMachineDebugUI stateMachineDebugUI;
-    
     [ShowInInspector] public bool IsDodging => _stateMachine is {currentState: Dodge};
     [ShowInInspector] public bool IsParrying => _stateMachine is {currentState: ParryState};
     [ShowInInspector] public bool IsJumping => _stateMachine is {currentState: JumpDodgeState};
@@ -126,12 +124,10 @@ public class DodgeSystem : MonoBehaviour
 
     private void OnEnable() {
         _stateMachine.SetState(_idleDodgeState);
-        stateMachineDebugUI.gameObject.SetActive(true);
     }
 
     private void OnDisable() {
         _stateMachine.SetState(_idleDodgeState);
-        stateMachineDebugUI.gameObject.SetActive(false);
     }
 
     private void Update() {
