@@ -17,7 +17,7 @@ public partial class GetAbilityFromUnitAction : Action
         if (Unit.Value.Abilities.Count <= Int.Value 
             || Unit.Value.Abilities[Int.Value] == null
             || Unit.Value.APSystem.CanSpendAP(Unit.Value.Abilities[Int.Value].costAP) == false) {
-            return Status.Failure;
+            return Status.Interrupted;
         }
         
         Ability.Value = Unit.Value.Abilities[Int.Value];

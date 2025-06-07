@@ -16,12 +16,13 @@ MonoBehaviour:
   _desc: Deals a medium amount of damage. Applies 3 Burns.
   icon: {fileID: 0}
   targetMode: 30
+  dodgeMode: 0
   costAP: 5
   _effects:
   - rid: 7658842404068524131
   - rid: 7658842404068524150
   effectTriggerEvent: 10
-  timeline: {fileID: 0}
+  timeline: {fileID: 11400000, guid: 60319fd2bf5ff924d9c9602639020152, type: 2}
   references:
     version: 2
     RefIds:

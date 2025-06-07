@@ -32,7 +32,7 @@ public partial class AbilityAction : Action {
             Debug.Log("No Unit selected");
         if (Ability.Value == null)
             Debug.Log("No Ability selected");
-
+        
         _hasCinematicEnded = false;
         BattleLogDebugUI.Log(Ability.Value.desc);
 
