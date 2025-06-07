@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -499,13 +499,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157207112}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalRotation: {x: 0.24321039, y: -0.3303661, z: 0.90767336, w: 0.08852135}
   m_LocalPosition: {x: -2.861412, y: 2.2088444, z: 0.33306333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 334748041}
-  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 140, y: -150, z: 0}
 --- !u!114 &157207115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1978,7 +1978,7 @@ MonoBehaviour:
     FieldOfView: 35
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 5000
+    FarClipPlane: 50000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -2123,7 +2123,7 @@ MonoBehaviour:
     FieldOfView: 50
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 5000
+    FarClipPlane: 50000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -2768,7 +2768,7 @@ MonoBehaviour:
         z: 0.74057555
       Rotation:
         value:
-          x: 0.12076562
+          x: 0.120765634
           y: 0.7664508
           z: -0.17867988
           w: 0.60501426
@@ -3397,7 +3397,7 @@ MonoBehaviour:
     FieldOfView: 60
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 5000
+    FarClipPlane: 50000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -3615,7 +3615,7 @@ MonoBehaviour:
     FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 5000
+    FarClipPlane: 50000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -3770,7 +3770,7 @@ MonoBehaviour:
     FieldOfView: 40
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 5000
+    FarClipPlane: 50000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
@@ -4090,7 +4090,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 5000
+  far clip plane: 50000
   field of view: 10
   orthographic: 0
   orthographic size: 10
@@ -4118,7 +4118,7 @@ Transform:
   m_GameObject: {fileID: 1823688464}
   serializedVersion: 2
   m_LocalRotation: {x: 0.09320985, y: -0.07566285, z: 0.007104085, w: 0.992742}
-  m_LocalPosition: {x: 1.8, y: 2.3, z: 2}
+  m_LocalPosition: {x: 1.8, y: 2.3, z: 1.9999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4564,7 +4564,7 @@ MonoBehaviour:
   m_Profile: {fileID: 11400000, guid: 8ba92e2dd7f884a0f88b98fa2d235fe7, type: 2}
   m_StaticLightingSkyUniqueID: 4
   m_StaticLightingCloudsUniqueID: 0
-  m_StaticLightingVolumetricClouds: 0
+  m_StaticLightingVolumetricClouds: 1
   bounces: 1
 --- !u!4 &2013410475
 Transform:
@@ -4641,7 +4641,7 @@ MonoBehaviour:
     FieldOfView: 10
     OrthographicSize: 10
     NearClipPlane: 0.1
-    FarClipPlane: 5000
+    FarClipPlane: 50000
     Dutch: 0
     ModeOverride: 0
     PhysicalProperties:
