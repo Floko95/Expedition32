@@ -13,7 +13,7 @@ namespace DamageNumbersPro
     [CustomEditor(typeof(DamageNumber), true), CanEditMultipleObjects]
     public class DamageNumberEditor : Editor
     {
-        public static string version = "4.47";
+        public static string version = "4.48";
 
         void OnEnable()
         {
@@ -22,34 +22,34 @@ namespace DamageNumbersPro
 
         public override void OnInspectorGUI()
         {
-            //For some operations:
+            // For some operations
             bool isMesh = DNPEditorInternal.damageNumbers[0].IsMesh();
 
-            //Internal:
+            // Internal
             DNPEditorInternal.OnInspectorGUI(this);
             DNPEditorInternal.BeginInspector();
             DNPEditorInternal.DrawInspectorTop(isMesh);
 
-            //Structure:
+            // Structure
             if (DNPEditorInternal.CheckStructure(this))
             {
                 DNPEditorInternal.EndInspector();
                 return;
             }
 
-            //Detect and warn about common mistakes.
+            // Detect and warn about common mistakes
             WarningCheck(isMesh);
 
-            //Update:
+            // Update
             serializedObject.Update();
 
             switch(DNPEditorInternal.currentTab)
             {
-                case (0): //Main
+                case (0): // Main
                     DisplayMainSettings();
                     DisplayFeature("enable3DGame", "3D Game");
                     break;
-                case (1): //Text
+                case (1): // Text
                     DisplayTextMain(isMesh);
                     DisplayFeature("enableNumber", "Number");
                     DisplayFeature("enableLeftText", "Left Text");
@@ -58,35 +58,35 @@ namespace DamageNumbersPro
                     DisplayFeature("enableBottomText", "Bottom Text");
                     DisplayFeature("enableColorByNumber", "Color By Number");
                     break;
-                case (2): //Fade In
+                case (2): // Fade In
                     DisplayFadeMain("In");
                     DisplayFeature("enableOffsetFadeIn", "Offset In", "Offset");
                     DisplayFeature("enableScaleFadeIn", "Scale In", "Scale");
                     DisplayFeature("enableShakeFadeIn", "Shake In", "Shake");
                     DisplayFeature("enableCrossScaleFadeIn", "Cross Scale In", "Cross Scale");
                     break;
-                case (3): //Fade Out
+                case (3): // Fade Out
                     DisplayFadeMain("Out");
                     DisplayFeature("enableOffsetFadeOut", "Offset Out", "Offset");
                     DisplayFeature("enableScaleFadeOut", "Scale Out", "Scale");
                     DisplayFeature("enableShakeFadeOut", "Shake Out", "Shake");
                     DisplayFeature("enableCrossScaleFadeOut", "Cross Scale Out", "Cross Scale");
                     break;
-                case (4): //Movement
+                case (4): // Movement
                     DisplayFeature("enableLerp", "Lerp");
                     DisplayFeature("enableVelocity", "Velocity");
                     DisplayFeature("enableShaking", "Shaking");
                     DisplayFeature("enableFollowing", "Following");
                     DisplayMovementHints(isMesh);
                     break;
-                case (5): //Scale
+                case (5): // Scale
                     DisplayFeature("enableStartRotation", "Start Rotation");
                     DisplayFeature("enableRotateOverTime", "Rotate Over Time");
                     DisplayFeature("enableScaleByNumber", "Scale By Number");
                     DisplayFeature("enableScaleOverTime", "Scale Over Time");
                     DisplayFeature("enableOrthographicScaling", "Orthographic Scaling");
                     break;
-                case (6): //Spam Control
+                case (6): // Spam Control
                     DisplaySpamControlMain(isMesh);
                     DisplayFeature("enableCombination", "Combination");
                     DisplayFeature("enableDestruction", "Destruction");
@@ -94,23 +94,23 @@ namespace DamageNumbersPro
                     DisplayFeature("enablePush", "Push");
                     DisplaySpamControlHints(isMesh);
                     break;
-                case (7): //Performance
+                case (7): // Performance
                     DisplayPerformanceMain();
                     DisplayFeature("enablePooling", "Pooling");
                     DisplayPerformanceHints();
                     break;
             }
 
-            //Fix Variables:
+            // Fix Variables
             foreach(DamageNumber dn in DNPEditorInternal.damageNumbers)
             {
                 FixAllVariables(dn);
             }
 
-            //Apply Properties:
+            // Apply Properties
             serializedObject.ApplyModifiedProperties();
 
-            //Update Text:
+            // Update Text
             if (Application.isPlaying == false)
             {
                 foreach (DamageNumber damageNumber in DNPEditorInternal.damageNumbers)
@@ -140,7 +140,7 @@ namespace DamageNumbersPro
                 }
             }
 
-            //External Editors:
+            // External Editors
             DNPEditorInternal.Externalnspectors(isMesh, target);
             DNPEditorInternal.FinalInformation();
 
@@ -151,25 +151,25 @@ namespace DamageNumbersPro
         [MenuItem("GameObject/Damage Numbers Pro/Damage Number (Mesh)", priority = 1)]
         public static void CreateDamageNumberMesh(MenuCommand menuCommand)
         {
-            //Create GameObject:
+            // Create GameObject
             GameObject newDN = new GameObject("Damage Number (Mesh)");
             GameObjectUtility.SetParentAndAlign(newDN, menuCommand.context as GameObject);
             Undo.RegisterCreatedObjectUndo(newDN, "Create " + newDN.name);
             Selection.activeObject = newDN;
 
-            //Add damage number component.
+            // Add damage number component
             newDN.AddComponent<DamageNumberMesh>();
 
-            //Prepare Structure:
+            // Prepare Structure
             DNPEditorInternal.PrepareMeshStructure(newDN);
 
-            //Position:
+            // Position
             if(Camera.main != null)
             {
-                //Position in front of the camera.
+                // Position in front of the camera
                 Vector3 position = Camera.main.transform.position + Camera.main.transform.forward * 10;
 
-                //Set Z to 0 for 2D Games.
+                // Set Z to 0 for 2D Games
                 if(Camera.main.orthographic)
                 {
                     position.z = 0;
@@ -182,25 +182,25 @@ namespace DamageNumbersPro
         [MenuItem("GameObject/Damage Numbers Pro/Damage Number (GUI)", priority = 2)]
         public static void CreateDamageNumberGUI(MenuCommand menuCommand)
         {
-            //Create GameObject:
+            // Create GameObject
             GameObject newDN = new GameObject("Damage Number (GUI)");
             GameObjectUtility.SetParentAndAlign(newDN, menuCommand.context as GameObject);
             Undo.RegisterCreatedObjectUndo(newDN, "Create " + newDN.name);
             Selection.activeObject = newDN;
 
-            //Add damage number component.
+            // Add damage number component
             newDN.AddComponent<DamageNumberGUI>();
 
-            //Prepare Structure:
+            // Prepare Structure
             DNPEditorInternal.PrepareGUIStructure(newDN);
 
-            //Position:
+            // Position
             if (Camera.main != null)
             {
-                //Position in front of the camera.
+                // Position in front of the camera
                 Vector3 position = Camera.main.transform.position + Camera.main.transform.forward * 10;
 
-                //Set Z to 0 for 2D Games.
+                // Set Z to 0 for 2D Games
                 if (Camera.main.orthographic)
                 {
                     position.z = 0;
@@ -220,19 +220,19 @@ namespace DamageNumbersPro
 
                 if (oldComponent != null)
                 {
-                    //Get TMP Settings:
+                    // Get TMP Settings
                     TMP_FontAsset fontAsset = oldComponent.GetFontMaterial();
                     Color tmpColor = oldComponent.GetTextMesh().color;
                     VertexGradient colorGradient = oldComponent.GetTextMesh().colorGradient;
                     bool enableGradient = oldComponent.GetTextMesh().enableVertexGradient;
 
-                    //Clear Children:
+                    // Clear Children
                     while (oldComponent.transform.childCount > 0)
                     {
                         Object.DestroyImmediate(oldComponent.transform.GetChild(0).gameObject);
                     }
 
-                    //Add GUI Component:
+                    // Add GUI Component
                     DamageNumberGUI newComponent = oldComponent.gameObject.AddComponent<DamageNumberGUI>();
                     UnityEditorInternal.ComponentUtility.MoveComponentUp(newComponent);
                     UnityEditorInternal.ComponentUtility.MoveComponentUp(newComponent);
@@ -241,7 +241,7 @@ namespace DamageNumbersPro
                     UnityEditorInternal.ComponentUtility.MoveComponentUp(newComponent);
                     DNPEditorInternal.PrepareGUIStructure(selected);
 
-                    //TMP Settings:
+                    // TMP Settings
                     newComponent.SetFontMaterial(fontAsset);
                     foreach(TMP_Text tmp in newComponent.GetTextMeshs())
                     {
@@ -250,7 +250,7 @@ namespace DamageNumbersPro
                         tmp.colorGradient = colorGradient;
                     }
 
-                    //Settings:
+                    // Settings
                     foreach (System.Reflection.FieldInfo propA in oldComponent.GetType().GetFields())
                     {
                         System.Reflection.FieldInfo propB = newComponent.GetType().GetField(propA.Name);
@@ -261,10 +261,10 @@ namespace DamageNumbersPro
                         }
                     }
 
-                    //3D:
+                    // 3D
                     newComponent.enable3DGame = false;
 
-                    //Remove old component:
+                    // Remove old component
                     DestroyImmediate(oldComponent);
                 }
             }
@@ -279,19 +279,19 @@ namespace DamageNumbersPro
 
                 if (previousComponent != null)
                 {
-                    //Get TMP Settings:
+                    // Get TMP Settings
                     TMP_FontAsset fontAsset = previousComponent.GetFontMaterial();
                     Color tmpColor = previousComponent.GetTextMesh().color;
                     VertexGradient colorGradient = previousComponent.GetTextMesh().colorGradient;
                     bool enableGradient = previousComponent.GetTextMesh().enableVertexGradient;
 
-                    //Clear Children:
+                    // Clear Children
                     while (previousComponent.transform.childCount > 0)
                     {
                         Object.DestroyImmediate(previousComponent.transform.GetChild(0).gameObject);
                     }
 
-                    //Add GUI Component:
+                    // Add GUI Component
                     DamageNumberMesh newComponent = previousComponent.gameObject.AddComponent<DamageNumberMesh>();
                     UnityEditorInternal.ComponentUtility.MoveComponentUp(newComponent);
                     UnityEditorInternal.ComponentUtility.MoveComponentUp(newComponent);
@@ -300,7 +300,7 @@ namespace DamageNumbersPro
                     UnityEditorInternal.ComponentUtility.MoveComponentUp(newComponent);
                     DNPEditorInternal.PrepareMeshStructure(selected);
 
-                    //TMP Settings:
+                    // TMP Settings
                     newComponent.SetFontMaterial(fontAsset);
                     foreach (TMP_Text tmp in newComponent.GetTextMeshs())
                     {
@@ -309,7 +309,7 @@ namespace DamageNumbersPro
                         tmp.colorGradient = colorGradient;
                     }
 
-                    //Settings:
+                    // Settings
                     foreach (System.Reflection.FieldInfo propA in previousComponent.GetType().GetFields())
                     {
                         System.Reflection.FieldInfo propB = newComponent.GetType().GetField(propA.Name);
@@ -320,10 +320,10 @@ namespace DamageNumbersPro
                         }
                     }
 
-                    //3D:
+                    // 3D
                     newComponent.CheckAndEnable3D();
 
-                    //Remove old components:
+                    // Remove old components
                     DestroyImmediate(previousComponent);
                     RectTransform rectComponent = selected.GetComponent<RectTransform>();
                     if(rectComponent != null)
@@ -338,27 +338,27 @@ namespace DamageNumbersPro
         #region Fixing Variables
         void FixAllVariables(DamageNumber dn)
         {
-            //Performance:
+            // Performance
             dn.updateDelay = Mathf.Max(0, dn.updateDelay);
 
-            //Main:
+            // Main
             dn.lifetime = Mathf.Max(0, dn.lifetime);
             dn.distanceScalingSettings.baseDistance = Mathf.Max(1, dn.distanceScalingSettings.baseDistance);
 
-            //Text:
+            // Text
             dn.numberSettings = FixTextSettings(dn.numberSettings);
             dn.leftTextSettings = FixTextSettings(dn.leftTextSettings);
             dn.rightTextSettings = FixTextSettings(dn.rightTextSettings);
 
-            //Fade:
+            // Fade
             dn.durationFadeIn = Mathf.Max(0, dn.durationFadeIn);
             dn.durationFadeOut = Mathf.Max(0, dn.durationFadeOut);
 
-            //Digit:
+            // Digit
             dn.digitSettings.decimals = Mathf.Max(0, dn.digitSettings.decimals);
             dn.digitSettings.dotDistance = Mathf.Max(0, dn.digitSettings.dotDistance);
 
-            //Text Shader:
+            // Text Shader
             TMP_FontAsset font = dn.GetFontMaterial();
             string is3D = dn.enable3DGame ? "3D" : "";
             if(dn.enable3DGame && dn.IsMesh() && font != null && font.name + is3D != dn.editorLastFont)
@@ -370,7 +370,7 @@ namespace DamageNumbersPro
                 objects[1] = font;
                 Undo.RecordObjects(objects, "Swiched shader to distance field overlay.");
 
-                //Fixing the text shader.
+                // Fixing the text shader
                 if(GraphicsSettings.currentRenderPipeline != null)
                 {
                     string pipeline = GraphicsSettings.currentRenderPipeline.GetType().ToString();
@@ -389,11 +389,11 @@ namespace DamageNumbersPro
                     ChangeShaderToOverlay(dn);
                 }
 
-                //Fixing the sprite shader.
+                // Fixing the sprite shader
                 TMP_Text tmp = dn.GetTextMesh();
                 if (tmp.spriteAsset != null && tmp.spriteAsset.material != null)
                 {
-                    //Sprite Shader:
+                    // Sprite Shader
                     if (tmp.spriteAsset.material.shader.name != "TextMeshPro/Sprite Overlay")
                     {
                         Shader spriteOverlay = Shader.Find("TextMeshPro/Sprite Overlay");
@@ -406,7 +406,7 @@ namespace DamageNumbersPro
                 }
                 else
                 {
-                    //Default Sprite Shader:
+                    // Default Sprite Shader
                     if (TMP_Settings.defaultSpriteAsset != null && TMP_Settings.defaultSpriteAsset.material != null && TMP_Settings.defaultSpriteAsset.material.shader.name != "TextMeshPro/Sprite Overlay")
                     {
                         Shader spriteOverlay = Shader.Find("TextMeshPro/Sprite Overlay");
@@ -430,7 +430,7 @@ namespace DamageNumbersPro
         #region Warnings
         void WarningCheck(bool isMesh)
         {
-            //3D Game and no 3D enabled:
+            // 3D Game and no 3D enabled
             bool gameIs3DWarning = false;
             if(isMesh)
             {
@@ -460,7 +460,7 @@ namespace DamageNumbersPro
                 DNPEditorInternal.CloseBox(new Color(1, 1f, 0.7f));
             }
 
-            //3D but UI Warning.
+            // 3D but UI Warning
             if(isMesh == false)
             {
                 foreach(DamageNumber dn in DNPEditorInternal.damageNumbers)
@@ -477,7 +477,7 @@ namespace DamageNumbersPro
                 }
             }
 
-            //Pooling and Runtime Prefab Edits:
+            // Pooling and Runtime Prefab Edits
             bool runtimePoolingWarning = false;
             if (Application.isPlaying)
             {
@@ -500,7 +500,7 @@ namespace DamageNumbersPro
                 DNPEditorInternal.CloseBox(new Color(1, 1f, 0.7f));
             }
 
-            //Scale By Number but no Numbers:
+            // Scale By Number but no Numbers
             bool scaleByNumbersWarning = false;
             foreach (DamageNumber dn in DNPEditorInternal.damageNumbers)
             {
@@ -519,7 +519,7 @@ namespace DamageNumbersPro
                 DNPEditorInternal.CloseBox(new Color(1, 1f, 0.7f));
             }
 
-            //Color By Number but no Numbers:
+            // Color By Number but no Numbers
             bool colorByNumbersWarning = false;
             foreach (DamageNumber dn in DNPEditorInternal.damageNumbers)
             {
@@ -538,7 +538,7 @@ namespace DamageNumbersPro
                 DNPEditorInternal.CloseBox(new Color(1, 1f, 0.7f));
             }
 
-            //Collision but no Lerp:
+            // Collision but no Lerp
             bool collisionWarning = false;
             foreach (DamageNumber dn in DNPEditorInternal.damageNumbers)
             {
@@ -557,7 +557,7 @@ namespace DamageNumbersPro
                 DNPEditorInternal.CloseBox(new Color(1, 1f, 0.7f));
             }
 
-            //Push but no Lerp:
+            // Push but no Lerp
             bool pushWarning = false;
             foreach (DamageNumber dn in DNPEditorInternal.damageNumbers)
             {
@@ -581,7 +581,7 @@ namespace DamageNumbersPro
         #region Properties
         void DisplayFeature(string togglePropertyName, string featureTitle = "", string displayedTitle = "")
         {
-            //Create title if needed.
+            // Create title if needed
             if (featureTitle == "")
             {
                 featureTitle = togglePropertyName.Replace("enable", "");
@@ -593,18 +593,18 @@ namespace DamageNumbersPro
 
             EditorGUILayout.Space(2);
 
-            //Get Toggle Property:
+            // Get Toggle Property
             SerializedProperty toggleProperty = serializedObject.FindProperty(togglePropertyName);
 
-            //Start Box:
+            // Start Box
             DNPEditorInternal.StartBox(toggleProperty.hasMultipleDifferentValues || toggleProperty.boolValue);
 
-            //Top:
+            // Top
             EditorGUILayout.BeginHorizontal();
             bool showProperties = FeatureButton(toggleProperty, displayedTitle);
             EditorGUILayout.LabelField("", GUILayout.MinWidth(0));
 
-            //Extra Buttons:
+            // Extra Buttons
             #region Text Position
             if(showProperties)
             {
@@ -614,7 +614,7 @@ namespace DamageNumbersPro
                         int leftTextPosition = TextPosition(0);
                         if (leftTextPosition != 0)
                         {
-                            EditorGUIUtility.keyboardControl = EditorGUIUtility.hotControl = 0; //Unselect Fields
+                            EditorGUIUtility.keyboardControl = EditorGUIUtility.hotControl = 0; // Unselect Fields
 
                             foreach (DamageNumber dn in DNPEditorInternal.damageNumbers)
                             {
@@ -659,7 +659,7 @@ namespace DamageNumbersPro
                         int rightTextPosition = TextPosition(1);
                         if (rightTextPosition != 1)
                         {
-                            EditorGUIUtility.keyboardControl = EditorGUIUtility.hotControl = 0; //Unselect Fields
+                            EditorGUIUtility.keyboardControl = EditorGUIUtility.hotControl = 0; // Unselect Fields
 
                             foreach (DamageNumber dn in DNPEditorInternal.damageNumbers)
                             {
@@ -704,7 +704,7 @@ namespace DamageNumbersPro
                         int topTextPosition = TextPosition(2);
                         if (topTextPosition != 2)
                         {
-                            EditorGUIUtility.keyboardControl = EditorGUIUtility.hotControl = 0; //Unselect Fields
+                            EditorGUIUtility.keyboardControl = EditorGUIUtility.hotControl = 0; // Unselect Fields
 
                             foreach (DamageNumber dn in DNPEditorInternal.damageNumbers)
                             {
@@ -749,7 +749,7 @@ namespace DamageNumbersPro
                         int bottomTextPosition = TextPosition(3);
                         if (bottomTextPosition != 3)
                         {
-                            EditorGUIUtility.keyboardControl = EditorGUIUtility.hotControl = 0; //Unselect Fields
+                            EditorGUIUtility.keyboardControl = EditorGUIUtility.hotControl = 0; // Unselect Fields
 
                             foreach (DamageNumber dn in DNPEditorInternal.damageNumbers)
                             {
@@ -802,14 +802,14 @@ namespace DamageNumbersPro
             bool showHints = DNPEditorInternal.HintButton(featureTitle);
             EditorGUILayout.EndHorizontal();
 
-            //Hints:
+            // Hints
             if(showHints)
             {
                 DNPEditorInternal.Lines();
                 GUI.color = new Color(1, 1, 1, 0.7f);
                 switch(featureTitle)
                 {
-                    //Main:
+                    // Main
                     case ("3D Game"):
                         DNPEditorInternal.Label("<b>Function:</b>");
                         DNPEditorInternal.Label("- Handles <b>facing</b> the camera.");
@@ -820,7 +820,7 @@ namespace DamageNumbersPro
                         DNPEditorInternal.Label("- Enable this feature in <b>3D</b> projects.");
                         break;
 
-                    //Text Content:
+                    // Text Content
                     case ("Number"):
                         DNPEditorInternal.Label("<b>Function:</b>");
                         DNPEditorInternal.Label("- Displays a <b>number</b>.");
@@ -875,7 +875,7 @@ namespace DamageNumbersPro
                         DNPEditorInternal.Label("- <b>Larger</b> and <b>smaller</b> numbers can have different <b>tints</b>.");
                         break;
 
-                    //Movement:
+                    // Movement
                     case ("Lerp"):
                         DNPEditorInternal.Label("<b>Function:</b>");
                         DNPEditorInternal.Label("- Moves towards a random <b>offset</b>.");
@@ -912,7 +912,7 @@ namespace DamageNumbersPro
                         DNPEditorInternal.Label("- Drag can be used to <b>fade out</b> the following.");
                         break;
 
-                    //Fade In:
+                    // Fade In
                     case ("Offset In"):
                         DNPEditorInternal.Label("<b>Function:</b>");
                         DNPEditorInternal.Label("- Moves 2 meshs <b>together</b> from a <b>offset</b>.");
@@ -942,7 +942,7 @@ namespace DamageNumbersPro
                         DNPEditorInternal.Label("- Used for <b>vibration</b> or <b>motion</b> when fading in.");
                         break;
 
-                    //Fade Out:
+                    // Fade Out
                     case ("Offset Out"):
                         DNPEditorInternal.Label("<b>Function:</b>");
                         DNPEditorInternal.Label("- Moves 2 meshs <b>apart</b> to a <b>offset</b>.");
@@ -972,7 +972,7 @@ namespace DamageNumbersPro
                         DNPEditorInternal.Label("- Used for <b>vibration</b> or <b>motion</b> when fading out.");
                         break;
 
-                    //Rotation & Scale:
+                    // Rotation & Scale
                     case ("Start Rotation"):
                         DNPEditorInternal.Label("<b>Function:</b>");
                         DNPEditorInternal.Label("- Spawns at a random <b>rotation</b>.");
@@ -1007,7 +1007,7 @@ namespace DamageNumbersPro
                         DNPEditorInternal.Label("- Scale is based on the camera's orthographic size.");
                         break;
 
-                    //Spam Control:
+                    // Spam Control
                     case ("Combination"):
                         DNPEditorInternal.Label("<b>Function:</b>");
                         DNPEditorInternal.Label("- <b>Combines</b> with other damage numbers within range.");
@@ -1042,7 +1042,7 @@ namespace DamageNumbersPro
                         DNPEditorInternal.Label("- Use this on <b>closely spawned</b> damage numbers only.");
                         break;
 
-                    //Performance:
+                    // Performance
                     case ("Pooling"):
                         DNPEditorInternal.Label("<b>Function:</b>");
                         DNPEditorInternal.Label("- Improves <b>spawn performance</b> by recycling damage numbers.");
@@ -1057,14 +1057,14 @@ namespace DamageNumbersPro
                 GUI.color = Color.white;
             }
 
-            //Properties:
+            // Properties
             if(showProperties)
             {
                 DNPEditorInternal.Lines();
 
                 switch (featureTitle)
                 {
-                    //Main:
+                    // Main
                     case ("3D Game"):
                         SerializedProperty faceCameraView = serializedObject.FindProperty("faceCameraView");
                         EditorGUILayout.PropertyField(faceCameraView);
@@ -1083,7 +1083,7 @@ namespace DamageNumbersPro
 
                         DNPEditorInternal.Lines();
 
-                        //Check Materials:
+                        // Check Materials
                         bool hasOverlayMaterials = false;
                         bool hasBadMaterials = false;
                         foreach (DamageNumber dn in DNPEditorInternal.damageNumbers)
@@ -1263,7 +1263,7 @@ namespace DamageNumbersPro
 
                         break;
 
-                    //Text Content:
+                    // Text Content
                     case ("Number"):
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("number"));
                         EditorGUILayout.BeginHorizontal();
@@ -1310,7 +1310,7 @@ namespace DamageNumbersPro
                         EditorGUILayout.EndHorizontal();
                         break;
 
-                    //Movement:
+                    // Movement
                     case ("Lerp"):
                         EditorGUILayout.BeginHorizontal();
                         EditorGUILayout.LabelField("", GUILayout.Width(9));
@@ -1337,7 +1337,7 @@ namespace DamageNumbersPro
                         EditorGUILayout.EndHorizontal();
                         break;
 
-                    //Fade In:
+                    // Fade In
                     case ("Offset In"):
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("offsetFadeIn"), new GUIContent("Offset"));
                         break;
@@ -1353,7 +1353,7 @@ namespace DamageNumbersPro
                         break;
 
 
-                    //Fade Out:
+                    // Fade Out
                     case ("Offset Out"):
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("offsetFadeOut"), new GUIContent("Offset"));
                         break;
@@ -1368,7 +1368,7 @@ namespace DamageNumbersPro
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("shakeFrequencyFadeOut"), new GUIContent("Shake Frequency"));
                         break;
 
-                    //Rotation & Scale:
+                    // Rotation & Scale
                     case ("Start Rotation"):
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("minRotation"));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("maxRotation"));
@@ -1434,7 +1434,7 @@ namespace DamageNumbersPro
                             GUI.color = Color.white;
                         }
                         break;
-                    //Spam Control:
+                    // Spam Control
                     case ("Combination"):
                         EditorGUILayout.BeginHorizontal();
                         EditorGUILayout.LabelField("  ", GUILayout.Width(9));
@@ -1460,7 +1460,7 @@ namespace DamageNumbersPro
                         EditorGUILayout.EndHorizontal();
                         break;
 
-                    //Performance:
+                    // Performance
                     case ("Pooling"):
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("poolSize"));
                         EditorGUILayout.PropertyField(serializedObject.FindProperty("disableOnSceneLoad"));
@@ -1468,7 +1468,7 @@ namespace DamageNumbersPro
                 }
             }
 
-            //Close Box:
+            // Close Box
             DNPEditorInternal.CloseBox(showProperties);
         }
 
@@ -1489,7 +1489,7 @@ namespace DamageNumbersPro
 
                     if (c == '\\')
                     {
-                        //Check if there is a unicode sequence.
+                        // Check if there is a unicode sequence
                         unicodeCheck = true;
                         unicodeIndex = i;
                     }
@@ -1520,7 +1520,7 @@ namespace DamageNumbersPro
                 {
                     if(GUILayout.Button("Unicode", GUILayout.Width(60)))
                     {
-                        //Get hex code.
+                        // Get hex code
                         string unicodeHex = "";
                         for (int i = unicodeIndex + 2; i < unicodeIndex + 6; i++)
                         {
@@ -1528,10 +1528,10 @@ namespace DamageNumbersPro
                         }
                         int hexCode = int.Parse(unicodeHex, System.Globalization.NumberStyles.HexNumber);
 
-                        //Get unicode.
+                        // Get unicode
                         string unicode = char.ConvertFromUtf32(hexCode);
 
-                        //Combine.
+                        // Combine
                         string newString = "";
                         for(int i = 0; i < unicodeIndex; i++)
                         {
@@ -1543,7 +1543,7 @@ namespace DamageNumbersPro
                             newString += chars[i];
                         }
 
-                        //Assign.
+                        // Assign
                         textField.stringValue = newString;
                     }
                 }
@@ -1585,14 +1585,14 @@ namespace DamageNumbersPro
 
         bool FeatureButton(SerializedProperty property, string featureTitle)
         {
-            //Get name for toggle button.
+            // Get name for toggle button
             string buttonName = property.hasMultipleDifferentValues ? "<b>− − −</b>" : (property.boolValue ? "<b> " + featureTitle + "</b>" : featureTitle);
 
             bool toggled = GUILayout.Button(buttonName, DNPEditorInternal.buttonStyle, GUILayout.Width(140));
 
             if (toggled)
             {
-                //Record changes.
+                // Record changes
                 List<Object> objectsList = new List<Object>();
                 foreach(Object targetObject in targets)
                 {
@@ -1619,10 +1619,10 @@ namespace DamageNumbersPro
                 }
                 Undo.RecordObjects(objectsArray, "Toggled " + featureTitle);
 
-                //Toggle feature.
+                // Toggle feature
                 property.boolValue = !property.boolValue;
 
-                //Avoid Conflicts:
+                // Avoid Conflicts
                 if(property.boolValue)
                 {
                     switch (property.name)
@@ -1659,7 +1659,7 @@ namespace DamageNumbersPro
                 GUI.enabled = false;
             }
 
-            //Font:
+            // Font
             bool mixedFontAssets = false;
             TMP_FontAsset fontAsset = null;
 
@@ -1715,7 +1715,7 @@ namespace DamageNumbersPro
             }
             EditorGUI.showMixedValue = false;
 
-            //Color:
+            // Color
             bool mixedColor = false;
             Color vertexColor = Color.white;
             bool firstColor = true;
@@ -1756,7 +1756,7 @@ namespace DamageNumbersPro
 
             GUI.enabled = true;
 
-            //Info:
+            // Info
             DNPEditorInternal.Lines();
             GUI.color = new Color(1, 1, 1, 0.7f);
             if (editingPrefabPreview)
@@ -1821,7 +1821,7 @@ namespace DamageNumbersPro
             ResetButton("Permanent");
             EditorGUILayout.EndHorizontal();
 
-            //Information:
+            // Information
 
             DNPEditorInternal.Lines();
             GUI.color = new Color(1, 1, 1, 0.7f);
@@ -1857,7 +1857,7 @@ namespace DamageNumbersPro
         {
             EditorGUILayout.Space(2);
 
-            //Check if Spam Group is required.
+            // Check if Spam Group is required
             bool requiresSpamGroup = false;
             bool hasSpamGroup = false;
             SerializedProperty serializedProperty = serializedObject.FindProperty("spamGroup");
@@ -1926,7 +1926,7 @@ namespace DamageNumbersPro
         }
         int TextPosition(int current)
         {
-            //Change Position:
+            // Change Position
             EditorGUILayout.BeginHorizontal();
 
 
@@ -1946,7 +1946,7 @@ namespace DamageNumbersPro
         {
             EditorGUILayout.Space(4);
 
-            //Delays:
+            // Delays
             DNPEditorInternal.StartBox();
 
             EditorGUILayout.BeginHorizontal();
@@ -2025,14 +2025,14 @@ namespace DamageNumbersPro
         }
         void DisplayDelay(string propertyName, string displayName, string displayTooltip)
         {
-            //Property:
+            // Property
             SerializedProperty property = serializedObject.FindProperty(propertyName);
 
-            //Delay:
+            // Delay
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.PropertyField(property, new GUIContent(displayName, displayTooltip));
 
-            //Delay Overlay:
+            // Delay Overlay
             string overlayContent;
             if (property.hasMultipleDifferentValues)
             {
@@ -2101,7 +2101,7 @@ namespace DamageNumbersPro
             }
             EditorGUILayout.EndHorizontal();
 
-            //FPS Overlay:
+            // FPS Overlay
             GUI.color = new Color(1, 1, 1, 0.7f);
             if(property.hasMultipleDifferentValues)
             {
@@ -2145,10 +2145,10 @@ namespace DamageNumbersPro
 
             foreach (DamageNumber dn in DNPEditorInternal.damageNumbers)
             {
-                //Reset Feature:
+                // Reset Feature
                 switch (category)
                 {
-                    //Main:
+                    // Main
                     case ("Lifetime"):
                         dn.lifetime = 2f;
                         break;
@@ -2166,7 +2166,7 @@ namespace DamageNumbersPro
                         dn.cameraOverride = null;
                         break;
 
-                    //Text Content:
+                    // Text Content
                     case ("Number"):
                         dn.number = 1;
                         dn.numberSettings = new TextSettings(0);
@@ -2192,7 +2192,7 @@ namespace DamageNumbersPro
                         dn.colorByNumberSettings = new ColorByNumberSettings(0f);
                         break;
 
-                    //Movement:
+                    // Movement
                     case ("Lerp"):
                         dn.lerpSettings = new LerpSettings(0);
                         break;
@@ -2207,7 +2207,7 @@ namespace DamageNumbersPro
                         dn.followSettings = new FollowSettings(0);
                         break;
 
-                    //Fade In:
+                    // Fade In
                     case ("Fade In Main"):
                         dn.durationFadeIn = 0.2f;
                         break;
@@ -2225,7 +2225,7 @@ namespace DamageNumbersPro
                         dn.crossScaleFadeIn = new Vector2(1f, 1.5f);
                         break;
 
-                    //Fade Out:
+                    // Fade Out
                     case ("Fade Out Main"):
                         dn.durationFadeOut = 0.2f;
                         break;
@@ -2244,7 +2244,7 @@ namespace DamageNumbersPro
                         dn.crossScaleFadeOut = new Vector2(1f, 1.5f);
                         break;
 
-                    //Rotation & Scale:
+                    // Rotation & Scale
                     case ("Start Rotation"):
                         dn.minRotation = -4;
                         dn.maxRotation = 4;
@@ -2266,7 +2266,7 @@ namespace DamageNumbersPro
                         dn.orthographicCamera = null;
                         break;
 
-                    //Spam Control:
+                    // Spam Control
                     case ("Spam Control Main"):
                         dn.spamGroup = "";
                         break;
@@ -2283,7 +2283,7 @@ namespace DamageNumbersPro
                         dn.pushSettings = new PushSettings(0);
                         break;
 
-                    //Performance:
+                    // Performance
                     case ("Pooling"):
                         dn.poolSize = 50;
                         break;
