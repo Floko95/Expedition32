@@ -15,12 +15,18 @@ MonoBehaviour:
   _title: Revive Tint
   _desc: Revives one Dead ally with 30% HP.
   icon: {fileID: 0}
-  targetMode: 6
+  targetMode: 8
+  dodgeMode: 0
   costAP: 0
-  _effects: []
+  _effects:
+  - rid: 2001685280676905756
   effectTriggerEvent: 10
   timeline: {fileID: 0}
   usedItem: {fileID: 11400000, guid: dd125640bdff02e43844d501b086cd23, type: 2}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2001685280676905756
+      type: {class: ReviveEffect, ns: , asm: Assembly-CSharp}
+      data:
+        maxHealthHealRatio: 0.3

@@ -86,6 +86,14 @@ public class TargetManager : MonoBehaviour {
             case AbilityTargetMode.Ally:
                 CycleTargets(_battleManager.Battle.AliveAllies, true);
                 break;
+            case AbilityTargetMode.CharacterSelf:
+                AddTarget(_battleManager.TurnQueue.CurrentTurn);
+                break;
+            case AbilityTargetMode.DeadAllies:
+                CycleTargets(_battleManager.Battle.DeadAllies, true);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 

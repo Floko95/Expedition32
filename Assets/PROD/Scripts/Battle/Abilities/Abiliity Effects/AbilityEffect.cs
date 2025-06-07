@@ -48,6 +48,16 @@ class GainAPEffect : AbilityEffect {
 }
 
 [Serializable]
+class GiveAPToEffect : AbilityEffect {
+    
+    [SerializeField] private int apRegained = 1;
+    
+    public override void Apply(Unit caster, Unit target) {
+        target.APSystem.GiveAP(apRegained);
+    }
+}
+
+[Serializable]
 class ApplyStatusEffect : AbilityEffect {
     
     [SerializeField] private StatusData appliedStatus;

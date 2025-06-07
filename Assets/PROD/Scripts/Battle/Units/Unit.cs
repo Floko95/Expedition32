@@ -9,6 +9,8 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     public static int MAX_AP = 9;
         
     [SerializeField] public Canvas WorldUI;
+    [SerializeField] private Canvas WorldHUD;
+    
     [SerializeField] public EnhancedTimelinePlayer playableDirector;
     [SerializeField] public Animator animator;
     [SerializeField] private Transform vCamTarget;
@@ -38,8 +40,7 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     private StatSystem _statSystem;
     
     protected virtual void Awake() {
-        if(WorldUI)
-            WorldUI.enabled = false;
+        OnUntargeted();
         
         if (unitData != null) {
             Init(unitData);
@@ -84,12 +85,12 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     }
     
     public void OnTargeted() {
-        if(WorldUI)
-            WorldUI.enabled = true;
+        if(WorldHUD)
+            WorldHUD.enabled = true;
     }
 
     public void OnUntargeted() {
-        if(WorldUI)
-            WorldUI.enabled = false;
+        if(WorldHUD)
+            WorldHUD.enabled = false;
     }
 }

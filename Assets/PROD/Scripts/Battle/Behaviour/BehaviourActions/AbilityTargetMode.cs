@@ -8,7 +8,8 @@ public enum AbilityTargetMode
     CharacterSelf = 4,
     Ally = 6,
     AllAllies = 7,
-
+    DeadAllies = 8,
+    
     SelectTarget = 30,
     AllEnemies = 31,
 }

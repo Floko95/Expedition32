@@ -13,14 +13,20 @@ MonoBehaviour:
   m_Name: UseEnergyTint
   m_EditorClassIdentifier: 
   _title: Energy Tint
-  _desc: Gives 2 AP to an ally.
+  _desc: Gives 5 AP to an ally.
   icon: {fileID: 0}
   targetMode: 6
+  dodgeMode: 0
   costAP: 0
-  _effects: []
+  _effects:
+  - rid: 2001685280676905778
   effectTriggerEvent: 10
   timeline: {fileID: 0}
   usedItem: {fileID: 11400000, guid: 610c5a80bba7cef4c9551253b21c7b7f, type: 2}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2001685280676905778
+      type: {class: GiveAPToEffect, ns: , asm: Assembly-CSharp}
+      data:
+        apRegained: 5
