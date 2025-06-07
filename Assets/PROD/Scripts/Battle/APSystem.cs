@@ -6,9 +6,10 @@ using UnityEngine;
 public class APSystem 
 {
     public event Action OnAPChanged;
-    public event Action OnAPSpent;
-    public event Action OnAPGained;
+    public event Action<int> OnAPSpent;
+    public event Action<int> OnAPGained;
     public event Action OnAPDepleted;
+    
     
     public int MaxAP {
         get => _maxAP;
@@ -39,7 +40,7 @@ public class APSystem
         
         _AP = Mathf.Max(0, _AP - amount);
         
-        OnAPSpent?.Invoke();
+        OnAPSpent?.Invoke(amount);
         OnAPChanged?.Invoke();
         
         if(_AP == 0)
@@ -50,7 +51,7 @@ public class APSystem
     public void GiveAP(int amount) {
         _AP = Mathf.Min(_AP + amount, _maxAP);
         
-        OnAPGained?.Invoke();
+        OnAPGained?.Invoke(amount);
         OnAPChanged?.Invoke();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using BitDuc.EnhancedTimeline.Timeline;
 using OSLib.StatSystem;
@@ -11,7 +12,7 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     [SerializeField] public EnhancedTimelinePlayer playableDirector;
     [SerializeField] public Animator animator;
     [SerializeField] private Transform vCamTarget;
-    
+    [SerializeField] public UnitData unitData;
     Transform IHaveBehaviour.transform => vCamTarget;
     
     public HealthSystem HealthSystem { get; private set; }
@@ -30,8 +31,8 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     
     public bool IsAlive => HealthSystem.IsAlive;
     public bool isEnemy => unitData && unitData.isEnemy;
-    
-    public UnitData unitData;
+
+    public static Action<Unit, int> OnAnyUnitRegainedAP;
     
     public List<AbilityData> Abilities { get; private set; } = new List<AbilityData>();
     private StatSystem _statSystem;
@@ -48,11 +49,13 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     protected virtual void Start() {
         HealthSystem.OnDamaged += OnDamaged;
         HealthSystem.OnDead += OnDeath;
+        APSystem.OnAPGained += OnAPGained;
     }
 
     protected virtual void OnDestroy() {
         HealthSystem.OnDamaged -= OnDamaged;
         HealthSystem.OnDead -= OnDeath;
+        APSystem.OnAPGained -= OnAPGained;
     }
     
     public virtual void Init(UnitData unitData) {
@@ -74,6 +77,10 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     
     private void OnDeath() {
         animator.SetBool("IsDead", true);
+    }
+    
+    private void OnAPGained(int amount) {
+        OnAnyUnitRegainedAP.Invoke(this, amount);
     }
     
     public void OnTargeted() {
