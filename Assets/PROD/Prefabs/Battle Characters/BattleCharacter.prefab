@@ -459,6 +459,15 @@ MonoBehaviour:
   uiItems: {fileID: 5149509620418697767}
   shaderBloodController: {fileID: 8586130008139687142}
   _dodgeSystem: {fileID: 1867633594540656502}
+  onParryEffect:
+    rid: 2001685280962380606
+  references:
+    version: 2
+    RefIds:
+    - rid: 2001685280962380606
+      type: {class: GainAPEffect, ns: , asm: Assembly-CSharp}
+      data:
+        apRegained: 1
 --- !u!114 &5431369931910709190
 MonoBehaviour:
   m_ObjectHideFlags: 0

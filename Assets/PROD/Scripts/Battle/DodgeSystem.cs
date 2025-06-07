@@ -93,6 +93,9 @@ public class DodgeSystem : MonoBehaviour
     [ShowInInspector] public bool IsParrying => _stateMachine is {currentState: ParryState};
     [ShowInInspector] public bool IsJumping => _stateMachine is {currentState: JumpDodgeState};
     public DodgeStateMachine StateMachine => _stateMachine;
+
+    public event Action OnParry;
+    public event Action OnDodged;
     
     private int _parryHash;
     private int _dodgeHash;
@@ -101,6 +104,7 @@ public class DodgeSystem : MonoBehaviour
     private DodgeStateMachine _stateMachine;
     private IdleDodgeState _idleDodgeState;
     
+    //TODO add state cooldowns
     private void Awake() {
         _parryHash = Animator.StringToHash("Parry");
         _dodgeHash = Animator.StringToHash("Dodge");
@@ -144,12 +148,14 @@ public class DodgeSystem : MonoBehaviour
             _ => throw new ArgumentOutOfRangeException(nameof(dodgeType), dodgeType, null)
         };
         
-        //feedbacks
+        //feedbacks & events
         if (doesNullifyDamage) {
             if (IsParrying) {
                 onParryFeel?.PlayFeedbacks();
+                OnParry?.Invoke();
             } else if (IsDodging) {
                 ondodgedFeel?.PlayFeedbacks();
+                OnParry?.Invoke();
             }
         }
         
