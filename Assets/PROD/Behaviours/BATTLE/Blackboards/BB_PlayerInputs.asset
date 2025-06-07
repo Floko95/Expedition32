@@ -22,16 +22,49 @@ MonoBehaviour:
   - rid: 7658842430628954244
   - rid: 7658842430628954245
   - rid: 7658842430628954246
+  - rid: 2001685282026947132
+  - rid: 2001685282050540407
+  - rid: 2001685282050540406
   - rid: 7658842430628954247
   - rid: 7658842430628954248
   - rid: 7658842430628954249
-  m_VersionTimestamp: 638841442892583016
+  m_VersionTimestamp: 638849192547286625
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: 8617777419613386595}
   references:
     version: 2
     RefIds:
+    - rid: 2001685282026947132
+      type: {class: 'TypedVariableModel`1[[UnityEngine.InputSystem.InputActionReference, Unity.InputSystem]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 14434557474921914755
+          m_Value1: 10670822660788618092
+        Name: IN_Ability4
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 5318664051882655506, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    - rid: 2001685282050540406
+      type: {class: 'TypedVariableModel`1[[UnityEngine.InputSystem.InputActionReference, Unity.InputSystem]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 9985633324248044493
+          m_Value1: 10618762511080761419
+        Name: IN_Ability6
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 8427741366582352945, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    - rid: 2001685282050540407
+      type: {class: 'TypedVariableModel`1[[UnityEngine.InputSystem.InputActionReference, Unity.InputSystem]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 5243735766464429951
+          m_Value1: 15341784794035657443
+        Name: IN_Ability5
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: -7732266542507970173, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
     - rid: 7658842430628954240
       type: {class: 'TypedVariableModel`1[[UnityEngine.InputSystem.InputActionReference, Unity.InputSystem]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
@@ -134,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: BB_PlayerInputs
   m_EditorClassIdentifier: 
-  VersionTimestamp: 638841442892583016
+  VersionTimestamp: 638849192547286625
   AssetID:
     m_Value0: 12978375512096957452
     m_Value1: 13518200133434499787
@@ -149,10 +182,37 @@ MonoBehaviour:
     - rid: 7658842430628954255
     - rid: 7658842430628954256
     - rid: 7658842430628954257
+    - rid: 2001685282026947133
+    - rid: 2001685282063909076
+    - rid: 2001685282063909077
   m_SharedBlackboardVariableGuids: []
   references:
     version: 2
     RefIds:
+    - rid: 2001685282026947133
+      type: {class: 'BlackboardVariable`1[[UnityEngine.InputSystem.InputActionReference, Unity.InputSystem]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 14434557474921914755
+          m_Value1: 10670822660788618092
+        Name: IN_Ability4
+        m_Value: {fileID: 5318664051882655506, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    - rid: 2001685282063909076
+      type: {class: 'BlackboardVariable`1[[UnityEngine.InputSystem.InputActionReference, Unity.InputSystem]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 5243735766464429951
+          m_Value1: 15341784794035657443
+        Name: IN_Ability5
+        m_Value: {fileID: -7732266542507970173, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
+    - rid: 2001685282063909077
+      type: {class: 'BlackboardVariable`1[[UnityEngine.InputSystem.InputActionReference, Unity.InputSystem]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 9985633324248044493
+          m_Value1: 10618762511080761419
+        Name: IN_Ability6
+        m_Value: {fileID: 8427741366582352945, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
     - rid: 7658842430628954241
       type: {class: 'BlackboardVariable`1[[UnityEngine.InputSystem.InputActionReference, Unity.InputSystem]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:

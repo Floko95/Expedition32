@@ -32,7 +32,7 @@ public class APSystem
     }
 
     public bool CanSpendAP(int amount) {
-        return _AP > amount;
+        return _AP >= amount;
     }
 
     public bool TrySpendAP(int amount) {

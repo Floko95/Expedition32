@@ -87,7 +87,9 @@ public class TargetManager : MonoBehaviour {
                 CycleTargets(_battleManager.Battle.AliveAllies, true);
                 break;
             case AbilityTargetMode.CharacterSelf:
+                ClearAllTargets();
                 AddTarget(_battleManager.TurnQueue.CurrentTurn);
+                onTargetChanged?.Invoke(_battleManager.TurnQueue.CurrentTurn);
                 break;
             case AbilityTargetMode.DeadAllies:
                 CycleTargets(_battleManager.Battle.DeadAllies, true);
