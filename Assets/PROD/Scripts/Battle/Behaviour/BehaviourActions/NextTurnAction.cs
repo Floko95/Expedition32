@@ -18,10 +18,11 @@ public partial class NextTurnAction : Action
             BattleState.Value = global::BattleState.End;
         }
         else {
-            BattleManager.Value.TurnQueue.Next();
             
-            Unit.Value = BattleManager.Value.TurnQueue.CurrentTurn;
-            Unit.Value.Initiative = 0;
+            if(Unit.Value)
+                Unit.Value.Initiative = 0;
+            
+            Unit.Value = BattleManager.Value.TurnQueue.Next();
             
             BattleState.Value = Unit.Value is AllyUnit ? global::BattleState.PlayerTurn : global::BattleState.EnemyTurn;
             

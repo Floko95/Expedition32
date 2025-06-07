@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 033d5d07a5b8e2540b638c1b2aa8120a, type: 3}
   m_Name: Recovery
   m_EditorClassIdentifier: 
-  title: Quick Strike
-  desc: Heals 50% of youre Health.
+  _title: Recovery
+  _desc: Heals 50% of youre Health.
   icon: {fileID: 0}
   targetMode: 4
+  dodgeMode: 0
   costAP: 4
-  effects:
+  _effects:
   - rid: 7658842404068524153
+  effectTriggerEvent: 10
   timeline: {fileID: 0}
   references:
     version: 2

@@ -16,6 +16,7 @@ public class BattleManager : MonoBehaviour
     public TurnQueue TurnQueue { get; set; }
     
     public Battle Battle { get; set; }
+    
     public BattleData BattleData { get; set; }
     public bool isBattleInititated { get; set; }
     
