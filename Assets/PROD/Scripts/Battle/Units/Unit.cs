@@ -10,6 +10,9 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     [SerializeField] public Canvas WorldUI;
     [SerializeField] public EnhancedTimelinePlayer playableDirector;
     [SerializeField] public Animator animator;
+    [SerializeField] private Transform vCamTarget;
+    
+    Transform IHaveBehaviour.transform => vCamTarget;
     
     public HealthSystem HealthSystem { get; private set; }
     public APSystem APSystem { get; private set; }

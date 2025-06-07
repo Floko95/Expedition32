@@ -1,7 +1,14 @@
 fileFormatVersion: 2
 guid: 3613ed8b0e0cdfc469e8f4cf54e996be
+AssetOrigin:
+  serializedVersion: 1
+  productId: 29118
+  packageName: Gargoyle
+  packageVersion: 1.2.4
+  assetPath: Assets/_DLNK/Characters/Gargoyle/Source/Motion/Gargoyle@jump_rightHanded.FBX
+  uploadId: 552144
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 22200
   internalIDToNameTable:
   - first:
       1: 100000
@@ -623,9 +630,8 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
@@ -648,7 +654,7 @@ ModelImporter:
       name: jump_rightHanded
       takeName: Take 001
       internalID: 0
-      firstFrame: 0
+      firstFrame: 18
       lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
@@ -657,11 +663,11 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 1
+      loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -917,10 +923,12 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -932,6 +940,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 1
     secondaryUVAngleDistortion: 8
@@ -942,6 +951,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 0
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -1687,8 +1697,7 @@ ModelImporter:
     - name: GargoyleRibcageBone01
       parentName: GargoyleRibcage
       position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0.0000000098540145, y: 0.000000028572924, z: 0.000000007450581,
-        w: 1}
+      rotation: {x: 0.0000000098540145, y: 0.000000028572924, z: 0.000000007450581, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: GargoyleRWingCollarbone
       parentName: GargoyleRibcage
@@ -1832,21 +1841,15 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 0
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 48c30b9485eb4c7419b34a39c657402b,
-    type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 48c30b9485eb4c7419b34a39c657402b, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 29118
-  packageName: Gargoyle
-  packageVersion: 1.2.4
-  assetPath: Assets/_DLNK/Characters/Gargoyle/Source/Motion/Gargoyle@jump_rightHanded.FBX
-  uploadId: 552144
