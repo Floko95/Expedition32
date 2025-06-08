@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class GrapplingHook : Interactable {
+public class GrapplingHook : AnInteractable {
 
     [SerializeField] private Transform destinationPoint;
     
     private Character _character;
-    
-    public override void Interact() {
-        
-    }
+
+    protected override void OnBecameInteractable() { }
+    protected override void OnBecameUnInteractable() { }
+    public override void Interact() { }
 }

@@ -10,6 +10,7 @@ public partial class SetTargetModeAction : Action
 {
     [SerializeReference] public BlackboardVariable<TargetManager> TargetManager;
     [SerializeReference] public BlackboardVariable<AbilityData> Ability;
+    
     protected override Status OnStart() {
         
         TargetManager.Value.TargetMode = Ability.Value.targetMode;

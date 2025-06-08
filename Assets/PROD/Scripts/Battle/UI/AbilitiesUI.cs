@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilitiesUI : MonoBehaviour, IInitializable<UnitData>
 {
     [SerializeField] private List<AbilityUI> abilityUIs;
+    [SerializeField] private PlayerTurnStateEventChannel turnStateEventChannel;
     
     bool IInitializable<UnitData>.Initialized { get; set; }
 
@@ -25,16 +27,25 @@ public class AbilitiesUI : MonoBehaviour, IInitializable<UnitData>
 
     private void OnDestroy() {
         _battleManager.onBattleInitialized -= OnBattleInitialized;
+        turnStateEventChannel.Event -= OnTurnStateChanged;
     }
 
     private void OnBattleInitialized() {
         Init(_myUnit.unitData);
+        turnStateEventChannel.Event += OnTurnStateChanged;
     }
 
+    private void OnTurnStateChanged(TurnStateEnum newstate) {
+        if (newstate is not TurnStateEnum.Idle) return;
+        
+        foreach (var abilityUI in abilityUIs) {
+            abilityUI.IsInteractable = _myUnit.APSystem.CanSpendAP(abilityUI.Data.costAP);
+        }
+    }
+    
     public void Init(UnitData data) {
         
         for (int i = 0; i < abilityUIs.Count; i++) {
-            
             if (i < data.abilities.Count) {
                 abilityUIs[i].Init(data.abilities[i]);
                 abilityUIs[i].gameObject.SetActive(true);

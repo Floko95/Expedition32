@@ -29,6 +29,11 @@ public class TargetManager : MonoBehaviour {
         Toolbox.Set(this);
     }
 
+    public void Reset() {
+        ClearAllTargets();
+        SetTargetMode(AbilityTargetMode.SelectTarget);
+    }
+    
     private async void Start() {
         await Toolbox.WaitUntilReadyAsync();
         _battleManager = Toolbox.Get<BattleManager>();
