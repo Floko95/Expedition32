@@ -17,6 +17,7 @@ public class AbilitiesUI : MonoBehaviour, IInitializable<UnitData>
         _battleManager = Toolbox.Get<BattleManager>();
 
         _myUnit = GetComponentInParent<Unit>();
+        
         if (_battleManager.isBattleInititated) {
             OnBattleInitialized();
         }
@@ -25,24 +26,32 @@ public class AbilitiesUI : MonoBehaviour, IInitializable<UnitData>
         }
     }
 
-    private void OnDestroy() {
-        _battleManager.onBattleInitialized -= OnBattleInitialized;
-        turnStateEventChannel.Event -= OnTurnStateChanged;
-    }
-
     private void OnBattleInitialized() {
         Init(_myUnit.unitData);
         turnStateEventChannel.Event += OnTurnStateChanged;
+        _myUnit.APSystem.OnAPChanged += OnApChanged;
     }
+    
+    private void OnDestroy() {
+        _battleManager.onBattleInitialized -= OnBattleInitialized;
+        turnStateEventChannel.Event -= OnTurnStateChanged;
+        _myUnit.APSystem.OnAPChanged -= OnApChanged;
+    }
+
+    private void OnApChanged() => UpdateUI();
 
     private void OnTurnStateChanged(TurnStateEnum newstate) {
         if (newstate is not TurnStateEnum.Idle) return;
         
+        UpdateUI();
+    }
+
+    private void UpdateUI() {
         foreach (var abilityUI in abilityUIs) {
             abilityUI.IsInteractable = _myUnit.APSystem.CanSpendAP(abilityUI.Data.costAP);
         }
     }
-    
+     
     public void Init(UnitData data) {
         
         for (int i = 0; i < abilityUIs.Count; i++) {

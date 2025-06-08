@@ -63,7 +63,9 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
         _statSystem = new StatSystem(unitData.stats);
         HealthSystem = new HealthSystem(_statSystem.stats[StatType.Health].Value);
         APSystem = new APSystem(MAX_AP, unitData.energy);
+        
         StatusSystem = new StatusSystem();
+        StatusSystem.Init(this);
         
         Initiative = Mathf.RoundToInt(SPD);
         

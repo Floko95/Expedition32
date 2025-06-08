@@ -19,6 +19,6 @@ public class StatusUI : MonoBehaviour, IInitializable<StatusInstance>
     }
 
     public void UpdateUI() {
-        stackCountTmp.text =Value.StackCount.ToString();
+        stackCountTmp.text = Value.StackCount.ToString();
     }
 }
