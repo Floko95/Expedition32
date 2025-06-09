@@ -1,38 +1,35 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BitDuc.Demo;
 using R3;
 using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
-using UnityEngine.Serialization;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "CounterAction", story: "[Counterer] counters.", category: "Action", id: "031a50f6f20ab5de752a0cf82c69dd8a")]
-public partial class CounterAction : Action
-{
-    [SerializeReference] public BlackboardVariable<Unit> Attacker;
-    [SerializeReference] public BlackboardVariable<Unit> Counterer;
-    [SerializeReference] public BlackboardVariable<AbilityData> CounterAbility;
+[NodeDescription(name: "PlayerAbilityAction", story: "[Unit] Uses [AbilityData] on [Targets]", category: "Action",
+    id: "3bec253d7a76de6e6a983cf2ba3ab50a")]
+public partial class PlayerAbilityAction : Action {
     
+    [SerializeReference] public BlackboardVariable<Unit> Unit;
+    [SerializeReference] public BlackboardVariable<AbilityData> AbilityData;
+    [SerializeReference] public BlackboardVariable<List<GameObject>> Targets;
+
     private bool _hasCinematicEnded;
     private IDisposable _abilityExecution;
     
     protected override Status OnStart() {
-        BattleLogDebugUI.Log(CounterAbility.Value.desc);
-
-        _hasCinematicEnded = false;
+        if (Unit.Value.APSystem.CanSpendAP(AbilityData.Value.costAP) == false) return Status.Failure;
         
+        _hasCinematicEnded = false;
         var battleManager = Toolbox.Get<BattleManager>();
-        _abilityExecution = battleManager.ExecuteAbility(Counterer.Value, new List<Unit> {Attacker}, CounterAbility.Value).Subscribe(
+        _abilityExecution = battleManager.ExecuteAbility(Unit.Value, Targets.Value.Select(u => u.GetComponent<Unit>()).ToList(), AbilityData.Value).Subscribe(
             onNext: _ => { },
             onCompleted: _ => _hasCinematicEnded = true
         );
         
         return Status.Running;
-        
     }
 
     protected override Status OnUpdate() {

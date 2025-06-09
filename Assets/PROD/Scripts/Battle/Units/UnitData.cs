@@ -18,4 +18,5 @@ public class UnitData : SerializedScriptableObject
 
     [Space(50), SerializeField] public List<AbilityData> abilities;
     [SerializeField] public AbilityData attackAbility;
+    [SerializeField] public AbilityData counterAbility;
 }

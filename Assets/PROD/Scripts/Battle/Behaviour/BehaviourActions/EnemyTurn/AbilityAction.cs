@@ -2,31 +2,32 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BitDuc.Demo;
+using BitDuc.EnhancedTimeline.Timeline;
 using R3;
 using Unity.Behavior;
+using Unity.Cinemachine;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
-using UnityEngine.Serialization;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "CounterAction", story: "[Counterer] counters.", category: "Action", id: "031a50f6f20ab5de752a0cf82c69dd8a")]
-public partial class CounterAction : Action
-{
-    [SerializeReference] public BlackboardVariable<Unit> Attacker;
-    [SerializeReference] public BlackboardVariable<Unit> Counterer;
-    [SerializeReference] public BlackboardVariable<AbilityData> CounterAbility;
-    
+[NodeDescription(name: "Ability", story: "[Unit] uses [ability] on [Targets]", category: "Action",
+    id: "285316aaf1c489624db0457ded13ddb2")]
+public partial class AbilityAction : Action {
+    [SerializeReference] public BlackboardVariable<Unit> Unit;
+    [SerializeReference] public BlackboardVariable<AbilityData> Ability;
+    [SerializeReference] public BlackboardVariable<List<GameObject>> Targets;
+
     private bool _hasCinematicEnded;
     private IDisposable _abilityExecution;
     
     protected override Status OnStart() {
-        BattleLogDebugUI.Log(CounterAbility.Value.desc);
+        _hasCinematicEnded = false;
+        BattleLogDebugUI.Log(Ability.Value.desc);
 
         _hasCinematicEnded = false;
-        
         var battleManager = Toolbox.Get<BattleManager>();
-        _abilityExecution = battleManager.ExecuteAbility(Counterer.Value, new List<Unit> {Attacker}, CounterAbility.Value).Subscribe(
+        _abilityExecution = battleManager.ExecuteAbility(Unit.Value, Targets.Value.Select(u => u.GetComponent<Unit>()).ToList(), Ability.Value).Subscribe(
             onNext: _ => { },
             onCompleted: _ => _hasCinematicEnded = true
         );

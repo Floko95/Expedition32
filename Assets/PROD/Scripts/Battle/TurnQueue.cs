@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
@@ -28,6 +29,10 @@ public class TurnQueue {
     
     public Unit Next() {
         if (turnQueue.Count == 0) return null;
+
+        foreach (var unit in _units) {
+            unit.Initiative += Mathf.RoundToInt(unit.SPD);
+        }
 
         Sort();
         onTurnsUpdated?.Invoke();

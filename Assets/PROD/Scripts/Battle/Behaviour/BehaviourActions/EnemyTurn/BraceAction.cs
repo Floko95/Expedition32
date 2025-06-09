@@ -7,7 +7,7 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "BraceAction", story: "[TargetedUnits] brace themselves", category: "Action", id: "d7b37977c0cf9894e029c772121dbb69")]
+[NodeDescription(name: "BraceAction", story: "Set [TargetedUnits] DodgeSystem to [enable]", category: "Action", id: "d7b37977c0cf9894e029c772121dbb69")]
 public partial class BraceAction : Action
 {
     [SerializeReference] public BlackboardVariable<Unit> AttackingUnit;

@@ -155,7 +155,7 @@ public class DodgeSystem : MonoBehaviour
                 OnParry?.Invoke();
             } else if (IsDodging) {
                 ondodgedFeel?.PlayFeedbacks();
-                OnParry?.Invoke();
+                OnDodged?.Invoke();
             }
         }
         
