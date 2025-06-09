@@ -10,29 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 033d5d07a5b8e2540b638c1b2aa8120a, type: 3}
-  m_Name: Burning Spin
+  m_Name: Ice Spike
   m_EditorClassIdentifier: 
-  _title: Burning Spin
-  _desc: Deals a medium amount of fire damage. Applies 3 Burns.
+  _title: Ice Spike
+  _desc: Deals low amount of Ice Damage.
   icon: {fileID: 0}
   targetMode: 30
   dodgeMode: 0
-  costAP: 5
+  costAP: 4
   _effects:
-  - rid: 7658842404068524131
-  - rid: 7658842404068524150
+  - rid: 2001685323734057667
   effectTriggerEvent: 10
   timeline: {fileID: 11400000, guid: 60319fd2bf5ff924d9c9602639020152, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 7658842404068524131
+    - rid: 2001685323734057667
       type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
       data:
         attackRatio: 1
-        damageType: 1
-    - rid: 7658842404068524150
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        appliedStatus: {fileID: 11400000, guid: d09f99b447142f4419d999bfcfbd0a1f, type: 2}
-        stacksApplied: 3
+        damageType: 4

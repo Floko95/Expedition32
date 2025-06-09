@@ -111,8 +111,16 @@ MonoBehaviour:
   portrait: {fileID: 21300000, guid: edf4945f67314ad468fbc79446466af7, type: 3}
   prefab: {fileID: 8099804630666429305, guid: 8204d0775321d8a499911b9330a5d19a, type: 3}
   isEnemy: 1
+  elementInteractions:
+  - type: 1
+    reaction: 2
+  - type: 4
+    reaction: 1
+  - type: 3
+    reaction: 4
   energy: 0
   abilities:
   - {fileID: 11400000, guid: 4b1213d67fbc24d4a87d70b84919a14f, type: 2}
   - {fileID: 11400000, guid: acf049792c04a9e4d89f96f8892e7cc3, type: 2}
   attackAbility: {fileID: 0}
+  counterAbility: {fileID: 0}

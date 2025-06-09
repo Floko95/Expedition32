@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,7 +15,7 @@ public class TargetManager : MonoBehaviour {
     
     public Action<ITargetable> onTargetChanged;
     public List<ITargetable> CurrentlyTargeted { get; private set; } = new();
-    public int TargetCount => CurrentlyTargeted.Count;
+    [ShowInInspector] public int TargetCount => CurrentlyTargeted?.Count ?? 0;
     
     private BattleManager _battleManager;
     private InputAction _targetClockWiseInputaction;
@@ -86,10 +86,10 @@ public class TargetManager : MonoBehaviour {
                 foreach (var ally in _battleManager.Battle.AliveAllies) AddTarget(ally);
                 break;
             case AbilityTargetMode.SelectTarget:
-                CycleTargets(_battleManager.Battle.AliveEnemies, true);
+                CycleTargets(_battleManager.Battle.AliveEnemies,false, true);
                 break;
             case AbilityTargetMode.Ally:
-                CycleTargets(_battleManager.Battle.AliveAllies, true);
+                CycleTargets(_battleManager.Battle.AliveAllies, false, true);
                 break;
             case AbilityTargetMode.CharacterSelf:
                 ClearAllTargets();
@@ -97,7 +97,7 @@ public class TargetManager : MonoBehaviour {
                 onTargetChanged?.Invoke(_battleManager.TurnQueue.CurrentTurn);
                 break;
             case AbilityTargetMode.DeadAllies:
-                CycleTargets(_battleManager.Battle.DeadAllies, true);
+                CycleTargets(_battleManager.Battle.DeadAllies, false, true);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -106,7 +106,8 @@ public class TargetManager : MonoBehaviour {
 
     private void AddTarget(ITargetable target) {
         if (target == null) return;
-
+        if (CurrentlyTargeted.Contains(target)) return;
+        
         target.OnTargeted();
         CurrentlyTargeted.Add(target);
     }
@@ -117,14 +118,16 @@ public class TargetManager : MonoBehaviour {
         CurrentlyTargeted.Clear();
     }
     
-    private void CycleTargets(List<Unit> list, bool clockwise) {
+    private void CycleTargets(List<Unit> list, bool cycle, bool clockwise) {
         if (list.Count == 0) return;
         ClearAllTargets();
-        
-        if (clockwise) {
-            currentTargetIndex = (currentTargetIndex + 1) % list.Count;
-        } else {
-            currentTargetIndex = (currentTargetIndex - 1 + list.Count) % list.Count;
+
+        if (cycle) {
+            if (clockwise) {
+                currentTargetIndex = (currentTargetIndex + 1) % list.Count;
+            } else {
+                currentTargetIndex = (currentTargetIndex - 1 + list.Count) % list.Count;
+            }
         }
         
         AddTarget(list[currentTargetIndex]);
@@ -135,8 +138,8 @@ public class TargetManager : MonoBehaviour {
     //TODO horrible code
     public void HandleCycleInput(bool clockwise) {
         if (_targetModeMode == AbilityTargetMode.SelectTarget)
-            CycleTargets(_battleManager.Battle.AliveEnemies, clockwise);
+            CycleTargets(_battleManager.Battle.AliveEnemies, true, clockwise);
         else if (_targetModeMode == AbilityTargetMode.Ally)
-            CycleTargets(_battleManager.Battle.AliveAllies, clockwise);
+            CycleTargets(_battleManager.Battle.AliveAllies, true, clockwise);
     }
 }

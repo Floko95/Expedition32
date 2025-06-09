@@ -6,7 +6,7 @@ public static class BattleLogic {
     
     public const float CRIT_DMG_MULTIPLIER = 1.5f;
 
-    public static event Action<Unit, Unit, float, bool> DamagingEvent; //source, target, amount, IsCrit
+    public static event Action<Unit, Unit, float, bool, ElementType, ElementReaction> DamagingEvent; //source, target, amount, IsCrit, damageType, elementalReaction
     public static event Action<Unit, Unit, float> HealingEvent; //source, target, amount
     
     public static float HealPercent(Unit caster, Unit receiver, float maxHealthRatio) {
@@ -16,7 +16,7 @@ public static class BattleLogic {
         
         
         receiver.HealthSystem.Heal(amount);
-        HealingEvent.Invoke(caster, receiver, amount);
+        HealingEvent?.Invoke(caster, receiver, amount);
         
         return amount;
     }
@@ -40,19 +40,37 @@ public static class BattleLogic {
         return true;
     }
     
-    public static float Attack(Unit attacker, Unit defender, float attackRatio) {
+    public static float Attack(Unit attacker, Unit defender, ElementType damageType, float attackRatio) {
         if (!attacker.IsAlive || !defender.IsAlive) return 0;
         
         bool isCrit = Random.Range(0, 100) <= attacker.CRIT;
-        
         var dmgAmount = attacker.ATK * attackRatio - defender.DEF;
-        if(isCrit)
-            dmgAmount *= CRIT_DMG_MULTIPLIER;
-        
+        dmgAmount *= isCrit ? CRIT_DMG_MULTIPLIER : 1;
         dmgAmount = Mathf.Max(1, dmgAmount);
-        defender.HealthSystem.Damage(dmgAmount);
         
-        DamagingEvent.Invoke(attacker, defender, dmgAmount, isCrit);
+        
+        var reactionCouple = GetElementalReaction(defender, damageType);
+        //Debug.Log($"{defender.unitData.unitName} is {reactionCouple.reaction} to {damageType}");
+        
+        if (reactionCouple.reaction is ElementReaction.Absorb) {
+            defender.HealthSystem.Heal(dmgAmount);
+            return dmgAmount;
+        } 
+        dmgAmount *= reactionCouple.multiplier;
+        
+        defender.HealthSystem.Damage(dmgAmount);
+
+        DamagingEvent?.Invoke(attacker, defender, dmgAmount, isCrit, damageType, reactionCouple.reaction);
         return dmgAmount;
+    }
+    
+    public static (ElementReaction reaction, float multiplier) GetElementalReaction(Unit target, ElementType type) {
+        return (target.unitData.GetReaction(type), target.unitData.GetReaction(type) switch {
+            ElementReaction.Weak => 2f,
+            ElementReaction.Resistant => 0.5f,
+            ElementReaction.Immune => 0f,
+            ElementReaction.Absorb => -1f,
+            _ => 1f
+        });
     }
 }

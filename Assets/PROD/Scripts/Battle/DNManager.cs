@@ -29,8 +29,29 @@ public class DNManager : MonoBehaviour
         Unit.OnAnyUnitRegainedAP -= OnAnyUnitRegainedAP;
     }
 
-    private void OnDamagingEvent(Unit source, Unit target, float amount, bool isCrit) {
+    private void OnDamagingEvent(Unit source, Unit target, float amount, bool isCrit, ElementType damageType, ElementReaction reaction) {
         damageDNPrefab.Spawn(target.transform.position, amount);
         damageDNPrefab.numberSettings.customColor = isCrit;
+
+        damageDNPrefab.enableBottomText = true;
+        damageDNPrefab.enableRightText = true;
+        damageDNPrefab.rightText = "<sprite name=\"" + damageType + "\">";
+        
+        switch (reaction) {
+            case ElementReaction.Weak:
+                damageDNPrefab.bottomText = "Weak";
+                break;
+            case ElementReaction.Resistant:
+                damageDNPrefab.bottomText = "Resistant";
+                break;
+            case ElementReaction.Immune:
+                damageDNPrefab.bottomText = "Immune";
+                break;
+            case ElementReaction.Absorb:
+                damageDNPrefab.bottomText = "Absorbed!";
+                break;
+            default:
+                break;
+        }
     }
 }

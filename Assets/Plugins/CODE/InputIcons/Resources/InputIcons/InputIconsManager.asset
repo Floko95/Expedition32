@@ -513,68 +513,140 @@ MonoBehaviour:
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Ability1>
     bindingName: Battle/Ability1
-    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT1">
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT1"> <size=80%>or</size>
+      <sprite="Keyboard and Mouse_Grey" name="NUMPAD1">
     inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="DIGIT1">
-    humanReadableString: DIGIT1
+    humanReadableString: DIGIT1 <size=80%>or</size> NUMPAD1
     humanReadableString_singleInput: DIGIT1
     fontReferenceText: <style=font/Battle/Ability1>
-    fontCode: \uE901
+    fontCode: \uE901 <size=80%>or</size> \uE945
     fontCode_singleInput: \uE901
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Ability1/2>
+    bindingName: Battle/Ability1/2
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="NUMPAD1">
+    inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="NUMPAD1">
+    humanReadableString: NUMPAD1
+    humanReadableString_singleInput: NUMPAD1
+    fontReferenceText: <style=font/Battle/Ability1/2>
+    fontCode: \uE945
+    fontCode_singleInput: \uE945
   - isComposite: 0
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Ability2>
     bindingName: Battle/Ability2
-    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT2">
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT2"> <size=80%>or</size>
+      <sprite="Keyboard and Mouse_Grey" name="NUMPAD2">
     inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="DIGIT2">
-    humanReadableString: DIGIT2
+    humanReadableString: DIGIT2 <size=80%>or</size> NUMPAD2
     humanReadableString_singleInput: DIGIT2
     fontReferenceText: <style=font/Battle/Ability2>
-    fontCode: \uE902
+    fontCode: \uE902 <size=80%>or</size> \uE946
     fontCode_singleInput: \uE902
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Ability2/2>
+    bindingName: Battle/Ability2/2
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="NUMPAD2">
+    inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="NUMPAD2">
+    humanReadableString: NUMPAD2
+    humanReadableString_singleInput: NUMPAD2
+    fontReferenceText: <style=font/Battle/Ability2/2>
+    fontCode: \uE946
+    fontCode_singleInput: \uE946
   - isComposite: 0
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Ability3>
     bindingName: Battle/Ability3
-    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT3">
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT3"> <size=80%>or</size>
+      <sprite="Keyboard and Mouse_Grey" name="NUMPAD3">
     inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="DIGIT3">
-    humanReadableString: DIGIT3
+    humanReadableString: DIGIT3 <size=80%>or</size> NUMPAD3
     humanReadableString_singleInput: DIGIT3
     fontReferenceText: <style=font/Battle/Ability3>
-    fontCode: \uE903
+    fontCode: \uE903 <size=80%>or</size> \uE947
     fontCode_singleInput: \uE903
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Ability3/2>
+    bindingName: Battle/Ability3/2
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="NUMPAD3">
+    inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="NUMPAD3">
+    humanReadableString: NUMPAD3
+    humanReadableString_singleInput: NUMPAD3
+    fontReferenceText: <style=font/Battle/Ability3/2>
+    fontCode: \uE947
+    fontCode_singleInput: \uE947
   - isComposite: 0
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Ability4>
     bindingName: Battle/Ability4
-    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT4">
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT4"> <size=80%>or</size>
+      <sprite="Keyboard and Mouse_Grey" name="NUMPAD4">
     inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="DIGIT4">
-    humanReadableString: DIGIT4
+    humanReadableString: DIGIT4 <size=80%>or</size> NUMPAD4
     humanReadableString_singleInput: DIGIT4
     fontReferenceText: <style=font/Battle/Ability4>
-    fontCode: \uE904
+    fontCode: \uE904 <size=80%>or</size> \uE948
     fontCode_singleInput: \uE904
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Ability4/2>
+    bindingName: Battle/Ability4/2
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="NUMPAD4">
+    inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="NUMPAD4">
+    humanReadableString: NUMPAD4
+    humanReadableString_singleInput: NUMPAD4
+    fontReferenceText: <style=font/Battle/Ability4/2>
+    fontCode: \uE948
+    fontCode_singleInput: \uE948
   - isComposite: 0
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Ability5>
     bindingName: Battle/Ability5
-    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT5">
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT5"> <size=80%>or</size>
+      <sprite="Keyboard and Mouse_Grey" name="NUMPAD5">
     inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="DIGIT5">
-    humanReadableString: DIGIT5
+    humanReadableString: DIGIT5 <size=80%>or</size> NUMPAD5
     humanReadableString_singleInput: DIGIT5
     fontReferenceText: <style=font/Battle/Ability5>
-    fontCode: \uE905
+    fontCode: \uE905 <size=80%>or</size> \uE949
     fontCode_singleInput: \uE905
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Ability5/2>
+    bindingName: Battle/Ability5/2
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="NUMPAD5">
+    inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="NUMPAD5">
+    humanReadableString: NUMPAD5
+    humanReadableString_singleInput: NUMPAD5
+    fontReferenceText: <style=font/Battle/Ability5/2>
+    fontCode: \uE949
+    fontCode_singleInput: \uE949
   - isComposite: 0
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Ability6>
     bindingName: Battle/Ability6
-    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT6">
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="DIGIT6"> <size=80%>or</size>
+      <sprite="Keyboard and Mouse_Grey" name="NUMPAD6">
     inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="DIGIT6">
-    humanReadableString: DIGIT6
+    humanReadableString: DIGIT6 <size=80%>or</size> NUMPAD6
     humanReadableString_singleInput: DIGIT6
     fontReferenceText: <style=font/Battle/Ability6>
-    fontCode: \uE906
+    fontCode: \uE906 <size=80%>or</size> \uE94A
     fontCode_singleInput: \uE906
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Ability6/2>
+    bindingName: Battle/Ability6/2
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="NUMPAD6">
+    inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="NUMPAD6">
+    humanReadableString: NUMPAD6
+    humanReadableString_singleInput: NUMPAD6
+    fontReferenceText: <style=font/Battle/Ability6/2>
+    fontCode: \uE94A
+    fontCode_singleInput: \uE94A
   - isComposite: 0
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/SkipTurn>
@@ -608,6 +680,39 @@ MonoBehaviour:
     fontReferenceText: <style=font/Battle/Cancel>
     fontCode: \uE940
     fontCode_singleInput: \uE940
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Parry>
+    bindingName: Battle/Parry
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="RIGHTBUTTON">
+    inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="RIGHTBUTTON">
+    humanReadableString: RIGHT  MOUSE BUTTON
+    humanReadableString_singleInput: RIGHT  MOUSE BUTTON
+    fontReferenceText: <style=font/Battle/Parry>
+    fontCode: \uE940
+    fontCode_singleInput: \uE940
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Dodge>
+    bindingName: Battle/Dodge
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="LEFTBUTTON">
+    inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="LEFTBUTTON">
+    humanReadableString: LEFT MOUSE BUTTON
+    humanReadableString_singleInput: LEFT MOUSE BUTTON
+    fontReferenceText: <style=font/Battle/Dodge>
+    fontCode: \uE93E
+    fontCode_singleInput: \uE93E
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Jump>
+    bindingName: Battle/Jump
+    inputStyleString: <sprite="Keyboard and Mouse_Grey" name="SPACE">
+    inputStyleString_singleInput: <sprite="Keyboard and Mouse_Grey" name="SPACE">
+    humanReadableString: SPACE
+    humanReadableString_singleInput: SPACE
+    fontReferenceText: <style=font/Battle/Jump>
+    fontCode: \uE967
+    fontCode_singleInput: \uE967
   inputStyleGamepadDataList:
   - isComposite: 0
     isPartOfComposite: 0
@@ -839,13 +944,13 @@ MonoBehaviour:
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Abilities>
     bindingName: Battle/Abilities
-    inputStyleString: <sprite="XBox" name="BUTTON EAST">
-    inputStyleString_singleInput: <sprite="XBox" name="BUTTON EAST">
-    humanReadableString: BUTTON EAST
-    humanReadableString_singleInput: BUTTON EAST
+    inputStyleString: <sprite="XBox" name="BUTTON WEST">
+    inputStyleString_singleInput: <sprite="XBox" name="BUTTON WEST">
+    humanReadableString: BUTTON WEST
+    humanReadableString_singleInput: BUTTON WEST
     fontReferenceText: <style=font/Battle/Abilities>
-    fontCode: \uE900
-    fontCode_singleInput: \uE900
+    fontCode: \uE903
+    fontCode_singleInput: \uE903
   - isComposite: 0
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Items>
@@ -894,13 +999,13 @@ MonoBehaviour:
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Ability2>
     bindingName: Battle/Ability2
-    inputStyleString: <sprite="XBox" name="BUTTON EAST">
-    inputStyleString_singleInput: <sprite="XBox" name="BUTTON EAST">
-    humanReadableString: BUTTON EAST
-    humanReadableString_singleInput: BUTTON EAST
+    inputStyleString: <sprite="XBox" name="BUTTON WEST">
+    inputStyleString_singleInput: <sprite="XBox" name="BUTTON WEST">
+    humanReadableString: BUTTON WEST
+    humanReadableString_singleInput: BUTTON WEST
     fontReferenceText: <style=font/Battle/Ability2>
-    fontCode: \uE900
-    fontCode_singleInput: \uE900
+    fontCode: \uE903
+    fontCode_singleInput: \uE903
   - isComposite: 0
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Ability3>
@@ -952,14 +1057,14 @@ MonoBehaviour:
     tmproReferenceText: <style=Battle/Ability5>
     bindingName: Battle/Ability5
     inputStyleString: <sprite="XBox" name="RIGHT TRIGGER"><sprite="XBox" name="BUTTON
-      EAST">
+      WEST">
     inputStyleString_singleInput: <sprite="XBox" name="RIGHT TRIGGER"><sprite="XBox"
-      name="BUTTON EAST">
-    humanReadableString: RIGHT TRIGGER, BUTTON EAST
-    humanReadableString_singleInput: RIGHT TRIGGER, BUTTON EAST
+      name="BUTTON WEST">
+    humanReadableString: RIGHT TRIGGER, BUTTON WEST
+    humanReadableString_singleInput: RIGHT TRIGGER, BUTTON WEST
     fontReferenceText: <style=font/Battle/Ability5>
-    fontCode: \uE912\uE900
-    fontCode_singleInput: \uE912\uE900
+    fontCode: \uE912\uE903
+    fontCode_singleInput: \uE912\uE903
   - isComposite: 0
     isPartOfComposite: 1
     tmproReferenceText: <style=Battle/Ability5/modifier1>
@@ -975,13 +1080,13 @@ MonoBehaviour:
     isPartOfComposite: 1
     tmproReferenceText: <style=Battle/Ability5/modifier2>
     bindingName: Battle/Ability5/modifier2
-    inputStyleString: <sprite="XBox" name="BUTTON EAST">
-    inputStyleString_singleInput: <sprite="XBox" name="BUTTON EAST">
-    humanReadableString: BUTTON EAST
-    humanReadableString_singleInput: BUTTON EAST
+    inputStyleString: <sprite="XBox" name="BUTTON WEST">
+    inputStyleString_singleInput: <sprite="XBox" name="BUTTON WEST">
+    humanReadableString: BUTTON WEST
+    humanReadableString_singleInput: BUTTON WEST
     fontReferenceText: <style=font/Battle/Ability5/modifier2>
-    fontCode: \uE900
-    fontCode_singleInput: \uE900
+    fontCode: \uE903
+    fontCode_singleInput: \uE903
   - isComposite: 1
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Ability6>
@@ -1043,13 +1148,46 @@ MonoBehaviour:
     isPartOfComposite: 0
     tmproReferenceText: <style=Battle/Cancel>
     bindingName: Battle/Cancel
-    inputStyleString: <sprite="XBox" name="BUTTON WEST">
-    inputStyleString_singleInput: <sprite="XBox" name="BUTTON WEST">
-    humanReadableString: BUTTON WEST
-    humanReadableString_singleInput: BUTTON WEST
+    inputStyleString: <sprite="XBox" name="BUTTON EAST">
+    inputStyleString_singleInput: <sprite="XBox" name="BUTTON EAST">
+    humanReadableString: BUTTON EAST
+    humanReadableString_singleInput: BUTTON EAST
     fontReferenceText: <style=font/Battle/Cancel>
-    fontCode: \uE903
-    fontCode_singleInput: \uE903
+    fontCode: \uE900
+    fontCode_singleInput: \uE900
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Parry>
+    bindingName: Battle/Parry
+    inputStyleString: <sprite="XBox" name="RIGHT SHOULDER">
+    inputStyleString_singleInput: <sprite="XBox" name="RIGHT SHOULDER">
+    humanReadableString: RIGHT SHOULDER
+    humanReadableString_singleInput: RIGHT SHOULDER
+    fontReferenceText: <style=font/Battle/Parry>
+    fontCode: \uE911
+    fontCode_singleInput: \uE911
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Dodge>
+    bindingName: Battle/Dodge
+    inputStyleString: <sprite="XBox" name="BUTTON EAST">
+    inputStyleString_singleInput: <sprite="XBox" name="BUTTON EAST">
+    humanReadableString: BUTTON EAST
+    humanReadableString_singleInput: BUTTON EAST
+    fontReferenceText: <style=font/Battle/Dodge>
+    fontCode: \uE900
+    fontCode_singleInput: \uE900
+  - isComposite: 0
+    isPartOfComposite: 0
+    tmproReferenceText: <style=Battle/Jump>
+    bindingName: Battle/Jump
+    inputStyleString: <sprite="XBox" name="BUTTON SOUTH">
+    inputStyleString_singleInput: <sprite="XBox" name="BUTTON SOUTH">
+    humanReadableString: BUTTON SOUTH
+    humanReadableString_singleInput: BUTTON SOUTH
+    fontReferenceText: <style=font/Battle/Jump>
+    fontCode: \uE902
+    fontCode_singleInput: \uE902
   - isComposite: 0
     isPartOfComposite: 0
     tmproReferenceText: <style=Multiplayer Platformer Controls/Cancel>
