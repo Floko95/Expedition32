@@ -7,6 +7,7 @@ using Unity.Behavior;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class BattleManager : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private BattleData defaultData;
     [SerializeField] private List<Transform> enemySlots;
     [SerializeField] private List<Transform> alliesSlots;
-
+    [SerializeField] private InputActionReference QTEInput;
+    [SerializeField] private QTEUI qteui;
+    
     [SerializeField] private BehaviorGraphAgent behaviorGraphAgent;
     
     public UnityAction onBattleInitialized;
@@ -30,6 +33,7 @@ public class BattleManager : MonoBehaviour
     private TeamManager _teamManager;
     private CinemachineVirtualCameraBase _abilityvCam;
     private IDisposable _comboListener;
+    private IDisposable _QTEListener;
     private AbilityData _usedAbility;
     private List<Unit> _targets;
     private Unit _caster;
@@ -84,7 +88,7 @@ public class BattleManager : MonoBehaviour
         isBattleInititated = true;
     }
 
-
+    
     public Observable<TimelineEvent> ExecuteAbility(Unit caster, List<Unit> targets, AbilityData usedAbility) {
         _caster = caster;
         _targets = targets;
@@ -104,7 +108,8 @@ public class BattleManager : MonoBehaviour
         _comboListener = player.Listen<ComboWindow>()
             .Subscribe(HandleComboWindow)
             .AddTo(caster.gameObject);
-
+        _QTEListener = player.Listen<QTE>().Subscribe(HandleQTE).AddTo(caster.gameObject);
+            
         var abilityObservable = player.Play(usedAbility.timeline);
         abilityObservable.Subscribe(
             onNext: _ => OnTimelineUpdate(),
@@ -113,11 +118,38 @@ public class BattleManager : MonoBehaviour
         
         return abilityObservable;
     }
-    
+
+    private void HandleQTE(QTE qte) {
+        QTEInput.action.performed += ONQTEInput;
+        
+        qte.isComplete = false;
+        void ONQTEInput(InputAction.CallbackContext obj) {
+            qte.isComplete = true;
+        }
+
+        qteui.StartQTE();
+        
+        var clipStart = Time.time;
+        var clipEnd = (float) (Time.time + qte.duration);
+        Debug.Log($"QTE starts at {clipStart} ands end at {clipEnd}. Duration : {qte.duration}");
+        
+        qte.OnClipUpdate.Subscribe( frame => {
+            var timeTillEnd = Mathf.InverseLerp(clipStart, clipEnd, Time.time);
+            qteui.UpdateQTECountdown(timeTillEnd);
+        }, complete => {
+            qteui.StopQTE();
+            Debug.Log($"QTE complete? : {qte.isComplete}");
+        });
+        
+        QTEInput.action.performed -= ONQTEInput;
+    }
+
     private void OnTimelineUpdate() { }
 
     private void OnTimelineComplete() {
         _comboListener.Dispose();
+        _QTEListener.Dispose();
+        
         _abilityvCam.Priority = 0;
     }
     
