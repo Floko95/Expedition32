@@ -7,6 +7,7 @@ using R3;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
+using UnityEngine.Timeline;
 using Object = UnityEngine.Object;
 
 namespace BitDuc.EnhancedTimeline.Timeline
@@ -160,8 +161,23 @@ namespace BitDuc.EnhancedTimeline.Timeline
         void PublishToBus(TimelineEvent @event) =>
             events.OnNext(@event);
 
-        void Bind(PlayableDirector player, PlayableAsset timeline, TimelineBus bus)
-        {
+        void Bind(PlayableDirector player, PlayableAsset timeline, TimelineBus bus) {
+            
+            var timeLine = timeline as TimelineAsset;
+            Debug.Log($"timeLine = {timeLine}");
+            
+            foreach (var track in timeLine.GetOutputTracks()) {
+                
+                foreach (var clip in track.GetClips()) {
+                    var observableClip = clip.asset as ObservableClip;
+                    if(observableClip == null) continue;
+                    
+                    observableClip.start = clip.start;
+                    observableClip.end = clip.end;
+                    observableClip.clipDuration = clip.duration;
+                }
+            }
+            
             foreach (var output in timeline.outputs)
             {
                 if(output.outputTargetType == null) continue;

@@ -8,9 +8,9 @@ namespace BitDuc.EnhancedTimeline.Observable
      * @ref BitDuc.EnhancedTimeline.Timeline.EnhancedTimelinePlayer "EnhancedTimelinePlayer" and
      * @ref BitDuc.EnhancedTimeline.Timeline.TimelineBus "TimelineBus" components.
      */
-    public abstract class ObservableClip : PlayableAsset, TimelineEvent
-    {
-        public override double duration => 2.5;
+    public abstract class ObservableClip : PlayableAsset, TimelineEvent {
+        
+        public double start, end, clipDuration;
 
         /**
          * Called when the clip is started.

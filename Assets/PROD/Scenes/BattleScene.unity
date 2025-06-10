@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 25710713}
   - component: {fileID: 25710714}
   m_Layer: 0
-  m_Name: QTE_UI
+  m_Name: QTEs_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbd14c7dc49d0a4a81d95114b0f5540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  qtePrefab: {fileID: 4494645681639561494, guid: b8492fd2e9027214f84498eaeb5e0cca, type: 3}
+  qtePrefab: {fileID: 69284132563455740, guid: b8492fd2e9027214f84498eaeb5e0cca, type: 3}
   qteSpawnRect: {fileID: 25710713}
 --- !u!1001 &43728583
 PrefabInstance:
@@ -2818,7 +2818,7 @@ MonoBehaviour:
         z: 0.74057555
       Rotation:
         value:
-          x: 0.12076561
+          x: 0.12076562
           y: 0.7664508
           z: -0.17867988
           w: 0.60501426
@@ -4034,7 +4034,7 @@ MonoBehaviour:
   - {fileID: 467130537}
   - {fileID: 479975827}
   QTEInput: {fileID: -3106870788221016267, guid: 35845fe01580c41289b024647b1d1c53, type: 3}
-  qteui: {fileID: 25710714}
+  qtEsUI: {fileID: 25710714}
   behaviorGraphAgent: {fileID: 1819049441}
 --- !u!114 &1819049441
 MonoBehaviour:

@@ -1,24 +1,34 @@
+using MoreMountains.Feedbacks;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QTEUI : MonoBehaviour
+public class QTEUI : MonoBehaviour, IInitializable<QTE>
 {
-    [SerializeField] private GameObject qtePrefab;
-    [SerializeField] private RectTransform qteSpawnRect;
+    [SerializeField] private Image fillImageQTE;
     
-    private GameObject _qte;
-    private Image _qteImage;
+    [Title("Feedbacks")]
+    [SerializeField] private MMF_Player completeFeedback;
+    [SerializeField] private MMF_Player stoppedFeedback;
     
-    public void StartQTE() {
-        _qte = Instantiate(qtePrefab, qteSpawnRect);
-        _qteImage = _qte.GetComponentInChildren<Image>();
-    }
+    public QTE qte { get; private set; }
     
-    public void UpdateQTECountdown(float timeTillEnd) {
-        _qteImage.fillAmount = timeTillEnd;
+    public void Init(QTE data) {
+        qte = data;
     }
 
-    public void StopQTE() {
-        Destroy(_qte);
+    public void UpdateCountdown(float timeTillEnd) {
+        fillImageQTE.fillAmount = timeTillEnd;
     }
+    
+    public void Stop(bool success) {
+        if (success) completeFeedback.PlayFeedbacks();
+        else stoppedFeedback.PlayFeedbacks();
+        
+        fillImageQTE.fillAmount = 0f;
+        
+        Destroy(gameObject, success ? completeFeedback.TotalDuration : stoppedFeedback.TotalDuration);
+    }
+    
+    bool IInitializable<QTE>.Initialized { get; set; } = false;
 }

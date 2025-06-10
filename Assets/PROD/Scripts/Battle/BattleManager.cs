@@ -8,6 +8,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class BattleManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Transform> enemySlots;
     [SerializeField] private List<Transform> alliesSlots;
     [SerializeField] private InputActionReference QTEInput;
-    [SerializeField] private QTEUI qteui;
+    [FormerlySerializedAs("qteui")] [SerializeField] private QTEsUI qtEsUI;
     
     [SerializeField] private BehaviorGraphAgent behaviorGraphAgent;
     
@@ -34,6 +35,7 @@ public class BattleManager : MonoBehaviour
     private CinemachineVirtualCameraBase _abilityvCam;
     private IDisposable _comboListener;
     private IDisposable _QTEListener;
+    
     private AbilityData _usedAbility;
     private List<Unit> _targets;
     private Unit _caster;
@@ -120,30 +122,33 @@ public class BattleManager : MonoBehaviour
     }
 
     private void HandleQTE(QTE qte) {
-        QTEInput.action.performed += ONQTEInput;
-        
         qte.isComplete = false;
-        void ONQTEInput(InputAction.CallbackContext obj) {
-            qte.isComplete = true;
-        }
 
-        qteui.StartQTE();
+        qtEsUI.StartQTE(qte);
         
+        Debug.Log($"QTE starts at {qte.start} ands end at {qte.end}. Duration : {qte.clipDuration}");
+
         var clipStart = Time.time;
-        var clipEnd = (float) (Time.time + qte.duration);
-        Debug.Log($"QTE starts at {clipStart} ands end at {clipEnd}. Duration : {qte.duration}");
+        var clipEnd = clipStart + (float)qte.clipDuration;
         
         qte.OnClipUpdate.Subscribe( frame => {
-            var timeTillEnd = Mathf.InverseLerp(clipStart, clipEnd, Time.time);
-            qteui.UpdateQTECountdown(timeTillEnd);
+            var timeTillEnd = 1 - Mathf.InverseLerp(clipStart, clipEnd, Time.time);
+            qtEsUI.UpdateQTECountdown(qte, timeTillEnd);
+
+            if (QTEInput.action.WasPerformedThisFrame()) {
+                Debug.Log("input QTe pressed!");
+                qte.isComplete = true;
+                qtEsUI.StopQTE(qte, true);
+            }
         }, complete => {
-            qteui.StopQTE();
+            
+            qtEsUI.StopQTE(qte, qte.isComplete);
             Debug.Log($"QTE complete? : {qte.isComplete}");
         });
-        
-        QTEInput.action.performed -= ONQTEInput;
+       
     }
-
+    
+    
     private void OnTimelineUpdate() { }
 
     private void OnTimelineComplete() {

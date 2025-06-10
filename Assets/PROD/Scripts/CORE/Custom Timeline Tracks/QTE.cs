@@ -1,7 +1,12 @@
+using System;
 using BitDuc.EnhancedTimeline.Observable;
+using OSLib.StatSystem;
+using UnityEngine;
 
-public class QTE : SimpleClip
-{
-    public bool isComplete = false;
+[Serializable]
+public class QTE : SimpleClip {
+    [SerializeField] public bool isComplete = false;
     
+    [SerializeField] public Vector2 screenAnchorPos;
+    [SerializeField] public StatModifier appliedModifierOnSuccess;
 }

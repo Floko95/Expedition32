@@ -24,7 +24,14 @@ public partial class PlayerAbilityAction : Action {
         
         _hasCinematicEnded = false;
         var battleManager = Toolbox.Get<BattleManager>();
-        _abilityExecution = battleManager.ExecuteAbility(Unit.Value, Targets.Value.Select(u => u.GetComponent<Unit>()).ToList(), AbilityData.Value).Subscribe(
+        var observable =  battleManager.ExecuteAbility(Unit.Value, Targets.Value.Select(u => u.GetComponent<Unit>()).ToList(), AbilityData.Value);
+        
+        if (observable == null) { //no cinematic
+            _hasCinematicEnded = true;
+            return Status.Running;
+        }
+        
+        _abilityExecution = observable.Subscribe(
             onNext: _ => { },
             onCompleted: _ => _hasCinematicEnded = true
         );
