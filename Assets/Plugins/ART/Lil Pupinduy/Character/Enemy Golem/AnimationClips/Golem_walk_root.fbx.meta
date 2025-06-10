@@ -1,18 +1,8 @@
 fileFormatVersion: 2
-guid: 8edc0d83179eada409ff865f0d898ac9
-AssetOrigin:
-  serializedVersion: 1
-  productId: 211406
-  packageName: Enemy Golem
-  packageVersion: 1.0.0
-  assetPath: Assets/Lil Pupinduy/Character/Enemy Golem/AnimationClips/Anim_Wait.fbx
-  uploadId: 618694
+guid: 19764bf550ce7464a9094e60240ed829
 ModelImporter:
   serializedVersion: 22200
-  internalIDToNameTable:
-  - first:
-      74: -399308169235747103
-    second: Anim_Wait
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -41,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Anim_Wait
-      takeName: Anim_Wait
-      internalID: 0
-      firstFrame: 470
-      lastFrame: 480
+      name: Anim_Walk_Root
+      takeName: Scene
+      internalID: -623603649343465320
+      firstFrame: 160
+      lastFrame: 210
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -68,7 +58,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 470
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -82,7 +72,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
-    nodeNameCollisionStrategy: 0
+    nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -139,7 +129,7 @@ ModelImporter:
   avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 0
-  remapMaterialsIfMaterialImportModeIsNone: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

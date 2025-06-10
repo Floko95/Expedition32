@@ -7,21 +7,23 @@ using UnityEngine.Timeline;
 [CreateAssetMenu(fileName = "ability", menuName = "Ex32/AbilityData", order = 1)]
 public class AbilityData : ScriptableObject
 {
-    [Title("Display")]
+    [Title("Display"), PropertySpace(20)]
     [FormerlySerializedAs("title")] [SerializeField] public string _title;
     [FormerlySerializedAs("desc")] [TextArea(5, 7)] public string _desc;
-    [SerializeField] public Sprite icon;
+    [SerializeField, PreviewField(ObjectFieldAlignment.Left), PropertySpace(5,5)] public Sprite icon;
     
-    [Title("Target")]
+    [Title("Target"), PropertySpace(20)]
     [SerializeField] public AbilityTargetMode targetMode;               //WHO is targeted?
-    [SerializeField] public DodgeTypeEnum dodgeMode = DodgeTypeEnum.Undodgeable;               //How to dodge?
+    [SerializeField, EnumToggleButtons] public DodgeTypeEnum dodgeMode = DodgeTypeEnum.Undodgeable;               //How to dodge?
     
-    [Title("Effect")]
-    [SerializeField] public int costAP;
-    [FormerlySerializedAs("effects")] [SerializeReference] public List<AbilityEffect> _effects;              //WHAT this does?
+    [Title("Effect"), PropertySpace(20)]
+    [SerializeField, ProgressBar(0, 9 ,b:175, g:15, DrawValueLabel = true, Segmented = true, ValueLabelAlignment = TextAlignment.Center, Height = 20)]
+    public int costAP;
+    
+    [SerializeReference, PropertySpace(5,5)] public List<AbilityEffect> _effects;              //WHAT this does?
     [SerializeReference] public AbilityTrigger effectTriggerEvent = AbilityTrigger.OnPlay;              //WHEN?
     
-    [Title("Visuals")]
+    [Title("Visuals"), PropertySpace(20)]
     [SerializeField] public TimelineAsset timeline;
 
     public virtual string title => _title;

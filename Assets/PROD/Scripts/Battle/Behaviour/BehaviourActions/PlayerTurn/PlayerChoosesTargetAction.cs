@@ -18,7 +18,7 @@ public partial class PlayerChoosesTargetAction : Action
     
     protected override Status OnStart() {
         _targetManager ??= Toolbox.Get<TargetManager>();
-
+        
         Targets.Value = _targetManager.CurrentlyTargeted.Select(t => t.gameObject).ToList();
         return Status.Running;
     }

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BitDuc.Demo;
 using BitDuc.EnhancedTimeline.Observable;
+using DG.Tweening;
 using R3;
 using Unity.Behavior;
 using Unity.Cinemachine;
@@ -104,6 +106,9 @@ public class BattleManager : MonoBehaviour
         _abilityvCam = caster.transform.Find(ABILITY_CAM_NAME)?.GetComponent<CinemachineVirtualCameraBase>();
         _abilityvCam.Priority = 100;
         
+        if (targets.Count == 1) {
+            caster.transform.DOLookAt(targets.FirstOrDefault().transform.position, 0f, AxisConstraint.Y);
+        }
         
         var player = caster.playableDirector;
         
@@ -125,8 +130,6 @@ public class BattleManager : MonoBehaviour
         qte.isComplete = false;
 
         qtEsUI.StartQTE(qte);
-        
-        Debug.Log($"QTE starts at {qte.start} ands end at {qte.end}. Duration : {qte.clipDuration}");
 
         var clipStart = Time.time;
         var clipEnd = clipStart + (float)qte.clipDuration;
@@ -136,14 +139,12 @@ public class BattleManager : MonoBehaviour
             qtEsUI.UpdateQTECountdown(qte, timeTillEnd);
 
             if (QTEInput.action.WasPerformedThisFrame()) {
-                Debug.Log("input QTe pressed!");
                 qte.isComplete = true;
                 qtEsUI.StopQTE(qte, true);
             }
         }, complete => {
             
             qtEsUI.StopQTE(qte, qte.isComplete);
-            Debug.Log($"QTE complete? : {qte.isComplete}");
         });
        
     }

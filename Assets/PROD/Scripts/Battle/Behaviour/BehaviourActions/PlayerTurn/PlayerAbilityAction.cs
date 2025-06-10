@@ -15,7 +15,7 @@ public partial class PlayerAbilityAction : Action {
     [SerializeReference] public BlackboardVariable<Unit> Unit;
     [SerializeReference] public BlackboardVariable<AbilityData> AbilityData;
     [SerializeReference] public BlackboardVariable<List<GameObject>> Targets;
-
+    
     private bool _hasCinematicEnded;
     private IDisposable _abilityExecution;
     
@@ -24,7 +24,8 @@ public partial class PlayerAbilityAction : Action {
         
         _hasCinematicEnded = false;
         var battleManager = Toolbox.Get<BattleManager>();
-        var observable =  battleManager.ExecuteAbility(Unit.Value, Targets.Value.Select(u => u.GetComponent<Unit>()).ToList(), AbilityData.Value);
+        var target = Targets.Value.Select(u => u.GetComponent<Unit>()).ToList();
+        var observable =  battleManager.ExecuteAbility(Unit.Value, target, AbilityData.Value);
         
         if (observable == null) { //no cinematic
             _hasCinematicEnded = true;
@@ -44,7 +45,7 @@ public partial class PlayerAbilityAction : Action {
     }
 
     protected override void OnEnd() {
-        _abilityExecution.Dispose();
+        _abilityExecution?.Dispose();
     }
 }
 
