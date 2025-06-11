@@ -11,7 +11,7 @@ public partial class SkipTurnAction : Action
     [SerializeReference] public BlackboardVariable<Unit> Unit;
 
     protected override Status OnStart() {
-        BattleLogDebugUI.Log($"{Unit.Value.unitData.unitName} skips its turn... ");
+        BattleLogUI.Log($"{Unit.Value.unitData.unitName} skips its turn... ");
         return Status.Running;
     }
 

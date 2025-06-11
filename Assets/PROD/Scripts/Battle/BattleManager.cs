@@ -10,7 +10,6 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class BattleManager : MonoBehaviour
 {
@@ -20,11 +19,14 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Transform> enemySlots;
     [SerializeField] private List<Transform> alliesSlots;
     [SerializeField] private InputActionReference QTEInput;
-    [FormerlySerializedAs("qteui")] [SerializeField] private QTEsUI qtEsUI;
+    [SerializeField] private QTEsUI qtEsUI;
     
     [SerializeField] private BehaviorGraphAgent behaviorGraphAgent;
+    [SerializeField] private BattleStateEvent battleStateEvent;
     
     public UnityAction onBattleInitialized;
+    public static UnityAction<Unit> onTurnStarted;
+    public static UnityAction<Unit> onTurnEnded;
     
     public TurnQueue TurnQueue { get; set; }
     
@@ -90,9 +92,16 @@ public class BattleManager : MonoBehaviour
         
         onBattleInitialized?.Invoke();
         isBattleInititated = true;
+        
+        battleStateEvent.Event += OnBattleStateChanged;
     }
 
-    
+    private void OnBattleStateChanged(BattleState newstate) {
+        if(newstate is not BattleState.Init) return;
+        onTurnEnded.Invoke(TurnQueue.CurrentTurn);
+    }
+
+
     public Observable<TimelineEvent> ExecuteAbility(Unit caster, List<Unit> targets, AbilityData usedAbility) {
         _caster = caster;
         _targets = targets;
@@ -156,6 +165,9 @@ public class BattleManager : MonoBehaviour
         _comboListener.Dispose();
         _QTEListener.Dispose();
         
+        if (_targets.Count == 1) {
+            _caster.transform.DOLocalRotate(Vector3.zero, 0.1f);
+        }
         _abilityvCam.Priority = 0;
     }
     

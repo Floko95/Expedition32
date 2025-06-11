@@ -164,7 +164,6 @@ namespace BitDuc.EnhancedTimeline.Timeline
         void Bind(PlayableDirector player, PlayableAsset timeline, TimelineBus bus) {
             
             var timeLine = timeline as TimelineAsset;
-            Debug.Log($"timeLine = {timeLine}");
             
             foreach (var track in timeLine.GetOutputTracks()) {
                 

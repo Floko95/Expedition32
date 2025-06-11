@@ -21,7 +21,7 @@ public partial class CounterAction : Action
     private IDisposable _abilityExecution;
     
     protected override Status OnStart() {
-        BattleLogDebugUI.Log(CounterAbility.Value.desc);
+        BattleLogUI.Log(CounterAbility.Value.desc);
 
         _hasCinematicEnded = false;
         

@@ -22,7 +22,7 @@ public partial class AbilityAction : Action {
     
     protected override Status OnStart() {
         _hasCinematicEnded = false;
-        BattleLogDebugUI.Log(Ability.Value.desc);
+        BattleLogUI.Log(Ability.Value.desc);
 
         _hasCinematicEnded = false;
         var battleManager = Toolbox.Get<BattleManager>();
@@ -52,7 +52,7 @@ public partial class AbilityAction : Action {
         var singleTarget = Targets.Value[0].GetComponent<Unit>() as AllyUnit;
         singleTarget.DodgeSystem.enabled = false;
             
-        BattleLogDebugUI.Log(singleTarget.unitData.counterAbility.desc);
+        BattleLogUI.Log(singleTarget.unitData.counterAbility.desc);
         _abilityExecution = battleManager.ExecuteAbility(singleTarget, new List<Unit> {Unit.Value}, singleTarget.unitData.counterAbility).Subscribe(
             onNext: _ => { },
             onCompleted: _ => { _hasCinematicEnded = true; }
