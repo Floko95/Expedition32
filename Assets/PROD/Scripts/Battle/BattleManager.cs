@@ -115,7 +115,7 @@ public class BattleManager : MonoBehaviour
         _abilityvCam = caster.transform.Find(ABILITY_CAM_NAME)?.GetComponent<CinemachineVirtualCameraBase>();
         _abilityvCam.Priority = 100;
         
-        if (targets.Count == 1) {
+        if (targets.Count == 1 && usedAbility.targetMode is AbilityTargetMode.SelectTarget) {
             caster.transform.DOLookAt(targets.FirstOrDefault().transform.position, 0f, AxisConstraint.Y);
         }
         
