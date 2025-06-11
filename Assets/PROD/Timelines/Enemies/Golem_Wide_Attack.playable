@@ -48,6 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5672e0c4dda444fcb8b80cc004675ea2, type: 3}
   m_Name: ComboWindow
   m_EditorClassIdentifier: 
+  start: 1.6666666666666667
+  end: 1.8333333333333333
+  clipDuration: 0.16666666666666652
 --- !u!114 &-3113416035885715409
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1142,7 +1145,7 @@ MonoBehaviour:
   m_InfiniteClipPreExtrapolation: 1
   m_InfiniteClipPostExtrapolation: 1
   m_InfiniteClipOffsetPosition: {x: -0.25140357, y: 3.0529833, z: 4.9186487}
-  m_InfiniteClipOffsetEulerAngles: {x: 5.452027, y: 3.3392377, z: 1.5063145}
+  m_InfiniteClipOffsetEulerAngles: {x: 5.452027, y: 180, z: 1.5063145}
   m_InfiniteClipTimeOffset: 0
   m_InfiniteClipRemoveOffset: 0
   m_InfiniteClipApplyFootIK: 1
@@ -1152,7 +1155,7 @@ MonoBehaviour:
   m_EulerAngles: {x: 0, y: 0, z: 0}
   m_AvatarMask: {fileID: 0}
   m_ApplyAvatarMask: 1
-  m_TrackOffset: 1
+  m_TrackOffset: 0
   m_InfiniteClip: {fileID: 2331186717818686739}
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}

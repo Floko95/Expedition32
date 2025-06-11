@@ -138,8 +138,8 @@ public class DodgeSystem : MonoBehaviour
         _stateMachine.Update(Time.deltaTime);
     }
     
-    public bool Evaluate(DodgeTypeEnum dodgeType) {
-        if(enabled == false) return false;
+    public (bool negated, bool parried) Evaluate(DodgeTypeEnum dodgeType) {
+        if(enabled == false) return (false, false);
         
         var doesNullifyDamage = dodgeType switch {
             DodgeTypeEnum.Undodgeable => false,
@@ -159,6 +159,6 @@ public class DodgeSystem : MonoBehaviour
             }
         }
         
-        return doesNullifyDamage;
+        return (doesNullifyDamage, IsParrying);
     }
 }

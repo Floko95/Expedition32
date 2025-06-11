@@ -43,6 +43,7 @@ public class BattleManager : MonoBehaviour
     private AbilityData _usedAbility;
     private List<Unit> _targets;
     private Unit _caster;
+    private bool _isCounterAvailable;
     
     private async void Awake() {
         await Toolbox.WaitUntilReadyAsync();
@@ -106,6 +107,7 @@ public class BattleManager : MonoBehaviour
         _caster = caster;
         _targets = targets;
         _usedAbility = usedAbility;
+        _isCounterAvailable = true;
         
         if (usedAbility.timeline == null) {
             HandleComboWindow(null);
@@ -165,20 +167,23 @@ public class BattleManager : MonoBehaviour
         _comboListener.Dispose();
         _QTEListener.Dispose();
         
-        if (_targets.Count == 1) {
-            _caster.transform.DOLocalRotate(Vector3.zero, 0.1f);
-        }
+        _caster.transform.DOLocalRotate(Vector3.zero, 0.1f);
+        _caster.transform.DOLocalMove(Vector3.zero, 0.25f);
+        
         _abilityvCam.Priority = 0;
     }
+
+    public bool CanCounter() => _isCounterAvailable;
     
     private void HandleComboWindow(ComboWindow window) {
         if(_usedAbility == null) return;
         
         foreach (var target in _targets) {
-            if(target is AllyUnit allyUnit)
-                BattleLogic.TryApplyAbilityEffects(_usedAbility, _caster, allyUnit);
-            else
-                _usedAbility.ApplyEffects(_caster, target);
+            if (target is AllyUnit allyUnit) {
+                var effectApplication = BattleLogic.TryApplyAbilityEffects(_usedAbility, _caster, allyUnit);
+                if (effectApplication.parried == false || effectApplication.negated == false) _isCounterAvailable = false;
+            }
+            else _usedAbility.ApplyEffects(_caster, target);
         }
     }
 }

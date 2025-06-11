@@ -16,6 +16,7 @@ MonoBehaviour:
   _desc: Character Attacks.
   icon: {fileID: 0}
   targetMode: 30
+  dodgeMode: 0
   costAP: 0
   _effects:
   - rid: 7658842404068524131
@@ -32,4 +33,5 @@ MonoBehaviour:
     - rid: 7658842404068524131
       type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
       data:
-        attackRatio: 1
+        attackRatio: 1.5
+        damageType: 1

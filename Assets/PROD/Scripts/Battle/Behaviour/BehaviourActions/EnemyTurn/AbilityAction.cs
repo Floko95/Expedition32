@@ -17,7 +17,6 @@ public partial class AbilityAction : Action {
     [SerializeReference] public BlackboardVariable<List<GameObject>> Targets;
 
     private bool _hasCinematicEnded;
-    private bool _isCounterAvailable;
     private IDisposable _abilityExecution;
     
     protected override Status OnStart() {
@@ -27,11 +26,10 @@ public partial class AbilityAction : Action {
         _hasCinematicEnded = false;
         var battleManager = Toolbox.Get<BattleManager>();
         
-        _isCounterAvailable = true;
         _abilityExecution = battleManager.ExecuteAbility(Unit.Value, Targets.Value.Select(u => u.GetComponent<Unit>()).ToList(), Ability.Value).Subscribe(
             onNext: _ => { },
             onCompleted: _ => {
-                if (_isCounterAvailable && Ability.Value.targetMode is AbilityTargetMode.SelectTarget) Counter();
+                if (battleManager.CanCounter() && Ability.Value.targetMode is AbilityTargetMode.SelectTarget) Counter();
                 else _hasCinematicEnded = true;
             }
         );

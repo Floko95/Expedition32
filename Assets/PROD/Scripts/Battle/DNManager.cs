@@ -30,25 +30,27 @@ public class DNManager : MonoBehaviour
     }
 
     private void OnDamagingEvent(Unit source, Unit target, float amount, bool isCrit, ElementType damageType, ElementReaction reaction) {
-        damageDNPrefab.Spawn(target.transform.position, amount);
-        damageDNPrefab.numberSettings.customColor = isCrit;
+        var dn = damageDNPrefab.Spawn(target.transform.position, amount);
+        dn.numberSettings.customColor = isCrit;
 
-        damageDNPrefab.enableBottomText = true;
-        damageDNPrefab.enableRightText = true;
-        damageDNPrefab.rightText = "<sprite name=\"" + damageType + "\">";
+        dn.enableBottomText = reaction is not ElementReaction.Normal;
+        dn.enableRightText = damageType is not ElementType.Physical;
+        
+        if(damageType is not ElementType.Physical)
+            dn.rightText = "<sprite name=\"" + damageType + "\">";
         
         switch (reaction) {
             case ElementReaction.Weak:
-                damageDNPrefab.bottomText = "Weak";
+                dn.bottomText = "Weak";
                 break;
             case ElementReaction.Resistant:
-                damageDNPrefab.bottomText = "Resistant";
+                dn.bottomText = "Resistant";
                 break;
             case ElementReaction.Immune:
-                damageDNPrefab.bottomText = "Immune";
+                dn.bottomText = "Immune";
                 break;
             case ElementReaction.Absorb:
-                damageDNPrefab.bottomText = "Absorbed!";
+                dn.bottomText = "Absorbed!";
                 break;
             default:
                 break;

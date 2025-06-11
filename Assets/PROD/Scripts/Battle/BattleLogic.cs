@@ -30,14 +30,14 @@ public static class BattleLogic {
         return amount;
     }
 
-    public static bool TryApplyAbilityEffects(AbilityData abilityData, Unit caster, AllyUnit target) {
-        if (!caster.IsAlive || !target.IsAlive) return false;
+    public static (bool negated, bool parried) TryApplyAbilityEffects(AbilityData abilityData, Unit caster, AllyUnit target) {
+        if (!caster.IsAlive || !target.IsAlive) return (false, false);
         
-        var dodgeSystem = target.DodgeSystem;
-        if (dodgeSystem.Evaluate(abilityData.dodgeMode)) return false; //dodged
+        var dodgeEvaluation = target.DodgeSystem.Evaluate(abilityData.dodgeMode);
+        if (dodgeEvaluation.negated == false)
+            abilityData.ApplyEffects(caster, target);
         
-        abilityData.ApplyEffects(caster, target);
-        return true;
+        return dodgeEvaluation;
     }
     
     public static float Attack(Unit attacker, Unit defender, ElementType damageType, float attackRatio) {
