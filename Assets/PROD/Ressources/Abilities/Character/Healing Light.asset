@@ -20,11 +20,17 @@ MonoBehaviour:
   costAP: 4
   _effects:
   - rid: 7658842404068524153
+  - rid: 2001685378418606186
   effectTriggerEvent: 10
   timeline: {fileID: 11400000, guid: 38c89202bb0dfd34b9e4954d094933fd, type: 2}
   references:
     version: 2
     RefIds:
+    - rid: 2001685378418606186
+      type: {class: InstantiateAtTargetEffect, ns: , asm: Assembly-CSharp}
+      data:
+        prefab: {fileID: 1592372973558972, guid: 721cfe8018b2cd04abd0748143d2a312, type: 3}
+        offset: {x: 0, y: 0, z: 0}
     - rid: 7658842404068524153
       type: {class: HealEffect, ns: , asm: Assembly-CSharp}
       data:

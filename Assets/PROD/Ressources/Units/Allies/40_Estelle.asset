@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36bd2a25b8a1be0428b925894c675a42, type: 3}
+  m_Name: 40_Estelle
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: stats
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[OSLib.StatSystem.StatType,
+        Assembly-CSharp],[System.Single, mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[OSLib.StatSystem.StatType,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 5
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 4
+      Data: 300
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 4
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 4
+      Data: 100
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 4
+      Data: 300
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 4
+    - Name: $v
+      Entry: 4
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  unitName: Estelle
+  portrait: {fileID: 21300000, guid: eeb5398092d09e34ebe7a7eefc229fa3, type: 3}
+  prefab: {fileID: 2859253562083790224, guid: 1ab21cd9e08304d4d8df54252a2a8122, type: 3}
+  isEnemy: 0
+  elementInteractions: []
+  energy: 5
+  abilities:
+  - {fileID: 11400000, guid: 6618c0f03dc6f2b4490f32f577ebd42f, type: 2}
+  - {fileID: 11400000, guid: 809d77a70716e9943acd1037881d5754, type: 2}
+  - {fileID: 11400000, guid: 4a4ca4e8549001f4a852bc7809a16781, type: 2}
+  - {fileID: 11400000, guid: 7df348821eeb36c4fb09ebaeaf3182ac, type: 2}
+  - {fileID: 11400000, guid: f3fc2c2432e60e146a351c0c1d512520, type: 2}
+  - {fileID: 11400000, guid: 8a8525105eee9b04aa8d05286db2c2a9, type: 2}
+  attackAbility: {fileID: 11400000, guid: b9ddb11e3727666448d5a0ef8db5e198, type: 2}
+  counterAbility: {fileID: 11400000, guid: 0d20d8d38b01d5041a2b53e65c6bbd8c, type: 2}

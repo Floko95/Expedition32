@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 [Serializable]
 public abstract class AbilityEffect {
@@ -66,5 +67,16 @@ class ApplyStatusEffect : AbilityEffect {
     
     public override void Apply(Unit caster, Unit target) {
         target.StatusSystem.ApplyStatus(appliedStatus, target, stacksApplied);
+    }
+}
+
+[Serializable]
+class InstantiateAtTargetEffect: AbilityEffect {
+
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private Vector3 offset;
+    
+    public override void Apply(Unit caster, Unit target) {
+        Object.Instantiate(prefab, target.transform.position + offset, Quaternion.identity, target.transform);
     }
 }

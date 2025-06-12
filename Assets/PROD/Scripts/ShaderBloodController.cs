@@ -29,13 +29,18 @@ public class ShaderBloodController : MonoBehaviour
         if(!Application.isPlaying) return;
         
         foreach (var rend in renderers) {
-            rend.material.SetFloat("_1_Blood_Intensity", bloodAmount);
-            rend.material.SetFloat("_2_Blood_Intensity", bloodAmount);
-            rend.material.SetFloat("_3_Blood_Intensity", bloodAmount);
-            
-            rend.material.SetFloat("_1_Dirt_Intensity", dirtAmount);
-            rend.material.SetFloat("_2_Dirt_Intensity", dirtAmount);
-            rend.material.SetFloat("_3_Dirt_Intensity", dirtAmount);
+
+            var materials = rend.materials; // Crée une copie instanciée des matériaux
+            foreach (var mat in materials) {
+                mat.SetFloat("_1_Blood_Intensity", bloodAmount);
+                mat.SetFloat("_2_Blood_Intensity", bloodAmount);
+                mat.SetFloat("_3_Blood_Intensity", bloodAmount);
+
+                mat.SetFloat("_1_Dirt_Intensity", dirtAmount);
+                mat.SetFloat("_2_Dirt_Intensity", dirtAmount);
+                mat.SetFloat("_3_Dirt_Intensity", dirtAmount);
+            }
+            rend.materials = materials;
         }
     }
 }
