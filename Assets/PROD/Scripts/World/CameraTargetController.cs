@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 
-
 public class CameraTargetController : MonoBehaviour, IInputAxisOwner
 {
     [Tooltip("Horizontal Rotation.  Value is in degrees, with 0 being centered.")]
@@ -13,7 +12,7 @@ public class CameraTargetController : MonoBehaviour, IInputAxisOwner
 
     private Quaternion _desiredWorldRotation;
     private Character _character;
-
+    
     public void GetInputAxes(List<IInputAxisOwner.AxisDescriptor> axes) {
         axes.Add(new () { DrivenAxis = () => ref HorizontalLook, Name = "Horizontal Look", Hint = IInputAxisOwner.AxisDescriptor.Hints.X });
         axes.Add(new () { DrivenAxis = () => ref VerticalLook, Name = "Vertical Look", Hint = IInputAxisOwner.AxisDescriptor.Hints.Y });

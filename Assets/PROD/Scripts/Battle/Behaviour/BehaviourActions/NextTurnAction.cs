@@ -15,9 +15,9 @@ public partial class NextTurnAction : Action
     
     protected override Status OnStart() {
         if (HasBattleEnded()) {
-            BattleState.Value = global::BattleState.End;
-        }
-        else {
+            BattleState.Value = IsBattleWon() ? global::BattleState.Win : global::BattleState.Loss;
+            return Status.Success;
+        } else {
             
             if(Unit.Value)
                 Unit.Value.Initiative = 0;
@@ -44,6 +44,10 @@ public partial class NextTurnAction : Action
     private bool HasBattleEnded() {
         return BattleManager.Value.Battle.Allies.All(u => !u.IsAlive) 
             || BattleManager.Value.Battle.Enemies.All(u => !u.IsAlive);
+    }
+
+    private bool IsBattleWon() {
+        return BattleManager.Value.Battle.Enemies.All(u => !u.IsAlive);
     }
 }
 

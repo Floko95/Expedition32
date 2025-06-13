@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Character", menuName = "Character/Character Pack", order = 0)]
-public class Character : ScriptableObject
-{
-    [Header("Optional Fields")]
-    public Material[] ReplacementMaterialSets = new Material[16];
+public class Character : ScriptableObject {
+    [Header("Optional Fields")] public Material[] ReplacementMaterialSets = new Material[16];
     public Avatar ReplacementAvatar;
     public SkeletonMorph BaseMorph;
 }

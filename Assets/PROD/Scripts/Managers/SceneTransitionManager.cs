@@ -29,17 +29,20 @@ public class SceneTransitionManager : MonoBehaviour {
         transitionCanvas.enabled = true;
     }
 
-    public void LoadScene(SceneReference sceneReference, UnityAction onSceneLoaded = null) {
+    
+    public void LoadScene(SceneReference sceneReference, UnityAction onSceneLoaded = null) => LoadScene(sceneReference.Name, onSceneLoaded);
+
+    public void LoadScene(string sceneName, UnityAction onSceneLoaded = null) {
         if (IsLoading) return;
         
         _loadedSceneCallback = onSceneLoaded;
-        StartCoroutine(LoadSequence(sceneReference));
+        StartCoroutine(LoadSequence(sceneName));
     }
-
-    protected virtual IEnumerator LoadSequence(SceneReference sceneReference) {
+    
+    protected virtual IEnumerator LoadSequence(string sceneName) {
         yield return FadeIn();
         yield return Unload();
-        yield return Load(sceneReference);
+        yield return Load(sceneName);
         yield return FadeOut();
     }
 
@@ -51,8 +54,8 @@ public class SceneTransitionManager : MonoBehaviour {
         yield return enterTransitionMMF.PlayFeedbacksCoroutine(transform.position);
     }
 
-    protected virtual IEnumerator Load(SceneReference sceneReference) {
-        _loadingOperation = SceneManager.LoadSceneAsync(sceneReference.Name, LoadSceneMode.Additive);
+    protected virtual IEnumerator Load(string sceneName) {
+        _loadingOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         
         while (!_loadingOperation.isDone) {
             yield return null;

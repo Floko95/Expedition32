@@ -975,6 +975,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388827804}
   m_CullTransparentMesh: 1
+--- !u!1 &428271270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 970675303822503253, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+  m_PrefabInstance: {fileID: 1176615395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &432432459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,6 +1230,7 @@ Transform:
   - {fileID: 60907685}
   - {fileID: 1657422091}
   - {fileID: 1475206245}
+  - {fileID: 1176615396}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479975826
@@ -2709,6 +2715,112 @@ MonoBehaviour:
   healDNPrefab: {fileID: 8887645304176962339, guid: 68f47438366c5d749a79017320ebc76c, type: 3}
   APDNPrefab: {fileID: 8315178619843990675, guid: e6597f35ed0f5fa44aa91b9074e94257, type: 3}
   APDNOffset: {x: 0.6, y: 1.75, z: 0}
+--- !u!1001 &1176615395
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 472546850}
+    m_Modifications:
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970675303822503253, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_Name
+      value: LooseScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 970675303822503253, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+--- !u!224 &1176615396 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 579646742008502869, guid: 380211f3caa88e848b0483c89104cb08, type: 3}
+  m_PrefabInstance: {fileID: 1176615395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1201575252
 GameObject:
   m_ObjectHideFlags: 0
@@ -4510,6 +4622,8 @@ MonoBehaviour:
   - rid: 2001685188858086010
   - rid: 2001685188858086011
   - rid: 2001685188858086012
+  - rid: 2001685416703165218
+  - rid: 2001685417497985265
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -4539,6 +4653,22 @@ MonoBehaviour:
           m_Value1: 15133593841824272048
         Name: Target Manager
         m_Value: {fileID: 744393252}
+    - rid: 2001685416703165218
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 13027934035170545429
+          m_Value1: 12319133933759787116
+        Name: LooseScreenUI
+        m_Value: {fileID: 428271270}
+    - rid: 2001685417497985265
+      type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 2841903133596152059
+          m_Value1: 3144386290315059216
+        Name: WorldScene
+        m_Value: OutdoorsScene
     - rid: 7658842238911774818
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
