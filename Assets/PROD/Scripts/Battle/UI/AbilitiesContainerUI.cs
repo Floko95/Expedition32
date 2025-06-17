@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilitiesUI : MonoBehaviour, IInitializable<UnitData>
+public class AbilitiesContainerUI : MonoBehaviour, IInitializable<UnitData>
 {
     [SerializeField] private List<AbilityUI> abilityUIs;
     [SerializeField] private PlayerTurnStateEventChannel turnStateEventChannel;

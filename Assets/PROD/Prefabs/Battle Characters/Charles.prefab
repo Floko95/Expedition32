@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 5431369931910709190}
   - component: {fileID: 2761968089525905583}
   - component: {fileID: 1867633594540656502}
+  - component: {fileID: 3097419049026395686}
   m_Layer: 6
   m_Name: Charles
   m_TagString: Player
@@ -460,6 +461,7 @@ MonoBehaviour:
   uiItems: {fileID: 5149509620418697767}
   shaderBloodController: {fileID: 8586130008139687142}
   _dodgeSystem: {fileID: 1867633594540656502}
+  _uniqueMechanicSystem: {fileID: 3097419049026395686}
   onParryEffect:
     rid: 2001685280962380606
   references:
@@ -529,6 +531,53 @@ MonoBehaviour:
   onParryFeel: {fileID: 8236208504988204242}
   ondodgedFeel: {fileID: 211301117036799116}
   onJumpFeel: {fileID: 5122114208523194249}
+--- !u!114 &3097419049026395686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3295239653202536930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd6807c4bbea1d42b46de8a10af2fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 2059517710955990235, guid: eaf46dc089b3dc74fb4b9006b047a127, type: 3}
+  DeriveStance:
+    name: Derive
+    description: +25% Damage
+    icon: {fileID: 21300000, guid: b93522444620e4f35981e1241d887f85, type: 3}
+    effects: []
+  EclipseStance:
+    name: Eclipse
+    description: '+50% damage dealt.
+
+      +50% damage taken.'
+    icon: {fileID: 21300000, guid: c5583b2b7a09e40ada30df5b0bd88dd2, type: 3}
+    effects:
+    - rid: 2001685506249458017
+    - rid: 2001685493896446147
+  ADRatioForThresholds: 5
+  references:
+    version: 2
+    RefIds:
+    - rid: 2001685493896446147
+      type: {class: ApplyStatModifierEffect, ns: , asm: Assembly-CSharp}
+      data:
+        statType: 2
+        modifier:
+          value: -0.25
+          type: 200
+          Order: 0
+    - rid: 2001685506249458017
+      type: {class: ApplyStatModifierEffect, ns: , asm: Assembly-CSharp}
+      data:
+        statType: 1
+        modifier:
+          value: 0.25
+          type: 200
+          Order: 0
 --- !u!1 &3739629218008582510
 GameObject:
   m_ObjectHideFlags: 0

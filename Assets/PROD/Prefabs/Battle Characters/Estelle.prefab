@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: unitData
       value: 
       objectReference: {fileID: 11400000, guid: b643a9ad43cf8ba4ab243bd00c6998b7, type: 2}
+    - target: {fileID: 1311836021454525050, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
+      propertyPath: _uniqueMechanicSystem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1723844382926556275, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
       propertyPath: m_Controller
       value: 
@@ -42,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 3221072839106738219}
     - target: {fileID: 3295239653202536930, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
       propertyPath: m_Name
-      value: BattleCharacter 2 Variant
+      value: Estelle
       objectReference: {fileID: 0}
     - target: {fileID: 5097819289411043096, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -128,7 +132,8 @@ PrefabInstance:
       propertyPath: 'renderers.Array.data[8]'
       value: 
       objectReference: {fileID: 3056471392097147686}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3097419049026395686, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2355838383976174736, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
     - {fileID: 7739377725120266956, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}

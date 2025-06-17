@@ -32,6 +32,10 @@ PrefabInstance:
       propertyPath: unitData
       value: 
       objectReference: {fileID: 11400000, guid: 9998d77f8954a134ea143d7c50cea26a, type: 2}
+    - target: {fileID: 1311836021454525050, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
+      propertyPath: _uniqueMechanicSystem
+      value: 
+      objectReference: {fileID: 2239980343801868986}
     - target: {fileID: 1867633594540656502, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
       propertyPath: animator
       value: 
@@ -148,20 +152,56 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3097419049026395686, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7739377725120266956, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2169128988147952356, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7262132216307722475}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3295239653202536930, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2239980343801868986}
   m_SourcePrefab: {fileID: 100100000, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
 --- !u!4 &976125072922160903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2169128988147952356, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
   m_PrefabInstance: {fileID: 1410101429614347747}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4479573949877070849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3295239653202536930, guid: 5e3a9da8a035e6240b86106d054807ef, type: 3}
+  m_PrefabInstance: {fileID: 1410101429614347747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2239980343801868986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4479573949877070849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b7c2f248540e64bb94dd4e3cc16b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPrefab: {fileID: 2059517710955990235, guid: eaf46dc089b3dc74fb4b9006b047a127, type: 3}
+  stances:
+  - name: Warmup
+    description: 
+    icon: {fileID: 21300000, guid: 5f51a6f52c62dfa45812defd7a986931, type: 3}
+    effects: []
+  - name: Exercise
+    description: '+50% Damage dealt.
+
+      +50% Damage taken.'
+    icon: {fileID: 21300000, guid: 7ea3a0fc6f5d24943a17189f57c8c5b6, type: 3}
+    effects: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &3234546606491019896
 PrefabInstance:
   m_ObjectHideFlags: 0

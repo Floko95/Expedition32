@@ -10,9 +10,14 @@ public class AllyUnit : Unit {
     [SerializeField] private ShaderBloodController shaderBloodController;
     [SerializeField] private DodgeSystem _dodgeSystem;
     
+    [SerializeField] private AUniqueMechanicSystem _uniqueMechanicSystem;
+    
     [SerializeReference] private AbilityEffect onParryEffect;
     
     public DodgeSystem DodgeSystem => _dodgeSystem;
+    public AUniqueMechanicSystem UniqueMechanicSystem => _uniqueMechanicSystem;
+    
+    private AUniqueMechanicSystem _aUniqueMechanic;
     
     protected override void Awake() {
         base.Awake();
@@ -30,8 +35,6 @@ public class AllyUnit : Unit {
         HealthSystem.OnRevived += OnRevived;
         DodgeSystem.OnParry += OnParry;
     }
-
-    
 
     protected override void OnDestroy() {
         base.OnDestroy();

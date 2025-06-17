@@ -1,10 +1,12 @@
 using System;
+using OSLib.StatSystem;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 [Serializable]
 public abstract class AbilityEffect {
     public abstract void Apply(Unit caster, Unit target);
+    public virtual void Cancel(Unit caster, Unit target) { }
 }
 
 [Serializable]
@@ -67,6 +69,22 @@ class ApplyStatusEffect : AbilityEffect {
     
     public override void Apply(Unit caster, Unit target) {
         target.StatusSystem.ApplyStatus(appliedStatus, target, stacksApplied);
+    }
+}
+
+[Serializable]
+class ApplyStatModifierEffect: AbilityEffect {
+
+    [SerializeField] private StatType statType;
+    [SerializeField] private StatModifier modifier;
+    
+    public override void Apply(Unit caster, Unit target) {
+        target.GetStatSystem().stats[statType].AddModifier(modifier);
+    }
+
+    public override void Cancel(Unit caster, Unit target) {
+        base.Cancel(caster, target);
+        target.GetStatSystem().stats[statType].RemoveModifier(modifier);
     }
 }
 

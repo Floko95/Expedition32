@@ -17,7 +17,6 @@ public class BattleHUD : MonoBehaviour {
         } else {
             _battleManager.onBattleInitialized += OnBattleInitialized;
         }
-        
     }
 
     private void OnBattleInitialized() {
