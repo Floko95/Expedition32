@@ -10,29 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 033d5d07a5b8e2540b638c1b2aa8120a, type: 3}
-  m_Name: Counter_Geoffrey
+  m_Name: Geoffrey_Attack
   m_EditorClassIdentifier: 
   _title: Attack
-  _desc: Geoffrey Counters.
+  _desc: Character Attacks.
   icon: {fileID: 0}
   targetMode: 30
   dodgeMode: 0
   costAP: 0
   _effects:
   - rid: 7658842404068524131
-  - rid: 2001685529700860005
+  - rid: 2001685163186585889
   effectTriggerEvent: 10
-  timeline: {fileID: 11400000, guid: 1fa8048fb2b60bf40aeb6157a9c58797, type: 2}
+  timeline: {fileID: 11400000, guid: fe729d52b71804a48bc0b44a8caabf99, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 2001685529700860005
-      type: {class: InstantiateAtTargetEffect, ns: , asm: Assembly-CSharp}
+    - rid: 2001685163186585889
+      type: {class: GainAPEffect, ns: , asm: Assembly-CSharp}
       data:
-        prefab: {fileID: 8935477530522567829, guid: 98f78a5b433e40d4ab434474df979a2a, type: 3}
-        offset: {x: 0, y: 2, z: 0}
+        apRegained: 1
     - rid: 7658842404068524131
       type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
       data:
-        attackRatio: 0.5
+        attackRatio: 1
         damageType: 0

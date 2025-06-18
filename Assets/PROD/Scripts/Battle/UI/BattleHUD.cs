@@ -1,10 +1,11 @@
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleHUD : MonoBehaviour {
     
-    [SerializeField, SceneObjectsOnly] private List<UnitHUD> unitHUDs;
+    //TODO swap for Character specific UI
+    [SerializeField] private UnitHUD unitHUDPrefab;
+    [SerializeField] private HorizontalLayoutGroup layoutGroup;
     
     private BattleManager _battleManager;
 
@@ -20,12 +21,13 @@ public class BattleHUD : MonoBehaviour {
     }
 
     private void OnBattleInitialized() {
-        for (int i = 0; i < unitHUDs.Count; i++) {
-            
-            unitHUDs[i].gameObject.SetActive(!(i >= _battleManager.Battle.Allies.Count));
-            
-            if(i < _battleManager.Battle.Allies.Count)
-                unitHUDs[i].Init(_battleManager.Battle.Allies[i]);
+        foreach (var ally in _battleManager.Battle.Allies) {
+            var ui = Instantiate(unitHUDPrefab, layoutGroup.transform);
+            ui.Init(ally);
         }
+
+        //stupid
+        layoutGroup.enabled = true;
+        this.InvokeInOneFrame(() => layoutGroup.enabled = false);
     }
 }
