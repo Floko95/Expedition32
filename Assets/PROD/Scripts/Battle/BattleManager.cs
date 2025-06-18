@@ -67,6 +67,8 @@ public class BattleManager : MonoBehaviour
         //Create characters
         
         for (var index = 0; index < battleData.enemies.Count; index++) {
+            if(battleData.enemies[index] == null) continue;
+            
             var slot = enemySlots[index];
             var unit = Instantiate(battleData.enemies[index].prefab, slot).GetComponent<Unit>();
             units.Add(unit);
@@ -76,6 +78,8 @@ public class BattleManager : MonoBehaviour
         var usedTeam = battleData.forcedAllyTeam.Count > 0 ? battleData.forcedAllyTeam : _teamManager.playableCharacters;
         
         for (var index = 0; index < usedTeam.Count; index++) {
+            if(usedTeam[index] == null) continue;
+            
             var slot = alliesSlots[index];
             var unit = Instantiate(usedTeam[index].prefab, slot).GetComponent<Unit>();
             units.Add(unit);

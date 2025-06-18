@@ -20,10 +20,12 @@ public class BattleHUD : MonoBehaviour {
     }
 
     private void OnBattleInitialized() {
-        for (int i = 0; i < _battleManager.Battle.Allies.Count; i++) {
-            if(i > unitHUDs.Count) break;
+        for (int i = 0; i < unitHUDs.Count; i++) {
             
-            unitHUDs[i].Init(_battleManager.Battle.Allies[i]);
+            unitHUDs[i].gameObject.SetActive(!(i >= _battleManager.Battle.Allies.Count));
+            
+            if(i < _battleManager.Battle.Allies.Count)
+                unitHUDs[i].Init(_battleManager.Battle.Allies[i]);
         }
     }
 }
