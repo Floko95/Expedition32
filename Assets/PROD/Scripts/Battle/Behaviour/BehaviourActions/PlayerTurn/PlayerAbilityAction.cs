@@ -45,6 +45,7 @@ public partial class PlayerAbilityAction : Action {
     }
 
     protected override void OnEnd() {
+        Unit.Value.OnAbilityUsed?.Invoke(AbilityData.Value);
         _abilityExecution?.Dispose();
     }
 }

@@ -5,10 +5,18 @@ using Object = UnityEngine.Object;
 
 [Serializable]
 public abstract class AbilityEffect {
+    
+    public float Efficiency {
+        get => efficiency;
+        set => efficiency = Mathf.Clamp01(value);
+    }
+
     public abstract void Apply(Unit caster, Unit target);
     public virtual void Cancel(Unit caster, Unit target) { }
+    protected float efficiency = 1.0f;
 }
 
+//TODO apply efficiency
 [Serializable]
 class DamageEffect : AbilityEffect {
     
@@ -79,11 +87,16 @@ class ApplyStatModifierEffect: AbilityEffect {
     [SerializeField] private StatModifier modifier;
     
     public override void Apply(Unit caster, Unit target) {
+        if(!Mathf.Approximately(efficiency, 1f))
+            modifier.value *= efficiency;
+        
         target.GetStatSystem().stats[statType].AddModifier(modifier);
     }
 
     public override void Cancel(Unit caster, Unit target) {
-        base.Cancel(caster, target);
+        if(!Mathf.Approximately(efficiency, 1f))
+            modifier.value /= efficiency;
+        
         target.GetStatSystem().stats[statType].RemoveModifier(modifier);
     }
 }

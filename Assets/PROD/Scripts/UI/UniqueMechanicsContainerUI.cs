@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class UniqueMechanicsContainerUI : MonoBehaviour {
     
     private BattleManager _battleManager;
     private Dictionary<Unit, UniqueMechanicUI> _UIs = new ();
-    
+
     private async void Start() {
         await Toolbox.WaitUntilReadyAsync();
         _battleManager = Toolbox.Get<BattleManager>();
@@ -33,7 +34,6 @@ public class UniqueMechanicsContainerUI : MonoBehaviour {
             
             _UIs.Add(ally, ui);
             ui.gameObject.SetActive(false);
-            
         }
     }
 

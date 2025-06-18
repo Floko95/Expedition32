@@ -73,9 +73,11 @@ public class BattleManager : MonoBehaviour
             enemies.Add(unit);
         }
         
-        for (var index = 0; index < _teamManager.playableCharacters.Count; index++) {
+        var usedTeam = battleData.forcedAllyTeam.Count > 0 ? battleData.forcedAllyTeam : _teamManager.playableCharacters;
+        
+        for (var index = 0; index < usedTeam.Count; index++) {
             var slot = alliesSlots[index];
-            var unit = Instantiate(_teamManager.playableCharacters[index].prefab, slot).GetComponent<Unit>();
+            var unit = Instantiate(usedTeam[index].prefab, slot).GetComponent<Unit>();
             units.Add(unit);
             allies.Add(unit);
         }

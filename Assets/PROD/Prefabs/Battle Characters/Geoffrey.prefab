@@ -188,20 +188,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIPrefab: {fileID: 2059517710955990235, guid: eaf46dc089b3dc74fb4b9006b047a127, type: 3}
-  stances:
-  - name: Warmup
-    description: 
+  WarmupStance:
+    name: Warmup
+    description: 'Stay in shape!
+
+
+      Time to warmup
+
+      with a basic attack!
+
+
+      Current
+      bonus:
+
+      +<Efficiency>% damage inflicted
+
+      -<Efficiency>% damage
+      taken.'
     icon: {fileID: 21300000, guid: 5f51a6f52c62dfa45812defd7a986931, type: 3}
     effects: []
-  - name: Exercise
-    description: '+50% Damage dealt.
-
-      +50% Damage taken.'
+  ExerciseStance:
+    name: Exercise
+    description: "Stay in shape!\n\nTime to give it all \nwith an ability!\n\nCurrent
+      bonus:\n+<Efficiency>% damage inflicted\n-<Efficiency>% damage taken."
     icon: {fileID: 21300000, guid: 7ea3a0fc6f5d24943a17189f57c8c5b6, type: 3}
     effects: []
+  StretchingStance:
+    name: Stretching
+    description: "Stay in shape!\n\nTime to rest \nand eat those carbs \nwith an
+      Item!\n\nCurrent bonus:\n+<Efficiency>% damage inflicted\n-<Efficiency>% damage
+      taken."
+    icon: {fileID: 21300000, guid: 69f02c3c9085b4448ba4a1d918e6e371, type: 3}
+    effects: []
+  appliedIncrementalEffects:
+  - rid: 2001685523754385512
+  - rid: 2001685523754385513
+  efficiencyPerStage: 0.25
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2001685523754385512
+      type: {class: ApplyStatModifierEffect, ns: , asm: Assembly-CSharp}
+      data:
+        statType: 1
+        modifier:
+          value: 0.25
+          type: 200
+          Order: 0
+    - rid: 2001685523754385513
+      type: {class: ApplyStatModifierEffect, ns: , asm: Assembly-CSharp}
+      data:
+        statType: 2
+        modifier:
+          value: 0.25
+          type: 0
+          Order: 0
 --- !u!1001 &3234546606491019896
 PrefabInstance:
   m_ObjectHideFlags: 0

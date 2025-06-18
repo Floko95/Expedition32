@@ -22,7 +22,6 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     public StatSystem GetStatSystem() => _statSystem;
     public StatusSystem StatusSystem { get; private set; }
     
-    public int Shield { get; private set; }
 
     public float ATK => _statSystem.stats[StatType.ATK].Value;
     public float DEF => _statSystem.stats[StatType.DEF].Value;
@@ -32,9 +31,9 @@ public class Unit : MonoBehaviour, ITargetable, IHaveStats {
     public int Initiative { get; set; }
     
     public bool IsAlive => HealthSystem.IsAlive;
-    public bool isEnemy => unitData && unitData.isEnemy;
 
     public static Action<Unit, int> OnAnyUnitRegainedAP;
+    public Action<AbilityData> OnAbilityUsed;
     
     public List<AbilityData> Abilities { get; private set; } = new List<AbilityData>();
     private StatSystem _statSystem;

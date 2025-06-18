@@ -66,7 +66,6 @@ public class TargetManager : MonoBehaviour {
     private void SetTargetMode(AbilityTargetMode mode) {
         ClearAllTargets();
         _targetModeMode = mode;
-        Debug.Log($"TargetMode changed to {_targetModeMode}");
         
         switch (_targetModeMode) {
             case AbilityTargetMode.AllEnemies:

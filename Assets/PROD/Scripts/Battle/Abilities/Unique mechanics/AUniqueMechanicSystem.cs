@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class AUniqueMechanicSystem : MonoBehaviour, IInitializable<Unit>
@@ -7,6 +8,8 @@ public abstract class AUniqueMechanicSystem : MonoBehaviour, IInitializable<Unit
     public abstract string Title { get; }
     public abstract string Description { get; }
     public abstract Sprite Icon { get; }
+
+    public Action onMechanicUpdated;
     
     bool IInitializable<Unit>.Initialized { get; set; }
     protected Unit _unit;
@@ -26,12 +29,14 @@ public abstract class AUniqueMechanicSystem : MonoBehaviour, IInitializable<Unit
         BattleManager.onTurnStarted += OnTurnStarted;
         BattleLogic.DamagingEvent += OnDamageInflictedPostMitigation;
         BattleLogic.HealingEvent += OnUnitHealed;
+        _unit.OnAbilityUsed += OnAbilityUsed;
     }
     
     private void OnDestroy() {
         BattleManager.onTurnStarted -= OnTurnStarted;
         BattleLogic.DamagingEvent -= OnDamageInflictedPostMitigation;
         BattleLogic.HealingEvent -= OnUnitHealed;
+        _unit.OnAbilityUsed -= OnAbilityUsed;
     }
 
     //TODO set event abstract functions into a TurnBasedBehaviour
@@ -40,4 +45,5 @@ public abstract class AUniqueMechanicSystem : MonoBehaviour, IInitializable<Unit
     protected virtual void OnDamageInflictedPostMitigation(Unit source, Unit target, float amount, bool isCrit, ElementType damageType, ElementReaction elementalReaction) {}
     protected virtual void OnUnitHealed(Unit source, Unit target, float amount) { }
     protected virtual void OnUnitHealed() { }
+    protected virtual void OnAbilityUsed(AbilityData ability) { }
 }
