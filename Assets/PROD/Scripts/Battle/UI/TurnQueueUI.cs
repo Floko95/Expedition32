@@ -42,10 +42,9 @@ public class TurnQueueUI : MonoBehaviour {
             Destroy(child.gameObject);
         }
         
-        int nbTurnsDisplayed = Mathf.Min(maxTurnsDisplayed, _turnQueue.turnQueue.Count);
-        var turnsPeek = _turnQueue.PeekNextTurns(nbTurnsDisplayed);
+        var turnsPeek = _turnQueue.PeekNextTurns(maxTurnsDisplayed);
         
-        for (int i = 0; i < nbTurnsDisplayed; i++) {
+        for (int i = 0; i < turnsPeek.Count; i++) {
             var turnUI = Instantiate(turnUIPrefab, contentRect.transform);
             turnUI.Init(turnsPeek[i].unitData);
         }

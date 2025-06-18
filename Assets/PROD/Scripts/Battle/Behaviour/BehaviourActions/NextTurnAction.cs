@@ -13,16 +13,14 @@ public partial class NextTurnAction : Action
     [SerializeReference] public BlackboardVariable<BattleState> BattleState;
     [SerializeReference] public BlackboardVariable<Unit> Unit;
     
+    
     protected override Status OnStart() {
         if (HasBattleEnded()) {
             BattleState.Value = IsBattleWon() ? global::BattleState.Win : global::BattleState.Loss;
             return Status.Success;
         } else {
             
-            if(Unit.Value)
-                Unit.Value.Initiative = 0;
-            
-            Unit.Value = BattleManager.Value.TurnQueue.Next();
+            Unit.Value = BattleManager.Value.TurnQueue.GetNext();
             
             BattleState.Value = Unit.Value is AllyUnit ? global::BattleState.PlayerTurn : global::BattleState.EnemyTurn;
             global::BattleManager.onTurnStarted.Invoke(Unit.Value);
