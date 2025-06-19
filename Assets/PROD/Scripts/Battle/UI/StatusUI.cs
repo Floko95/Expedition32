@@ -19,6 +19,7 @@ public class StatusUI : MonoBehaviour, IInitializable<StatusInstance>
     }
 
     public void UpdateUI() {
+        stackCountTmp.gameObject.SetActive(Value.data.isStackable);
         stackCountTmp.text = Value.StackCount.ToString();
     }
 }

@@ -10,23 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5c299b074a6b1849b2ef10c71e3d925, type: 3}
-  m_Name: Burn
+  m_Name: Rush
   m_EditorClassIdentifier: 
-  isDebuff: 1
+  isDebuff: 0
   Duration: 3
-  isStackable: 1
+  isStackable: 0
   effectsOnTrigger:
-  - rid: 2001685538921775257
-  triggerOnEvent: 20
-  title: Burn
-  icon: {fileID: 21300000, guid: dfef75293328bdb4b824b9be7ba14cf9, type: 3}
-  desc: Sick burn
-  logDescOnProke: 1
+  - rid: 2001685538921775256
+  triggerOnEvent: 10
+  title: Rush
+  icon: {fileID: 21300000, guid: b1c59811dc9e54c769926cacb4fb1366, type: 3}
+  desc: 
+  logDescOnProke: 0
   references:
     version: 2
     RefIds:
-    - rid: 2001685538921775257
-      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
+    - rid: 2001685538921775256
+      type: {class: ApplyStatModifierEffect, ns: , asm: Assembly-CSharp}
       data:
-        attackRatio: 0.1
-        damageType: 1
+        statType: 3
+        modifier:
+          value: 0.25
+          type: 200
+          Order: 0

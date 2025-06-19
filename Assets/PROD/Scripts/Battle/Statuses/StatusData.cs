@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "status", menuName = "Ex32/StatusData", order = 0)]
@@ -12,7 +11,7 @@ public class StatusData : ScriptableObject {
     public bool isStackable;
     
     [Header("Effects")]
-    public List<AbilityEffect> effectsOnTrigger;
+    [SerializeReference] public List<AbilityEffect> effectsOnTrigger;
     public StatusTrigger triggerOnEvent;
     
     [Header("Display")]

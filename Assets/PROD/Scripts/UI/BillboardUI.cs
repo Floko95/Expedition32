@@ -3,7 +3,8 @@ using UnityEngine;
 public class BillboardUI : MonoBehaviour {
     private Camera _mainCamera;
     public bool ignoreYAxis = false; // Booléen pour contrôler la rotation sur l'axe Y
-
+    public bool invertZAxis = false;
+    
     private void Start() {
         _mainCamera = Camera.main;
     }
@@ -22,6 +23,7 @@ public class BillboardUI : MonoBehaviour {
         transform.LookAt(targetPosition);
 
         // Inverser la direction pour que l'UI ne soit pas à l'envers
-        transform.Rotate(0, 180, 0);
+        if(invertZAxis)
+            transform.Rotate(0, 180, 0);
     }
 }

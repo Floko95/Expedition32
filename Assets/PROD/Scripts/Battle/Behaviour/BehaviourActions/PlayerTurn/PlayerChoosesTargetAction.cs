@@ -20,6 +20,8 @@ public partial class PlayerChoosesTargetAction : Action
         _targetManager ??= Toolbox.Get<TargetManager>();
         
         Targets.Value = _targetManager.CurrentlyTargeted.Select(t => t.gameObject).ToList();
+        _targetManager.Reset();
+        
         return Status.Running;
     }
 

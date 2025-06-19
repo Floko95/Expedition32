@@ -32,7 +32,6 @@ public class TargetManager : MonoBehaviour {
     }
 
     public void Reset() {
-        ClearAllTargets();
         SetTargetMode(AbilityTargetMode.SelectTarget);
     }
     
@@ -139,6 +138,8 @@ public class TargetManager : MonoBehaviour {
     }
 
     public void HandleCycleInput(bool clockwise) {
+        if(_targetModeMode is AbilityTargetMode.AllAllies or AbilityTargetMode.AllEnemies) return;
+        
         CycleTargets(AvailableTargets, clockwise);
     }
 }
