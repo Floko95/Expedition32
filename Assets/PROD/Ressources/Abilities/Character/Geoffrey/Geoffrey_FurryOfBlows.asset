@@ -10,28 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 033d5d07a5b8e2540b638c1b2aa8120a, type: 3}
-  m_Name: Geoffrey_Attack
+  m_Name: Geoffrey_FurryOfBlows
   m_EditorClassIdentifier: 
-  _title: Attack
-  _desc: Geoffrey Attacks.
+  _title: Dragon Punch
+  _desc: 'Deals Extreme single target <color=#C5BEB4>Physical</color>  damage. Plus
+    Ultra!
+
+
+    <sprite name="Exercise"> : Damage greatly increased. Interrupts
+    your workout routine.'
   icon: {fileID: 0}
   targetMode: 30
   dodgeMode: 0
-  costAP: 0
+  costAP: 9
   _effects:
   - rid: 7658842404068524131
-  - rid: 2001685163186585889
+  - rid: 2001685551655682175
   effectTriggerEvent: 10
   timeline: {fileID: 11400000, guid: fe729d52b71804a48bc0b44a8caabf99, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 2001685163186585889
-      type: {class: GainAPEffect, ns: , asm: Assembly-CSharp}
-      data:
-        apRegained: 1
+    - rid: 2001685551655682175
+      type: {class: InterruptWorkoutRoutineEffect, ns: , asm: Assembly-CSharp}
+      data: 
     - rid: 7658842404068524131
       type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
       data:
-        attackRatio: 0.3
+        attackRatio: 5
         damageType: 0

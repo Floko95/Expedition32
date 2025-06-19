@@ -31,13 +31,14 @@ public class GeoffreyStanceCyclerMechanic : AUniqueMechanicSystem {
     
     private List<Stance> _stances = new List<Stance>();
     private int _currentStanceIndex = 0;
+    private bool _skipOnce;
     
     public override void Init(Unit data) {
         base.Init(data);
         _stances = new List<Stance>() { WarmupStance, ExerciseStance, StretchingStance };
         CumulatedEfficiency = 1f;
     }
-
+    
     private void NextStance() {
         
         CumulatedEfficiency += efficiencyPerStage;
@@ -53,7 +54,7 @@ public class GeoffreyStanceCyclerMechanic : AUniqueMechanicSystem {
         onMechanicUpdated?.Invoke();
     }
 
-    private void ResetChain() {
+    public void ResetChain() {
         _currentStanceIndex = 0;
         Streak = 0;
         CumulatedEfficiency = 1f;
@@ -63,9 +64,18 @@ public class GeoffreyStanceCyclerMechanic : AUniqueMechanicSystem {
             effect.Efficiency = CumulatedEfficiency;
         }
     }
+
+    public void SkipNextAbilityUsed() {
+        _skipOnce = true;
+    }
     
     protected override void OnAbilityUsed(AbilityData ability) {
         base.OnAbilityUsed(ability);
+        
+        if (_skipOnce) {
+            _skipOnce = false;
+            NextStance();
+        }
         
         if (ability == _unit.unitData.attackAbility && CurrentStance == WarmupStance) {
             NextStance();

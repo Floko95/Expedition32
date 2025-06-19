@@ -111,3 +111,21 @@ class InstantiateAtTargetEffect: AbilityEffect {
         Object.Instantiate(prefab, target.transform.position + offset, Quaternion.identity, target.transform);
     }
 }
+
+abstract class GeoffreyEffect : AbilityEffect { }
+
+class KeepStanceEffect : GeoffreyEffect {
+    
+    public override void Apply(Unit caster, Unit target) {
+        var mechanic = caster.GetComponent<GeoffreyStanceCyclerMechanic>();
+        mechanic.SkipNextAbilityUsed();
+    }
+}
+
+class InterruptWorkoutRoutineEffect : GeoffreyEffect {
+    public override void Apply(Unit caster, Unit target) {
+        var mechanic = caster.GetComponent<GeoffreyStanceCyclerMechanic>();
+        
+        mechanic.ResetChain();
+    }
+}
