@@ -56,7 +56,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5447998520029954629, guid: 4abe4cce23f87d94897d13c1c5fb2de1, type: 2}
+  - {fileID: -6955989720346310725, guid: 85f710dcebf106048849e41ae81ac9ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,7 +142,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5447998520029954629, guid: 4abe4cce23f87d94897d13c1c5fb2de1, type: 2}
+  - {fileID: -6955989720346310725, guid: 85f710dcebf106048849e41ae81ac9ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -280,8 +280,8 @@ MonoBehaviour:
     underline: 0
     strike: 0
     alpha: 1
-    customColor: 0
-    color: {r: 1, g: 1, b: 0, a: 1}
+    customColor: 1
+    color: {r: 0.9568628, g: 1, b: 0.7607844, a: 1}
     mark: 0
     markColor: {r: 0, g: 0, b: 0, a: 0.5}
     horizontal: 0
@@ -647,7 +647,7 @@ MonoBehaviour:
   enablePooling: 0
   poolSize: 50
   disableOnSceneLoad: 1
-  editorLastFont: Neon-Yellow3D
+  editorLastFont: IMFellDoublePica-Regular SDF3D
   position: {x: 0, y: 0, z: 0}
 --- !u!210 &7602692897169067339
 SortingGroup:
@@ -721,7 +721,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5447998520029954629, guid: 4abe4cce23f87d94897d13c1c5fb2de1, type: 2}
+  - {fileID: -6955989720346310725, guid: 85f710dcebf106048849e41ae81ac9ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -763,10 +763,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: JUMP
+  m_text: <color=#F4FFC2FF>JUMP</color>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4abe4cce23f87d94897d13c1c5fb2de1, type: 2}
-  m_sharedMaterial: {fileID: -5447998520029954629, guid: 4abe4cce23f87d94897d13c1c5fb2de1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85f710dcebf106048849e41ae81ac9ff, type: 2}
+  m_sharedMaterial: {fileID: -6955989720346310725, guid: 85f710dcebf106048849e41ae81ac9ff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

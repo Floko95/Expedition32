@@ -56,7 +56,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4200798139453797082, guid: a2dd927002d687045967512541ec5c71, type: 2}
+  - {fileID: -6955989720346310725, guid: 85f710dcebf106048849e41ae81ac9ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,7 +142,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4200798139453797082, guid: a2dd927002d687045967512541ec5c71, type: 2}
+  - {fileID: -6955989720346310725, guid: 85f710dcebf106048849e41ae81ac9ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -232,7 +232,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -4200798139453797082, guid: a2dd927002d687045967512541ec5c71, type: 2}
+  - {fileID: -6955989720346310725, guid: 85f710dcebf106048849e41ae81ac9ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -274,10 +274,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PARRIED
+  m_text: <color=#A7CFDAFF>PARRIED</color>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a2dd927002d687045967512541ec5c71, type: 2}
-  m_sharedMaterial: {fileID: -4200798139453797082, guid: a2dd927002d687045967512541ec5c71, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 85f710dcebf106048849e41ae81ac9ff, type: 2}
+  m_sharedMaterial: {fileID: -6955989720346310725, guid: 85f710dcebf106048849e41ae81ac9ff, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -456,8 +456,8 @@ MonoBehaviour:
     underline: 0
     strike: 0
     alpha: 1
-    customColor: 0
-    color: {r: 1, g: 1, b: 0, a: 1}
+    customColor: 1
+    color: {r: 0.654902, g: 0.8117648, b: 0.854902, a: 1}
     mark: 0
     markColor: {r: 0, g: 0, b: 0, a: 0.5}
     horizontal: 0
@@ -823,7 +823,7 @@ MonoBehaviour:
   enablePooling: 0
   poolSize: 50
   disableOnSceneLoad: 1
-  editorLastFont: Mana3D
+  editorLastFont: IMFellDoublePica-Regular SDF3D
   position: {x: 0, y: 0, z: 0}
 --- !u!210 &3596781318909727672
 SortingGroup:
