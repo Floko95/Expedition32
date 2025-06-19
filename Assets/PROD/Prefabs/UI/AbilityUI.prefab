@@ -1224,10 +1224,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This is a normal description of an ability.
-
-    I don''t know what kind
-    of damage it deals but I''m sure it deals a lot. '
+  m_text: "This is a normal description of an <color=#005500>ability</color>.\nI
+    don't know what kind of damage it deals but I'm sure it deals a<sprite name=\"Ice\">lot
+    <sprite name=\"Light\">of <sprite name=\"Physical\">\n \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3944eaaf70beffa4097d8c293604125e, type: 2}
   m_sharedMaterial: {fileID: 7159369417392969216, guid: 3944eaaf70beffa4097d8c293604125e, type: 2}
@@ -1246,7 +1245,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: b6276365451dba240a82bffc6a055fc5, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
