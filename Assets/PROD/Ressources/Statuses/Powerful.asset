@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5c299b074a6b1849b2ef10c71e3d925, type: 3}
-  m_Name: Rush
+  m_Name: Powerful
   m_EditorClassIdentifier: 
   isDebuff: 0
   Duration: 3
   isStackable: 0
   effectsOnTrigger:
   - rid: 2001685538921775256
-  - rid: 2001685552898769729
-  - rid: 2001685552898769730
+  - rid: 2001685552898769731
+  - rid: 2001685552898769733
   triggerOnEvent: 10
-  title: Rush
-  icon: {fileID: 21300000, guid: b1c59811dc9e54c769926cacb4fb1366, type: 3}
+  title: Shell
+  icon: {fileID: 21300000, guid: 62206718bac51c34cb9ce00125e48234, type: 3}
   desc: 
   logDescOnProke: 0
   references:
@@ -30,18 +30,18 @@ MonoBehaviour:
     - rid: 2001685538921775256
       type: {class: ApplyStatModifierEffect, ns: , asm: Assembly-CSharp}
       data:
-        statType: 3
+        statType: 1
         modifier:
           value: 0.25
           type: 200
           Order: 0
-    - rid: 2001685552898769729
+    - rid: 2001685552898769731
       type: {class: InstantiateAtTargetEffect, ns: , asm: Assembly-CSharp}
       data:
-        prefab: {fileID: 7527582829510006667, guid: 8ff9b993d5ec0cf4fa30bcad71d0f3dd, type: 3}
+        prefab: {fileID: 4606213493975902152, guid: 3e529572d89b0c140868a19f5bd41864, type: 3}
         offset: {x: 0, y: 0, z: 0}
-    - rid: 2001685552898769730
+    - rid: 2001685552898769733
       type: {class: InstantiateAtTargetEffect, ns: , asm: Assembly-CSharp}
       data:
-        prefab: {fileID: 7600269418225516185, guid: cd878a834a78e614c8024228b622e8c2, type: 3}
-        offset: {x: -1, y: 2, z: 0}
+        prefab: {fileID: 6543424139359708754, guid: c0f8d707dfd81024a84a8882098694e4, type: 3}
+        offset: {x: -1, y: 2.5, z: 0}

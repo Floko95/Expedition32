@@ -77,11 +77,11 @@ public class TargetManager : MonoBehaviour {
                 break;
             case AbilityTargetMode.SelectTarget:
                 AvailableTargets = new List<ITargetable>(_battleManager.Battle.AliveEnemies);
-                AddTarget(_battleManager.Battle.AliveEnemies[currentTargetIndex]);
+                AddTarget(_battleManager.Battle.AliveEnemies[currentTargetIndex % AvailableTargets.Count]);
                 break;
             case AbilityTargetMode.Ally:
                 AvailableTargets = new List<ITargetable>(_battleManager.Battle.AliveAllies);
-                AddTarget(_battleManager.Battle.AliveAllies[currentTargetIndex]);
+                AddTarget(_battleManager.Battle.AliveAllies[currentTargetIndex % AvailableTargets.Count]);
                 break;
             case AbilityTargetMode.CharacterSelf:
                 AvailableTargets = new List<ITargetable> { _battleManager.TurnQueue.CurrentTurn };

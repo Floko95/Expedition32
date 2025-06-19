@@ -23,14 +23,32 @@ MonoBehaviour:
   dodgeMode: 0
   costAP: 6
   _effects:
-  - rid: 7658842404068524131
+  - rid: 2001685552898769722
   effectTriggerEvent: 10
   timeline: {fileID: 11400000, guid: fe729d52b71804a48bc0b44a8caabf99, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 7658842404068524131
+    - rid: 2001685552898769722
+      type: {class: ConditionalEffect, ns: , asm: Assembly-CSharp}
+      data:
+        condition:
+          rid: 2001685552898769723
+        conditionValidEffects:
+        - rid: 2001685552898769724
+        conditionInvalidEffects:
+        - rid: 7658842404068524131
+    - rid: 2001685552898769723
+      type: {class: DoesTargetHaveStatusCondition, ns: , asm: Assembly-CSharp}
+      data:
+        status: {fileID: 11400000, guid: 1cbae52b653b81c439161c24bdaaf748, type: 2}
+    - rid: 2001685552898769724
       type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
       data:
         attackRatio: 4
+        damageType: 3
+    - rid: 7658842404068524131
+      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
+      data:
+        attackRatio: 2
         damageType: 3

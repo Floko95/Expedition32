@@ -26,22 +26,38 @@ MonoBehaviour:
   _effects:
   - rid: 7658842404068524131
   - rid: 2001685551655682172
-  - rid: 2001685551655682048
+  - rid: 2001685552898769713
   effectTriggerEvent: 10
   timeline: {fileID: 11400000, guid: fe729d52b71804a48bc0b44a8caabf99, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 2001685551655682048
-      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
-      data:
-        appliedStatus: {fileID: 11400000, guid: d09f99b447142f4419d999bfcfbd0a1f, type: 2}
-        stacksApplied: 5
     - rid: 2001685551655682172
       type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
       data:
         attackRatio: 1
         damageType: 2
+    - rid: 2001685552898769713
+      type: {class: ConditionalEffect, ns: , asm: Assembly-CSharp}
+      data:
+        condition:
+          rid: 2001685552898769716
+        conditionValidEffects:
+        - rid: 2001685552898769715
+        conditionInvalidEffects: []
+    - rid: 2001685552898769715
+      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        appliedStatus: {fileID: 11400000, guid: d09f99b447142f4419d999bfcfbd0a1f, type: 2}
+        stacksApplied: 5
+    - rid: 2001685552898769716
+      type: {class: IsCasterInStance, ns: , asm: Assembly-CSharp}
+      data:
+        stance:
+          name: Exercise
+          description: 
+          icon: {fileID: 0}
+          effects: []
     - rid: 7658842404068524131
       type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
       data:

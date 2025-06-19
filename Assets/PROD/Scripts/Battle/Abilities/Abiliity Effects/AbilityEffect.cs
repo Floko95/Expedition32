@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using OSLib.StatSystem;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -109,6 +110,25 @@ class InstantiateAtTargetEffect: AbilityEffect {
     
     public override void Apply(Unit caster, Unit target) {
         Object.Instantiate(prefab, target.transform.position + offset, Quaternion.identity, target.transform);
+    }
+}
+
+[Serializable]
+abstract class CompositeEffect : AbilityEffect { }
+
+
+[Serializable]
+class ConditionalEffect : CompositeEffect {
+    [SerializeReference] public ACondition condition;
+    
+    [SerializeReference] List<AbilityEffect> conditionValidEffects;
+    [SerializeReference] List<AbilityEffect> conditionInvalidEffects;
+    
+    public override void Apply(Unit caster, Unit target) {
+        if (condition.IsConditionMet(caster, target))
+            conditionValidEffects.ForEach(abilityEffect => abilityEffect.Apply(caster, target));
+        else
+            conditionInvalidEffects.ForEach(abilityEffect => abilityEffect.Apply(caster, target));
     }
 }
 

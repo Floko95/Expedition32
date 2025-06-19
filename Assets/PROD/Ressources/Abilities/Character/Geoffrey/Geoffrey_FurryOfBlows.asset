@@ -24,18 +24,40 @@ MonoBehaviour:
   dodgeMode: 0
   costAP: 9
   _effects:
-  - rid: 7658842404068524131
-  - rid: 2001685551655682175
+  - rid: 2001685552898769717
   effectTriggerEvent: 10
   timeline: {fileID: 11400000, guid: fe729d52b71804a48bc0b44a8caabf99, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 2001685551655682175
+    - rid: 2001685552898769717
+      type: {class: ConditionalEffect, ns: , asm: Assembly-CSharp}
+      data:
+        condition:
+          rid: 2001685552898769718
+        conditionValidEffects:
+        - rid: 2001685552898769721
+        conditionInvalidEffects:
+        - rid: 2001685552898769720
+        - rid: 2001685552898769719
+    - rid: 2001685552898769718
+      type: {class: IsCasterInStance, ns: , asm: Assembly-CSharp}
+      data:
+        stance:
+          name: Exercise
+          description: 
+          icon: {fileID: 0}
+          effects: []
+    - rid: 2001685552898769719
       type: {class: InterruptWorkoutRoutineEffect, ns: , asm: Assembly-CSharp}
       data: 
-    - rid: 7658842404068524131
+    - rid: 2001685552898769720
       type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
       data:
-        attackRatio: 5
+        attackRatio: 4
+        damageType: 0
+    - rid: 2001685552898769721
+      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
+      data:
+        attackRatio: 8
         damageType: 0

@@ -21,6 +21,7 @@ MonoBehaviour:
   costAP: 1
   _effects:
   - rid: 2001685551655682173
+  - rid: 2001685552898769689
   effectTriggerEvent: 10
   timeline: {fileID: 11400000, guid: 2b240b283af107c489415600cc4170a2, type: 2}
   references:
@@ -29,3 +30,7 @@ MonoBehaviour:
     - rid: 2001685551655682173
       type: {class: KeepStanceEffect, ns: , asm: Assembly-CSharp}
       data: 
+    - rid: 2001685552898769689
+      type: {class: GainAPEffect, ns: , asm: Assembly-CSharp}
+      data:
+        apRegained: 3

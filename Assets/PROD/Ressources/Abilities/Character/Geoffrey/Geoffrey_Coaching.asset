@@ -25,8 +25,7 @@ MonoBehaviour:
   costAP: 0
   _effects:
   - rid: 2001685538921775104
-  - rid: 2001685538921775105
-  - rid: 2001685538921775106
+  - rid: 2001685552898769705
   effectTriggerEvent: 10
   timeline: {fileID: 11400000, guid: 2b240b283af107c489415600cc4170a2, type: 2}
   references:
@@ -37,13 +36,30 @@ MonoBehaviour:
       data:
         appliedStatus: {fileID: 11400000, guid: 85a3ab808c0dc4340a74ee7a1673ee36, type: 2}
         stacksApplied: 1
-    - rid: 2001685538921775105
-      type: {class: InstantiateAtTargetEffect, ns: , asm: Assembly-CSharp}
+    - rid: 2001685552898769705
+      type: {class: ConditionalEffect, ns: , asm: Assembly-CSharp}
       data:
-        prefab: {fileID: 7527582829510006667, guid: 8ff9b993d5ec0cf4fa30bcad71d0f3dd, type: 3}
-        offset: {x: 0, y: 0, z: 0}
-    - rid: 2001685538921775106
-      type: {class: InstantiateAtTargetEffect, ns: , asm: Assembly-CSharp}
+        condition:
+          rid: 2001685552898769710
+        conditionValidEffects:
+        - rid: 2001685552898769711
+        - rid: 2001685552898769712
+        conditionInvalidEffects: []
+    - rid: 2001685552898769710
+      type: {class: IsCasterInStance, ns: , asm: Assembly-CSharp}
       data:
-        prefab: {fileID: 7600269418225516185, guid: cd878a834a78e614c8024228b622e8c2, type: 3}
-        offset: {x: -1, y: 2, z: 0}
+        stance:
+          name: Stretching
+          description: 
+          icon: {fileID: 0}
+          effects: []
+    - rid: 2001685552898769711
+      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        appliedStatus: {fileID: 11400000, guid: 7fe2b6a366ed1a14fa8d7d4ebe154098, type: 2}
+        stacksApplied: 1
+    - rid: 2001685552898769712
+      type: {class: ApplyStatusEffect, ns: , asm: Assembly-CSharp}
+      data:
+        appliedStatus: {fileID: 11400000, guid: 0fb5030704b1b4d4b8be98cea948fb05, type: 2}
+        stacksApplied: 1
