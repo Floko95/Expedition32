@@ -121,7 +121,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: b4bef00af1f3cc14bbfff82ed29afa3f, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: b6276365451dba240a82bffc6a055fc5, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -378,7 +378,7 @@ MonoBehaviour:
   enableOffsetFadeIn: 0
   offsetFadeIn: {x: 0.5, y: 0}
   enableScaleFadeIn: 1
-  scaleFadeIn: {x: 0, y: 0}
+  scaleFadeIn: {x: 2, y: 2}
   enableCrossScaleFadeIn: 0
   crossScaleFadeIn: {x: 1, y: 1.5}
   enableShakeFadeIn: 0
@@ -394,15 +394,15 @@ MonoBehaviour:
   enableShakeFadeOut: 0
   shakeOffsetFadeOut: {x: 0, y: 1.5}
   shakeFrequencyFadeOut: 4
-  enableLerp: 0
+  enableLerp: 1
   lerpSettings:
     speed: 5
-    minX: -0.4
-    maxX: 0.4
-    minY: 0.5
-    maxY: 1
+    minX: 0
+    maxX: 3
+    minY: 2
+    maxY: 3
     randomFlip: 0
-  enableVelocity: 1
+  enableVelocity: 0
   velocitySettings:
     minX: 1
     maxX: 1
@@ -506,7 +506,7 @@ MonoBehaviour:
   defaultOrthographicSize: 5
   maxOrthographicSize: 1.5
   orthographicCamera: {fileID: 0}
-  spamGroup: 
+  spamGroup: Damage
   enableCombination: 0
   combinationSettings:
     method: 0
@@ -638,7 +638,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  enableCollision: 0
+  enableCollision: 1
   collisionSettings:
     radius: 0.5
     pushFactor: 1

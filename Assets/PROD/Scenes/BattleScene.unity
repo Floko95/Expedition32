@@ -3826,6 +3826,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2474706611243012802, guid: c9e7ce445f6c6a448aeb5e4d3f06a0aa, type: 3}
   m_PrefabInstance: {fileID: 1544538009}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1559863314 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6809414499752089551, guid: 7528bc8576a86b845866e1b1afffd1b1, type: 3}
+  m_PrefabInstance: {fileID: 7829367485006237222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1623668916
 GameObject:
   m_ObjectHideFlags: 0
@@ -4078,13 +4083,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667631833}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.085836284, y: 0.03778536, z: -0.037785444, w: 0.9948752}
+  m_LocalRotation: {x: 0.08616276, y: 0.037034858, z: -0.029102078, w: 0.9951671}
   m_LocalPosition: {x: 1.3871374, y: 2.9742248, z: 1.4300191}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1276712054}
-  m_LocalEulerAnglesHint: {x: 10, y: 4, z: -4}
+  m_LocalEulerAnglesHint: {x: 10, y: 4, z: -3}
 --- !u!114 &1667631835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4097,7 +4102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraDistance: 4
+  CameraDistance: 3.5
   DeadZoneDepth: 0
   Composition:
     ScreenPosition: {x: -0.3, y: 0}
@@ -4532,6 +4537,7 @@ MonoBehaviour:
   - rid: 2001685509417206328
   - rid: 2001685509417206329
   - rid: 2001685529631130323
+  - rid: 2001685571039133822
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -4601,6 +4607,14 @@ MonoBehaviour:
           m_Value1: 4132380928730941534
         Name: BattleWonVCAm
         m_Value: {fileID: 1521636108}
+    - rid: 2001685571039133822
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 16293276064977288638
+          m_Value1: 13547455979947037950
+        Name: WinScreenUI
+        m_Value: {fileID: 1559863314}
     - rid: 7658842238911774818
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:

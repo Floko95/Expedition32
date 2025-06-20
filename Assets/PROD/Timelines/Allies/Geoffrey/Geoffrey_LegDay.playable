@@ -209,7 +209,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: ComboWindow
   - m_Version: 1
-    m_Start: 2.7666666666666666
+    m_Start: 2.6666666666666665
     m_ClipIn: 0
     m_Asset: {fileID: 8740722944351663522}
     m_Duration: 0.033333333333333215
@@ -257,6 +257,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     timeScale: 0.2
+--- !u!114 &-6274036385455804753
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944150d5d4b48574091ce38bc863448f, type: 3}
+  m_Name: QTE(Clone)
+  m_EditorClassIdentifier: 
+  start: 0
+  end: 0
+  clipDuration: 0
+  isComplete: 0
+  screenAnchorPos: {x: 25, y: 25}
+  appliedModifierOnSuccess:
+    value: 0
+    type: 0
+    Order: 0
 --- !u!114 &-5663911393964759684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,8 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5672e0c4dda444fcb8b80cc004675ea2, type: 3}
   m_Name: ComboWindow(Clone)(Clone)
   m_EditorClassIdentifier: 
-  start: 1.5
-  end: 1.5333333333333334
+  start: 1.2666666666666666
+  end: 1.3
   clipDuration: 0.03333333333333344
 --- !u!114 &-2412397863086473469
 MonoBehaviour:
@@ -306,8 +327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5672e0c4dda444fcb8b80cc004675ea2, type: 3}
   m_Name: ComboWindow(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
-  start: 2.3333333333333335
-  end: 2.3666666666666667
+  start: 2.1666666666666665
+  end: 2.1999999999999997
   clipDuration: 0.033333333333333215
 --- !u!114 &-1314387275050116793
 MonoBehaviour:
@@ -343,9 +364,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5672e0c4dda444fcb8b80cc004675ea2, type: 3}
   m_Name: ComboWindow(Clone)(Clone)
   m_EditorClassIdentifier: 
-  start: 2.3333333333333335
-  end: 2.3666666666666667
+  start: 1.7833333333333334
+  end: 1.8166666666666667
   clipDuration: 0.033333333333333215
+--- !u!114 &-379141303104542892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944150d5d4b48574091ce38bc863448f, type: 3}
+  m_Name: QTE
+  m_EditorClassIdentifier: 
+  start: 0
+  end: 0
+  clipDuration: 0
+  isComplete: 0
+  screenAnchorPos: {x: -25, y: 25}
+  appliedModifierOnSuccess:
+    value: 0
+    type: 0
+    Order: 0
 --- !u!74 &-210274580098653443
 AnimationClip:
   m_ObjectHideFlags: 0
@@ -1491,6 +1533,7 @@ MonoBehaviour:
   - {fileID: -8898574351354227251}
   - {fileID: -8309044009573699923}
   - {fileID: 4961431020209354148}
+  - {fileID: 4371615389357695097}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -1509,8 +1552,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5672e0c4dda444fcb8b80cc004675ea2, type: 3}
   m_Name: ComboWindow
   m_EditorClassIdentifier: 
-  start: 0.6666666666666666
-  end: 0.7
+  start: 0.6166666666666667
+  end: 0.65
   clipDuration: 0.033333333333333326
 --- !u!114 &1067654752589402655
 MonoBehaviour:
@@ -1570,6 +1613,167 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template:
     timeScale: 0.2
+--- !u!114 &4371615389357695097
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d85fa826f8fb4478ae3dfa7c56c84b8, type: 3}
+  m_Name: Observable Track (1)
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_AnimClip: {fileID: 0}
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_Curves: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips:
+  - m_Version: 1
+    m_Start: 0.16666666666666666
+    m_ClipIn: 0
+    m_Asset: {fileID: -379141303104542892}
+    m_Duration: 0.45000000000000007
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 4371615389357695097}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: QTE
+  - m_Version: 1
+    m_Start: 1.3
+    m_ClipIn: 0
+    m_Asset: {fileID: -6274036385455804753}
+    m_Duration: 0.4166666666666665
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 4371615389357695097}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: QTE
+  m_Markers:
+    m_Objects: []
 --- !u!114 &4961431020209354148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2020,13 +2224,49 @@ MonoBehaviour:
     m_BlendOutDuration: 0.1499999999999999
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2094,6 +2334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5672e0c4dda444fcb8b80cc004675ea2, type: 3}
   m_Name: ComboWindow(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
-  start: 2.3333333333333335
-  end: 2.3666666666666667
+  start: 2.7666666666666666
+  end: 2.8
   clipDuration: 0.033333333333333215

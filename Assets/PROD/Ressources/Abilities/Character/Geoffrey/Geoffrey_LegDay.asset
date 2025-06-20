@@ -13,20 +13,45 @@ MonoBehaviour:
   m_Name: Geoffrey_LegDay
   m_EditorClassIdentifier: 
   _title: Leg day
-  _desc: Deals medium single target <color=#C5BEB4>Physical</color> damage.
+  _desc: 'Deals medium single target <color=#C5BEB4>Physical</color> damage.
+
+    <sprite
+    name="Exercise"> : Damage increased.'
   icon: {fileID: 0}
   targetMode: 30
   dodgeMode: 0
   costAP: 5
   _effects:
-  - rid: 7658842404068524131
+  - rid: 2001685574489473024
   effectTriggerEvent: 10
   timeline: {fileID: 11400000, guid: bdd04c0dbd5b23549973f920153a7a4f, type: 2}
   references:
     version: 2
     RefIds:
+    - rid: 2001685574489473024
+      type: {class: ConditionalEffect, ns: , asm: Assembly-CSharp}
+      data:
+        condition:
+          rid: 2001685574489473026
+        conditionValidEffects:
+        - rid: 2001685574489473025
+        conditionInvalidEffects:
+        - rid: 7658842404068524131
+    - rid: 2001685574489473025
+      type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
+      data:
+        attackRatio: 0.6
+        damageType: 0
+    - rid: 2001685574489473026
+      type: {class: IsCasterInStance, ns: , asm: Assembly-CSharp}
+      data:
+        stance:
+          name: Exercise
+          description: 
+          icon: {fileID: 0}
+          effects: []
     - rid: 7658842404068524131
       type: {class: DamageEffect, ns: , asm: Assembly-CSharp}
       data:
-        attackRatio: 3
+        attackRatio: 0.3
         damageType: 0
