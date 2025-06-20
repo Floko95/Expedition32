@@ -30,7 +30,7 @@ public class DNManager : MonoBehaviour
     }
 
     private void OnDamagingEvent(Unit source, Unit target, float amount, bool isCrit, ElementType damageType, ElementReaction reaction) {
-        var dn = damageDNPrefab.Spawn(target.transform.position +APDNOffset, amount);
+        var dn = damageDNPrefab.Spawn(target.transform.position, amount);
         dn.numberSettings.customColor = isCrit;
 
         dn.enableBottomText = reaction is not ElementReaction.Normal;
