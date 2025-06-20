@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   permanent: 0
-  lifetime: 1
+  lifetime: 1.5
   unscaledTime: 1
   enable3DGame: 1
   faceCameraView: 1
@@ -328,13 +328,13 @@ MonoBehaviour:
   bottomText: 
   bottomTextSettings:
     bold: 0
-    italic: 1
+    italic: 0
     underline: 0
     strike: 0
     alpha: 1
     customColor: 0
     color: {r: 1, g: 1, b: 0, a: 1}
-    mark: 1
+    mark: 0
     markColor: {r: 0, g: 0, b: 0, a: 0.5}
     horizontal: 0
     vertical: 0
@@ -399,8 +399,8 @@ MonoBehaviour:
     speed: 5
     minX: 0
     maxX: 3
-    minY: 2
-    maxY: 3
+    minY: 3
+    maxY: 4
     randomFlip: 0
   enableVelocity: 0
   velocitySettings:
@@ -640,7 +640,7 @@ MonoBehaviour:
       m_RotationOrder: 4
   enableCollision: 1
   collisionSettings:
-    radius: 0.5
+    radius: 1.5
     pushFactor: 1
     desiredDirection: {x: 0, y: 0, z: 0}
   enablePush: 0

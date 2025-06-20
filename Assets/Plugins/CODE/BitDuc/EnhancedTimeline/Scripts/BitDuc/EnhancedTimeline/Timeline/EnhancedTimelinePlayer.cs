@@ -4,6 +4,7 @@ using System.Linq;
 using BitDuc.EnhancedTimeline.Observable;
 using BitDuc.EnhancedTimeline.Utilities;
 using R3;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Serialization;
@@ -56,6 +57,36 @@ namespace BitDuc.EnhancedTimeline.Timeline
 
         Pool players;
 
+        //Custom : added preview Functions
+        GameObject _preview;
+        [Button("Open Preview")]
+        void LaunchPreview()
+        {
+            if (_preview != null) return;
+            _preview = BuildDirectorPrototype();
+            _preview.hideFlags = HideFlags.DontSaveInEditor;
+        }
+        [Button("Bind Timeline")]
+        void Preview_BindToTimeline()
+        {
+            if (_preview == null) return;
+            var director = _preview.GetComponent<PlayableDirector>();
+            var timelinebus = _preview.GetComponent<TimelineBus>();
+            var currentPlayable = director.playableAsset;
+
+            if (currentPlayable == null) return;
+            
+            Bind(director, currentPlayable, timelinebus);
+        }
+
+        [Button("ClosePreview")]
+        void Preview_Close()
+        {
+            if (_preview == null) return;
+            DestroyImmediate(_preview);
+            _preview = null;
+        }
+        
         void Awake()
         {
             var prototype = BuildDirectorPrototype();
@@ -165,6 +196,11 @@ namespace BitDuc.EnhancedTimeline.Timeline
             
             var timeLine = timeline as TimelineAsset;
             
+            GameObject GetBound(string name) => trackBindings
+                .Select(binding => (TrackBinding?)binding)
+                .FirstOrDefault(binding => binding?.trackName == name)
+                ?.bound;
+            
             foreach (var track in timeLine.GetOutputTracks()) {
                 
                 foreach (var clip in track.GetClips()) {
@@ -179,6 +215,20 @@ namespace BitDuc.EnhancedTimeline.Timeline
             
             foreach (var output in timeline.outputs)
             {
+                // Detect ControlTrack
+                if (output.outputTargetType == null && output.sourceObject is ControlTrack)
+                {
+                    var ct = output.sourceObject as ControlTrack;
+                    Debug.Log("binding control track detected");
+                    foreach (var el in ct.GetClips())
+                    {
+                        ControlPlayableAsset controlPlayable = (ControlPlayableAsset)el.asset;
+                        GameObject bindingGO = GetBound(el.displayName);
+                        player.SetReferenceValue(controlPlayable.sourceGameObject.exposedName, bindingGO);
+                    }
+                }
+                
+                
                 if(output.outputTargetType == null) continue;
                 
                 var binding =
