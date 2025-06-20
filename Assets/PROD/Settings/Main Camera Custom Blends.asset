@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CustomBlends:
   - From: '**ANY CAMERA**'
-    To: AbilityVCam
+    To: EnemyAbilityVCam
     Blend:
       Style: 1
       Time: 0.5
@@ -24,7 +24,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - From: AbilityVCam
+  - From: EnemyAbilityVCam
     To: '**ANY CAMERA**'
     Blend:
       Style: 1
@@ -35,3 +35,36 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
+  - From: '**ANY CAMERA**'
+    To: PlayerAbilityVCam
+    Blend:
+      Style: 0
+      Time: 0.5
+      CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - From: PlayerAbilityVCam
+    To: '**ANY CAMERA**'
+    Blend:
+      Style: 1
+      Time: 0.5
+      CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 0
+  - From: Idle VCam
+    To: PlayerTurnVCAm
+    Blend:
+      Style: 1
+      Time: 0.75
+      CustomCurve:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 0
+        m_PostInfinity: 0
+        m_RotationOrder: 4

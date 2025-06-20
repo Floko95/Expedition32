@@ -13,7 +13,8 @@ using UnityEngine.InputSystem;
 
 public class BattleManager : MonoBehaviour
 {
-    public static string ABILITY_CAM_NAME = "AbilityVCam";
+    public static string PLAYER_ABILITY_CAM_NAME = "PlayerAbilityVCam";
+    public static string ENEMY_ABILITY_CAM_NAME = "EnemyAbilityVCam";
     
     [SerializeField] private BattleData defaultData;
     [SerializeField] private List<Transform> enemySlots;
@@ -120,7 +121,9 @@ public class BattleManager : MonoBehaviour
             return null;
         }
         
-        _abilityvCam = caster.transform.Find(ABILITY_CAM_NAME)?.GetComponent<CinemachineVirtualCameraBase>();
+        //TODO horrible, move it in timeline animation priority propertties
+        _abilityvCam = caster.transform.Find(PLAYER_ABILITY_CAM_NAME)?.GetComponent<CinemachineVirtualCameraBase>();
+        if(_abilityvCam == null) _abilityvCam = caster.transform.Find(ENEMY_ABILITY_CAM_NAME)?.GetComponent<CinemachineVirtualCameraBase>();
         _abilityvCam.Priority = 100;
         
         if (targets.Count == 1 && usedAbility.targetMode is AbilityTargetMode.SelectTarget) {

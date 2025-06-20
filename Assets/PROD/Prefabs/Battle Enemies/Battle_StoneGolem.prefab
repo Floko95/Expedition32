@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2691793374719143818}
   - component: {fileID: 1863702162690927779}
   m_Layer: 0
-  m_Name: AbilityVCam
+  m_Name: EnemyAbilityVCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,6 +205,8 @@ MonoBehaviour:
     bound: {fileID: 3131668344245944505}
   - trackName: AbilityVCam
     bound: {fileID: 3131668344245944505}
+  - trackName: EarthSlamSpikesAoeVFX
+    bound: {fileID: 0}
   focusPlayableDirector: 1
 --- !u!114 &5341126965337316788
 MonoBehaviour:
