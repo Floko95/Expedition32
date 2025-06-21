@@ -223,10 +223,10 @@ MonoBehaviour:
         Owner: {fileID: 2764875811994135875}
         DebugActive: 0
         Mode: 0
-        AnimateScaleTarget: {fileID: 6701974575121339570}
+        AnimateScaleTarget: {fileID: 2020552515847808055}
         AnimateScaleDuration: 0.2
         RemapCurveZero: 1
-        RemapCurveOne: 1.2
+        RemapCurveOne: 1.5
         Offset: 0
         AnimateX: 1
         AnimateScaleTweenX:
@@ -1510,9 +1510,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.000122, y: 140}
-  m_SizeDelta: {x: 124, y: 124}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -2.000122, y: 78}
+  m_SizeDelta: {x: 225, y: 200}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6520272563371026558
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1543,7 +1543,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 5f51a6f52c62dfa45812defd7a986931, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1

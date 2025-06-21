@@ -6,10 +6,11 @@ using UnityEngine;
 [Serializable]
 public class Stance {
     public string name;
-    [TextArea] public string description;
+    [TextArea(4, 10)] public string description;
     public Sprite icon;
-    
+    public Color color;
     [SerializeReference] public List<AbilityEffect> effects;
+    
 }
 
 public class GeoffreyStanceCyclerMechanic : AUniqueMechanicSystem {
@@ -24,6 +25,7 @@ public class GeoffreyStanceCyclerMechanic : AUniqueMechanicSystem {
     public override string Title => _stances[_currentStanceIndex].name;
     public override string Description => _stances[_currentStanceIndex].description.Replace("<Efficiency>", Mathf.RoundToInt(efficiencyPerStage * Streak * 100).ToString(CultureInfo.InvariantCulture));
     public override Sprite Icon => _stances[_currentStanceIndex].icon;
+    public override Color Color => _stances[_currentStanceIndex].color;
     public Stance CurrentStance => _stances[_currentStanceIndex];
     
     public float CumulatedEfficiency { get; private set; }

@@ -38,6 +38,7 @@ public class UniqueMechanicUI : MonoBehaviour, IInitializable<AUniqueMechanicSys
     
     public void UpdateUI() {
         titleTmp.text = _system.Title;
+        titleTmp.color = _system.Color;
         descriptionTmp.text = _system.Description;
         icon.sprite = _system.Icon;
     }

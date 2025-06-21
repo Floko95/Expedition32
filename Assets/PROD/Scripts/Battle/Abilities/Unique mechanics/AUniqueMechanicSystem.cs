@@ -8,7 +8,8 @@ public abstract class AUniqueMechanicSystem : MonoBehaviour, IInitializable<Unit
     public abstract string Title { get; }
     public abstract string Description { get; }
     public abstract Sprite Icon { get; }
-
+    public virtual Color Color { get; } = Color.white;
+    
     public Action onMechanicUpdated;
     
     bool IInitializable<Unit>.Initialized { get; set; }
